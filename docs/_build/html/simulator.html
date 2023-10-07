@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simulator package &mdash; simulator  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="simulator" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            simulator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">simulator</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">simulator package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-simulator.multivariate">simulator.multivariate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-simulator.ode">simulator.ode module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-simulator.univariate">simulator.univariate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-simulator">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simulator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">simulator</a></li>
+      <li class="breadcrumb-item active">simulator package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/simulator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulator-package">
+<h1>simulator package<a class="headerlink" href="#simulator-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-simulator.multivariate">
+<span id="simulator-multivariate-module"></span><h2>simulator.multivariate module<a class="headerlink" href="#module-simulator.multivariate" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulator.multivariate.</span></span><span class="sig-name descname"><span class="pre">multivariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rosenbrock'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to initialize example data consisting of a ground truth (noiseless) and noisy observations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘rosenbrock’.</p></li>
+<li><p><strong>npoints</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of grid points per dimension. Defalt to 20.</p></li>
+<li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of noise that is added to the ground truth. Default to 5%.</p></li>
+<li><p><strong>coefs</strong> (<em>list</em><em>, </em><em>optional</em>) – Coefficients of the example function. Default to ‘None’ (defined in examples below individually).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples.addnoise">
+<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples.addnoise" title="Permalink to this definition"></a></dt>
+<dd><p>Add noise to the ground truth data. No inputs required. Stores some attributes:</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">Z_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(X,Y) as a grid of shape [n,n].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples.contour_plot_2_variables">
+<span class="sig-name descname"><span class="pre">contour_plot_2_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlevels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples.contour_plot_2_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Contour plot of the example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nlevels</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of level curves (integer) or a list of values                 at which the levels curves should be shown. Default to 15 levels.</p></li>
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be saved. Default to False.</p></li>
+<li><p><strong>save_figure_directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory in which the figure should be saved. Default to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em><em>, </em><em>optional</em>) – List of file extensions in which the figure should be saved. Default to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples.export_to_excel">
+<span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples.export_to_excel" title="Permalink to this definition"></a></dt>
+<dd><p>Exports the datasets stored in the dictionary to an excel file. The filename is ‘{example}_data.xlsx’
+and ‘{example}_data_noisy.xlsx’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>destination</strong> (<em>str</em><em>, </em><em>optional</em>) – Destination folder in which the excel files should be saved. Default to ‘.data’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples.rosenbrock">
+<span class="sig-name descname"><span class="pre">rosenbrock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples.rosenbrock" title="Permalink to this definition"></a></dt>
+<dd><p>Rosenbrock function. No inputs required. Stores several attributes:</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">x (array)</dt>
+<dd class="field-odd"><p>Independent variables as a vector of shape [n,].</p>
+</dd>
+<dt class="field-even">z (function)</dt>
+<dd class="field-even"><p>Dependent variable y(x) as a lambda function.</p>
+</dd>
+<dt class="field-odd">X, Y (array)</dt>
+<dd class="field-odd"><p>Independent variables as a grid of shape [n,n].</p>
+</dd>
+<dt class="field-even">Z (array)</dt>
+<dd class="field-even"><p>Dependent variable y(X,Y) as a grid of shape [n,n].</p>
+</dd>
+<dt class="field-odd">Z_noiy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(X,Y) as a grid of shape [n,n].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.multivariate.multivariate_examples.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.multivariate.multivariate_examples.save_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Saves a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
+<li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
+<li><p><strong>savedirectory</strong> (<em>str</em>) – Directory in which the figure should be saved. Defaults to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em>) – List of file extensions in which the figure                 should be saved. Defaults to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simulator.ode">
+<span id="simulator-ode-module"></span><h2>simulator.ode module<a class="headerlink" href="#module-simulator.ode" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulator.ode.batch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulator.ode.</span></span><span class="sig-name descname"><span class="pre">batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fermentation1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The batch class is used to simulate reactor in batch operation mode.         The examples that are implemented are listed in utils.ode_default_library_description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘fermentation1’ (batch fermentation with 3 species).</p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>npoints_per_batch</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of x-data points (abscissa). Defalt to 20.</p></li>
+<li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
+<li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Fix the seed. Default to 0.</p></li>
+<li><p><strong>bounds_initial_conditions</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different bounds for the initial conditions.             The defaults are given in the function load_initial_conditions.If the user wants to overwrite             these, this can be done here by providing a list of lower and upper bounds.             (i.e., [[lb1, lb2, …], [ub1, ub2, …]]).</p></li>
+<li><p><strong>time_span</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different time spans. The defaults are given in             the function load_initial_conditions. If the user wants to overwrite these, this can be done             here by providing a list of starting and  end time points (i.e., [t0, tf]).</p></li>
+<li><p><strong>initial_condition_generation_method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method to generate initial conditions. Default to ‘LHS’.</p></li>
+<li><p><strong>name_of_time_vector</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the time vector in the dataframe. Default to ‘time’.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">x (array)</dt>
+<dd class="field-odd"><p>Ground truth abscissa data.</p>
+</dd>
+<dt class="field-even">y (function)</dt>
+<dd class="field-even"><p>Ground truth function data y(x).</p>
+</dd>
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.addnoise_per_species">
+<span class="sig-name descname"><span class="pre">addnoise_per_species</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.addnoise_per_species" title="Permalink to this definition"></a></dt>
+<dd><p>Uses some ground truth data and adds some noise to it. Stores the resulting vector as a new attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> – Ground truth data. Shape as [npoints_per_batch, nspecies].</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.export_dict_data_to_excel">
+<span class="sig-name descname"><span class="pre">export_dict_data_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.export_dict_data_to_excel" title="Permalink to this definition"></a></dt>
+<dd><p>Exports the datasets stored in the dictionary to an excel file. The filename of the data is
+‘{self.example_type}_{self.example}_{which_dataset}_batchdata.xlsx’
+and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Destination folder in which the excel files should be saved. Default to ‘.data’.</p></li>
+<li><p><strong>which_dataset</strong> – Which dataset should be exported (‘all’, ‘training’, or ‘testing’). Defaults to ‘all’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.load_initial_conditions">
+<span class="sig-name descname"><span class="pre">load_initial_conditions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.load_initial_conditions" title="Permalink to this definition"></a></dt>
+<dd><p>Load initial conditions for the ODEs.</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y0 (array)</dt>
+<dd class="field-odd"><p>Initial conditions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.plot_experiments">
+<span class="sig-name descname"><span class="pre">plot_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.plot_experiments" title="Permalink to this definition"></a></dt>
+<dd><p>Plot experiments that were simulated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
+<li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be saved. Default to False.</p></li>
+<li><p><strong>save_figure_directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory in which the figure should be saved. Default to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em><em>, </em><em>optional</em>) – List of file extensions in which the figure should be saved. Default to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.plot_train_test_experiments">
+<span class="sig-name descname"><span class="pre">plot_train_test_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.plot_train_test_experiments" title="Permalink to this definition"></a></dt>
+<dd><p>Plot experiments that were simulated. The training and testing runs are colored differently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
+<li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be saved. Default to False.</p></li>
+<li><p><strong>save_figure_directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory in which the figure should be saved. Default to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em><em>, </em><em>optional</em>) – List of file extensions in which the figure should be saved. Default to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.print_info">
+<span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.print_info" title="Permalink to this definition"></a></dt>
+<dd><p>Prints the information about the example that was loaded.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.run_experiments">
+<span class="sig-name descname"><span class="pre">run_experiments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.run_experiments" title="Permalink to this definition"></a></dt>
+<dd><p>Run the experiments. No inputs required. Stores some attributes:</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (dict)</dt>
+<dd class="field-odd"><p>Dictionary with ground truth data for each batch.</p>
+</dd>
+<dt class="field-even">runtime_odes (int)</dt>
+<dd class="field-even"><p>Cumulative time to solve the ODEs of all batches.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.save_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Saves a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
+<li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
+<li><p><strong>savedirectory</strong> (<em>str</em>) – Directory in which the figure should be saved. Defaults to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em>) – List of file extensions in which the figure                 should be saved. Defaults to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.show_implemented_examples">
+<span class="sig-name descname"><span class="pre">show_implemented_examples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.show_implemented_examples" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.solve_ODE_model">
+<span class="sig-name descname"><span class="pre">solve_ODE_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.solve_ODE_model" title="Permalink to this definition"></a></dt>
+<dd><p>Solve the ODE model for the given sample and time span.             Returns the derivatives (dydt) as an array of shape [n,] and the runtime of the ODE solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y0</strong> – Initial conditions.</p></li>
+<li><p><strong>tspan</strong> – Time span.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.ode.batch.train_test_split">
+<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.batch.train_test_split" title="Permalink to this definition"></a></dt>
+<dd><p>Splits the data into training and testing data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="simulator.ode.custom_ode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulator.ode.</span></span><span class="sig-name descname"><span class="pre">custom_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_path_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_ode_function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_species_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.custom_ode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simulator.ode.batch" title="simulator.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">simulator.ode.batch</span></code></a></p>
+<p>The custom_ode class is used to simulate the time evolution of a system defined in a separate ODE file.
+The intention is to model a batch system.
+The user should create a file with the ODEs and provide the path to this file.
+The file should contain a function which takes the state vector y and time t as inputs and returns the derivatives dydt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename_custom_ode</strong> (<em>str</em><em>, </em><em>required</em>) – The file name to the file containing the system of ODEs.</p></li>
+<li><p><strong>relative_path_custom_ode</strong> (<em>str</em><em>, </em><em>required</em>) – The relative path to the file containing the system of ODEs.</p></li>
+<li><p><strong>custom_ode_function_name</strong> (<em>str</em><em>, </em><em>required</em>) – The name of the function in the file containing the system of ODEs.             IF no name is given, the package tries to identify functions with name “ode” in them.</p></li>
+<li><p><strong>num_species</strong> (<em>int</em><em>, </em><em>required</em>) – Number of species in the system.</p></li>
+<li><p><strong>bounds_initial_conditions</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different bounds for the initial conditions.             The defaults are given in the function load_initial_conditions.If the user wants to overwrite             these, this can be done here by providing a list of lower and upper bounds.             (i.e., [[lb1, lb2, …], [ub1, ub2, …]]).</p></li>
+<li><p><strong>time_span</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different time spans. The defaults are given in             the function load_initial_conditions. If the user wants to overwrite these, this can be done             here by providing a list of starting and  end time points (i.e., [t0, tf]).</p></li>
+<li><p><strong>ode_arguments</strong> (<em>dict</em><em>, </em><em>optional</em>) – Dictionary containing the arguments that are passed to the ODE             function with the form &gt;&gt;def ODE(y,t, args)&lt;&lt;. If none are indicated, it is assumed             the ODE file has the form &gt;&gt;def ODE(y,t)&lt;&lt;. Defaults to None.</p></li>
+<li><p><strong>name_of_time_unit</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the time unit. Default to ‘h’ (hours).</p></li>
+<li><p><strong>name_of_species_units</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the species units. Default to ‘g/L’ for every species in the system.</p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of different initial conditions. Defaults to 1.</p></li>
+<li><p><strong>npoints_per_batch</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of x-data points (abscissa). Defalt to 50.</p></li>
+<li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
+<li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Fix the seed. Default to 0.</p></li>
+<li><p><strong>initial_condition_generation_method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method to generate initial conditions. Default to ‘LHS’.</p></li>
+<li><p><strong>name_of_time_vector</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the time vector in the dataframe. Default to ‘time’.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">x (array)</dt>
+<dd class="field-odd"><p>Ground truth abscissa data.</p>
+</dd>
+<dt class="field-even">y (function)</dt>
+<dd class="field-even"><p>Ground truth function data y(x).</p>
+</dd>
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="simulator.ode.fedbatch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulator.ode.</span></span><span class="sig-name descname"><span class="pre">fedbatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fedbatch1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.ode.fedbatch" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simulator.ode.batch" title="simulator.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">simulator.ode.batch</span></code></a></p>
+<p>The fedbatch class is used to simulate reactor in fedbatch operation mode.     The class uses the batch class as basis.
+The examples that are implemented are listed in utils.ode_default_library_description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘fedbatch1’ (fed batch fermentation with 3 species).</p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>npoints_per_batch</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of x-data points (abscissa). Defalt to 20.</p></li>
+<li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
+<li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Fix the seed. Default to 0.</p></li>
+<li><p><strong>bounds_initial_conditions</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different bounds for the initial conditions.             The defaults are given in the function load_initial_conditions.If the user wants to overwrite             these, this can be done here by providing a list of lower and upper bounds.             (i.e., [[lb1, lb2, …], [ub1, ub2, …]]).</p></li>
+<li><p><strong>time_span</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The examples have different time spans. The defaults are given in             the function load_initial_conditions. If the user wants to overwrite these, this can be done             here by providing a list of starting and  end time points (i.e., [t0, tf]).</p></li>
+<li><p><strong>initial_condition_generation_method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method to generate initial conditions. Default to ‘LHS’.</p></li>
+<li><p><strong>name_of_time_vector</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the time vector in the dataframe. Default to ‘time’.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">x (array)</dt>
+<dd class="field-odd"><p>Ground truth abscissa data.</p>
+</dd>
+<dt class="field-even">y (function)</dt>
+<dd class="field-even"><p>Ground truth function data y(x).</p>
+</dd>
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-simulator.univariate">
+<span id="simulator-univariate-module"></span><h2>simulator.univariate module<a class="headerlink" href="#module-simulator.univariate" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulator.univariate.</span></span><span class="sig-name descname"><span class="pre">univariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'logistic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to initialize example data consisting of a ground truth (noiseless) and noisy observations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>example</strong> – String of the example to be loaded. Default to ‘logistic’.</p></li>
+<li><p><strong>npoints</strong> – Number of x-data points (abscissa). Defalt to 20.</p></li>
+<li><p><strong>tspan</strong> – List of staring and end points of abscissa data. Default to [0,10].</p></li>
+<li><p><strong>noise_mode</strong> – Type of noise that should be added. Default to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%ç.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">x (array)</dt>
+<dd class="field-odd"><p>Ground truth abscissa data.</p>
+</dd>
+<dt class="field-even">y (array)</dt>
+<dd class="field-even"><p>Ground truth function data y(x).</p>
+</dd>
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy observations of y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples.addnoise">
+<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples.addnoise" title="Permalink to this definition"></a></dt>
+<dd><p>Add noise to the ground truth data.</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y_noisy (array)</dt>
+<dd class="field-odd"><p>Noisy data of the ground truth data data y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples.logistic">
+<span class="sig-name descname"><span class="pre">logistic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples.logistic" title="Permalink to this definition"></a></dt>
+<dd><p>Logistic function as ground truth data.</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (array)</dt>
+<dd class="field-odd"><p>Ground truth function data y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the example data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
+<li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be saved. Default to False.</p></li>
+<li><p><strong>save_figure_directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory in which the figure should be saved. Default to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em><em>, </em><em>optional</em>) – List of file extensions in which the figure should be saved. Default to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples.save_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Saves a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
+<li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
+<li><p><strong>savedirectory</strong> (<em>str</em>) – Directory in which the figure should be saved. Defaults to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em>) – List of file extensions in which the figure                 should be saved. Defaults to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulator.univariate.univariate_examples.sin">
+<span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simulator.univariate.univariate_examples.sin" title="Permalink to this definition"></a></dt>
+<dd><p>Sinusoidal ground truth data.</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (array)</dt>
+<dd class="field-odd"><p>Ground truth function data y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simulator">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simulator" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="simulator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tim Forster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

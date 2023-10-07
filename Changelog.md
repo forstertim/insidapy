@@ -1,0 +1,49 @@
+# Changelog
+
+## Version 0.0.14
+* Split the `batch` and `fedbatch` examples in two different classes. 
+* Adjusted the wording a bit to distinguish examples in fedbatch or batch operation mode.
+
+## Version 0.0.13
+* Included a bioreactor example in fedbatch operation mode.
+
+## Version 0.0.12
+* Included an option to show the implemented examples in the ODE module.
+
+## Version 0.0.11
+* Added chemical reaction examples.
+* Included the option to print the information about the example in a nice table.
+* Added extended reference information about the examples, which are also printed to the table.
+
+## Version 0.0.10
+* Added michaelis menten kinetics example to ODE module.
+
+## Version 0.0.9
+* Added plot-saving options for univariate class.
+* Corrected typo in the univariate class.
+
+## Version 0.0.8
+* Added another plotting option to visualize training and testing batches easily in the ODE module.
+
+## Version 0.0.7
+* Separated the ODEs to have a better overview. Now, a new file called `ode_collection.py` is available.
+
+## Version 0.0.6
+* Improved the instructions how to apply a train-test-split in the readme.
+* Added a check in the export function of the ODE module that the train-test-split was executed before letting the user export the training or testing data.
+
+## Version 0.0.5
+* Included the option to do the entire simulation with custom ODE files that are stored separately by the user. 
+* Updated docs accordingly.
+
+## Version 0.0.4
+* Included Sphinx documentation and moved the examples folder one level up. Adjusted reame file accordingly.
+
+## Version 0.0.3
+* Included a multivariate class with the Rosenbrock function as example. The function data (noisy and noisfree) can be exported as an excel file.
+
+## Version 0.0.2
+* Included the option of overwriting the bounds of the initial conditions and the time span for the ODE integration. Renamed the package from "emulator" to "simulator".
+
+## Version 0.0.1
+* Creation of the emulator.
