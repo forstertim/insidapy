@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.1.0
+* Made ready for public release.
+* Changed the name from "simulator" to "insidapy" (***in***-***si***lico ***da***ta (generation) in ***Py***thon) to prevent possible confusion with other simulators if installed in the same environment.
+
 ## Version 0.0.14
 * Split the `batch` and `fedbatch` examples in two different classes. 
 * Adjusted the wording a bit to distinguish examples in fedbatch or batch operation mode.

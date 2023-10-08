@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'simulator'
+project = 'insidapy'
 copyright = '2023, Tim Forster'
 author = 'Tim Forster'
 

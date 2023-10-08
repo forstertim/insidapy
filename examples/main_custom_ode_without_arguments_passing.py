@@ -3,7 +3,7 @@ Within the simulator, one class of the ODE module is defined as the 'custom_ode'
 It takes a user-defined ODE system and creates the data to it.
 '''
 
-from simulator.ode import custom_ode
+from insidapy.ode import custom_ode
 
 # Define where the ODE file is located and how the ODE function is called
 CUSTOM_ODE_RELATIVE_PATH = '.'

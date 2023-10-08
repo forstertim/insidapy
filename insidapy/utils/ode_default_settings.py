@@ -13,7 +13,7 @@ def load_default_settings(self, no_example):
     # Copy the object
 
     # ..........................................
-    if self.example == 'fermentation1':
+    if self.example == 'batch1':
         """ biomass consumes substrate and produces product
         """
         # System info
@@ -34,7 +34,7 @@ def load_default_settings(self, no_example):
             text_to_print_time = 'default'
 
     # ..........................................
-    elif self.example == 'fermentation2':
+    elif self.example == 'batch2':
         """ biomass consumes nitrate, carbon, and phosphate
         """
         # System info
@@ -52,6 +52,71 @@ def load_default_settings(self, no_example):
         # Time info
         if self.overwrite_bounds_time_span is None:
             self.tspan = [0,180]
+            text_to_print_time = 'default'
+
+    # ..........................................
+    elif self.example == 'batch3':
+        """ E + S <-[k1],[ki1]-> ES ->[k2] E + P
+        """
+        # System info
+        no_example = False
+        self.example_info = 'Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. E + S <-[k1],[ki1]-> ES ->[k2] E + P'
+        self.example_reference = 'DOI 10.1021/acs.jpcb.2c08932'
+        self.species = ['enzyme', 'substrate', 'complex', 'product']
+        self.species_units = ['mmol/L', 'mmol/L', 'mmol/L', 'mmol/L']
+        self.time_unit = 'min'
+        # Bounds
+        if self.overwrite_bounds_initial_conditions is None:
+            self.LB = np.array([0.1, 1, 0, 0])
+            self.UB = np.array([1, 10, 0, 0])
+            text_to_print_bounds = 'default'
+        # Time info
+        if self.overwrite_bounds_time_span is None:
+            self.tspan = [0,70]
+            text_to_print_time = 'default'
+
+    # ..........................................
+    elif self.example == 'batch4':
+        """ A -[k1]-> B -[k2]-> C
+        """
+        # System info
+        no_example = False
+        self.example_info = 'Series of reactions. 3 Species. A -[k1]-> B -[k2]-> C.'
+        self.example_reference = 'DOI 10.1007/978-1-4757-3040-1'
+        self.species = ['A', 'B', 'C']
+        self.species_units = ['-', '-', '-'] # Example unitless in book
+        self.time_unit = 's'
+        # Bounds
+        if self.overwrite_bounds_initial_conditions is None:
+            self.LB = np.array([1e-3, 1e-3, 0])
+            self.UB = np.array([1, 1, 0.2])
+            text_to_print_bounds = 'default'
+        # Time info
+        if self.overwrite_bounds_time_span is None:
+            self.tspan = [0,80]
+            text_to_print_time = 'default'
+
+    # ..........................................
+    elif self.example == 'batch5':
+        """ Nonisothermal Van de Vusse Reaction Case I
+        A -[k1]-> B -[k2]-> C
+        2 A -[k3]-> D
+        """
+        # System info
+        no_example = False
+        self.example_info = 'Van de Vusse reaction. 4 Species. \nA -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.'
+        self.example_reference = 'DOI 10.1007/978-1-4757-3040-1'
+        self.species = ['A', 'B', 'C', 'D']
+        self.species_units = ['mol/L', 'mol/L', 'mol/L', 'mol/L'] # Example unitless in book
+        self.time_unit = 's'
+        # Bounds
+        if self.overwrite_bounds_initial_conditions is None:
+            self.LB = np.array([1e-3, 1e-3, 0, 0])
+            self.UB = np.array([1, 1, 0.2, 0.2])
+            text_to_print_bounds = 'default'
+        # Time info
+        if self.overwrite_bounds_time_span is None:
+            self.tspan = [0,4]
             text_to_print_time = 'default'
 
     # ..........................................
@@ -73,71 +138,6 @@ def load_default_settings(self, no_example):
         # Time info
         if self.overwrite_bounds_time_span is None:
             self.tspan = [0,50]
-            text_to_print_time = 'default'
-
-    # ..........................................
-    elif self.example == 'michaelismenten1':
-        """ E + S <-[k1],[ki1]-> ES ->[k2] E + P
-        """
-        # System info
-        no_example = False
-        self.example_info = 'Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. E + S <-[k1],[ki1]-> ES ->[k2] E + P'
-        self.example_reference = 'DOI 10.1021/acs.jpcb.2c08932'
-        self.species = ['enzyme', 'substrate', 'complex', 'product']
-        self.species_units = ['mmol/L', 'mmol/L', 'mmol/L', 'mmol/L']
-        self.time_unit = 'min'
-        # Bounds
-        if self.overwrite_bounds_initial_conditions is None:
-            self.LB = np.array([0.1, 1, 0, 0])
-            self.UB = np.array([1, 10, 0, 0])
-            text_to_print_bounds = 'default'
-        # Time info
-        if self.overwrite_bounds_time_span is None:
-            self.tspan = [0,70]
-            text_to_print_time = 'default'
-
-    # ..........................................
-    elif self.example == 'chem1':
-        """ A -[k1]-> B -[k2]-> C
-        """
-        # System info
-        no_example = False
-        self.example_info = 'Series of reactions. 3 Species. A -[k1]-> B -[k2]-> C.'
-        self.example_reference = 'DOI 10.1007/978-1-4757-3040-1'
-        self.species = ['A', 'B', 'C']
-        self.species_units = ['-', '-', '-'] # Example unitless in book
-        self.time_unit = 's'
-        # Bounds
-        if self.overwrite_bounds_initial_conditions is None:
-            self.LB = np.array([1e-3, 1e-3, 0])
-            self.UB = np.array([1, 1, 0.2])
-            text_to_print_bounds = 'default'
-        # Time info
-        if self.overwrite_bounds_time_span is None:
-            self.tspan = [0,80]
-            text_to_print_time = 'default'
-
-    # ..........................................
-    elif self.example == 'chem2':
-        """ Nonisothermal Van de Vusse Reaction Case I
-        A -[k1]-> B -[k2]-> C
-        2 A -[k3]-> D
-        """
-        # System info
-        no_example = False
-        self.example_info = 'Van de Vusse reaction. 4 Species. \nA -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.'
-        self.example_reference = 'DOI 10.1007/978-1-4757-3040-1'
-        self.species = ['A', 'B', 'C', 'D']
-        self.species_units = ['mol/L', 'mol/L', 'mol/L', 'mol/L'] # Example unitless in book
-        self.time_unit = 's'
-        # Bounds
-        if self.overwrite_bounds_initial_conditions is None:
-            self.LB = np.array([1e-3, 1e-3, 0, 0])
-            self.UB = np.array([1, 1, 0.2, 0.2])
-            text_to_print_bounds = 'default'
-        # Time info
-        if self.overwrite_bounds_time_span is None:
-            self.tspan = [0,4]
             text_to_print_time = 'default'
             
     return self, no_example

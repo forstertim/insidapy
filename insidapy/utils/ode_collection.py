@@ -9,7 +9,7 @@ import numpy as np
 
 
 ##########################################################################################
-def ODE_Batch_Fermentation_ThreeSpecs(y, t):
+def batch1(y, t):
     '''ODE model for batch fermentation. Literature: Turton, Shaeiwtz, Bhattacharyya, Whiting \
         "Analysis, synthesis and design of chemical processes", Prentice Hall. 2018.
         ISBN 0-13-512966-4
@@ -67,7 +67,7 @@ def ODE_Batch_Fermentation_ThreeSpecs(y, t):
 
 
 ##########################################################################################
-def ODE_Batch_Fermentation_FourSpecs(y, t):
+def batch2(y, t):
     
     '''ODE model for batch fermentation. Literature: Ehecatl Antonio Del Rio‐Chanona, Xiaoyan Cong, Eric Bradford, Dongda Zhang, Keju Jing.
     Review of advanced physical and data‐driven models fordynamic bioprocess simulation: Case study of algae–bacteriaconsortium wastewater treatment,
@@ -135,7 +135,7 @@ def ODE_Batch_Fermentation_FourSpecs(y, t):
 
 
 ##########################################################################################
-def ODE_Batch_Michaelis_Menten_FourSpecs(y, t):
+def batch3(y, t):
     
     '''ODE model for The Michaelis-Menten Kinetics. 
     The Michaelis-Menten model, which originated from the pioneering work of Michaelis and Menten in invertase experiments, 
@@ -179,7 +179,7 @@ def ODE_Batch_Michaelis_Menten_FourSpecs(y, t):
 
 
 ##########################################################################################
-def ODE_Batch_Chemical_Reaction_1(y, t):
+def batch4(y, t):
     
     '''ODE model for the following series of reactions: A -[k1]-> B -[k2]-> C
 
@@ -219,7 +219,7 @@ def ODE_Batch_Chemical_Reaction_1(y, t):
 
 
 ##########################################################################################
-def ODE_Batch_Chemical_Reaction_2(y, t):    
+def batch5(y, t):    
     '''ODE model for the Van de Vusse Reaction Case I: 
     A -[k1]-> B -[k2]-> C
     2A -[k3]-> D

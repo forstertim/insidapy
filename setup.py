@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
-setup(  name = 'simulator',
+setup(  name = 'insidapy',
         
-        version = '0.0.14',
+        version = '0.1.0',
         
-        description = 'Module for generating example data.',
+        description = 'Module for in-silico data generation in python.',
         
         author = 'Tim Forster',
         

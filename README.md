@@ -1,5 +1,7 @@
-Simulator
-=========
+In-Silico Data Generation in Python (InSiDa-Py)
+================================================
+[![Documentation Status](https://readthedocs.org/projects/insidapy/badge/?version=latest)](https://insidapy.readthedocs.io/en/latest/?badge=latest)
+
 This package is used to simplify the generation of example data for different case studies. In several applications, for example in the field of surrogate modeling, it is necessary to generate some *in-silico* data which can be used to train a model. The tool simplifies the generation and export of such data. Some cited applications are included, where the user can easily create custom systems as shown below.
 
 - [Installation](#installation) 💻
@@ -11,17 +13,18 @@ This package is used to simplify the generation of example data for different ca
 - [References](#references) 📚
 - [Contribute](#contribute)
 
+
 Installation
 ============
 If you are a git user, try to install the package using the following command:
 ```
-pip install git+https://github.com/forstertim/simulator.git
+pip install git+https://github.com/forstertim/insidapy.git
 ```
 
 Alternatively, you can clone the repository and install it. To easily add your own case studies, install in developer mode (`-e` in the pip install command):
 ```
-git clone https://github.com/forstertim/simulator.git
-cd simulator
+git clone https://github.com/forstertim/insidapy.git
+cd insidapy
 pip install -e .
 ```
 
@@ -36,20 +39,20 @@ Included tools
 ==============
 The simulator includes several options to generate data:
 
-* **univariate**: With this module, a variety of univariate functions can be generated. By choosing one of the examples in the univariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
+* **Univariate**: Data for some univariate functions can be generated. By choosing one of the examples in the univariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
     * *`sin`* (default): Sinusoidal function $y=\sin(x)$.
     * *`logistic`*: Logistic function $y=1/(1+\exp(x))$.
 
-* **multivariate**: With this module, functions can be generated that have two or more variables. By choosing one of the examples in the multivariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
+* **Multivariate**: Data for some multivariate functions can be generated. By choosing one of the examples in the multivariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
     * *`rosenbrock`* (default): The Rosenbrock function is simulated. Useful for optimization benchmarking. The function takes the following form: $f(x,y)=(a-x)^{2}+b(y-x^{2})^{2}$. This function was included in this module after using it in the work of [Forster et al. (2023a)](#references).
 
 * **ODE**: The available classes are `batch`, `fedbatch`, and `custom_ode`. All of them implement an ODE solver for different case studies. Some examples of the implemented case studies are the following (the currently implemted examples are visible by loading the class (`batch` or `fedbatch`) and using the `show_implemented_examples()` function)
 
     * **`batch`**:
-        * *`fermentation1`* (default): Batch fermentation process with three species based on the work of [Turton et al. (2018)](#references) and used in [Forster et al. (2023b)](#references). 
-        * *`fermentation2`*: Batch fermentation process with four species based on the work of [Del Rio‐Chanona et al. (2019)](#references). 
-        * `michaelismenten1`: Michaelis-Menten kinetics and four species. Example was adapted from [Wong et al. (2023)](#references)
-        * *`chemX`*: Several examples (X={1,2,...}) for chemical reactions or reaction networks. Reference information is displayed upon loading the class and printing the information by using the `print_info()` function. Most examples were taken from [Floudas et al. (1999)](#references)
+        * *`batch1`* (default): Batch fermentation process with three species based on the work of [Turton et al. (2018)](#references) and used in [Forster et al. (2023b)](#references). 
+        * *`batch2`*: Batch fermentation process with four species based on the work of [Del Rio‐Chanona et al. (2019)](#references). 
+        * *`batch3`*: Michaelis-Menten kinetics and four species. Example was adapted from [Wong et al. (2023)](#references)
+        * *`batchX`*: Several examples (currently X={4,5}) for chemical reactions or reaction networks. Reference information is displayed upon loading the class and printing the information by using the `print_info()` function. Most examples were taken from [Floudas et al. (1999)](#references)
     
     * **`fedbatch`**:
         * *`fedbatch1`*: Example was taken from [Seborg et al. (2016)](#references)
@@ -67,7 +70,7 @@ The example code is stored in `examples/main_batch_fermentation_example.py`.
 
 First, the `batch` class is loaded:
 ```python
-from simulator.ode import batch
+from insidapy.ode import batch
 ```
 
 Then, the data object is instantiated with the chosen settings. Here, four different batches are simulated (four different initial conditions). The different initial conditions are generated by an LHS (Latin Hypercube Sampling) approach. The batches include the given number of points per batch (samples per species per batch). After that, 2.5% noise is added. The simulator includes default case studies. However, the user can choose to overwrite the default upper and lower bounds for the generation of the initial conditions (shown below). Also, the user can overwrite the default time span for the integration of the ODEs.
@@ -80,14 +83,14 @@ Output:
 +----------------------+----------------------------------------------------------------------------------+
 |  Example ID string   | Description                                                                      |
 +----------------------+----------------------------------------------------------------------------------+
-|    fermentation1     | Batch fermentation with 3 species. Bacteria growth, substrate consumption and    |
+|        batch1        | Batch fermentation with 3 species. Bacteria growth, substrate consumption and    |
 |                      | product formation. Mimics the production of a target protein.                    |
-|    fermentation2     | Batch fermentation with 4 species. Bacteria growth, nitrate/carbon/phosphate     |
+|        batch2        | Batch fermentation with 4 species. Bacteria growth, nitrate/carbon/phosphate     |
 |                      | consumption. Mimics a waste water treatment process.                             |
-|   michaelismenten1   | Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. |
+|        batch3        | Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. |
 |                      | E + S <-[k1],[ki1]-> ES ->[k2] E + P                                             |
-|        chem1         | Series of reactions. 3 Species. A -[k1]-> B -[k2]-> C.                           |
-|        chem2         | Van de Vusse reaction. 4 Species. A -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.       |
+|        batch4        | Series of reactions. 3 Species. A -[k1]-> B -[k2]-> C.                           |
+|        batch5        | Van de Vusse reaction. 4 Species. A -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.       |
 +----------------------+----------------------------------------------------------------------------------+
 ```
 
@@ -95,16 +98,16 @@ Output:
 
 After choosing an example, one can load it with more detailed settings by using the corresponding ID string:
 ```python
-data = batch(   example='fermentation1',                                                # Choose example. Defaults to "fermentation1".
-                nbatches=4,                                                             # Number of batches. Defaults to 3.
-                npoints_per_batch=20,                                                   # Number of points per batch and per species. Defaults to 20.
-                noise_mode='percentage',                                                # Noise mode. Defaults to "percentage".
-                noise_percentage=2.5,                                                   # Noise percentage (in case mode is "percentage")      
-                random_seed=10,                                                         # Random seed for reproducibility. Defaults to 0.
-                bounds_initial_conditions=[[0.1, 50, 0], [0.4, 90, 0]],                 # Bounds for initial conditions. Defaults to "None".
-                time_span=[0, 80],                                                      # Time span for integration. Defaults to "None". 
-                initial_condition_generation_method='LHS',                              # Method for generating initial conditions. Defaults to "LHS".
-                name_of_time_vector='time')                                             # Name of time vector. Defaults to "time".
+data = batch(   example='batch1',                                       # Choose example. Defaults to "batch1" (fermentation with 3 species).
+                nbatches=4,                                             # Number of batches. Defaults to 3.
+                npoints_per_batch=20,                                   # Number of points per batch and per species. Defaults to 20.
+                noise_mode='percentage',                                # Noise mode. Defaults to "percentage".
+                noise_percentage=2.5,                                   # Noise percentage (in case mode is "percentage")      
+                random_seed=10,                                         # Random seed for reproducibility. Defaults to 0.
+                bounds_initial_conditions=[[0.1, 50, 0], [0.4, 90, 0]], # Bounds for initial conditions. Defaults to "None".
+                time_span=[0, 80],                                      # Time span for integration. Defaults to "None". 
+                initial_condition_generation_method='LHS',              # Method for generating initial conditions. Defaults to "LHS".
+                name_of_time_vector='time')                             # Name of time vector. Defaults to "time".
 ```
 
 The information about the example - including a reference (i.e., a DOI or ISBN) can be printed to the console:
@@ -115,7 +118,7 @@ Output:
 +--------------------------------+------------------------------------------------------------------------+
 | Property                       | Description                                                            |
 +--------------------------------+------------------------------------------------------------------------+
-| Example string                 | fermentation1                                                          |
+| Example string                 | batch1                                                                 |
 | Example description            | Batch fermentation with 3 species. Bacteria growth, substrate          |
 |                                | consumption and product formation. Mimics the production of a target   |
 |                                | protein.                                                               |
@@ -169,13 +172,13 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training')
 data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing') 
 ```
 
-![Fig 1. Example several runs in batch operation mode (fermentation1 example).](examples/figures/fermentation1_simulated_batches.png)
+![Fig 1. Example several runs in batch operation mode (batch1 example).](examples/figures/batch1_simulated_batches.png)
 
-*Fig 1. Example several runs in batch operation mode (fermentation1 example).*
+*Fig 1. Example several runs in batch operation mode (batch1 example).*
 
-![Fig 2. Example several runs in batch operation mode (fermentation1 example) with training and testing batches visualized differently.](examples/figures/fermentation1_simulated_batches_train_test.png)
+![Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.](examples/figures/batch1_simulated_batches_train_test.png)
 
-*Fig 2. Example several runs in batch operation mode (fermentation1 example) with training and testing batches visualized differently.*
+*Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.*
 
 
 ## Rosenbrock function
@@ -184,7 +187,7 @@ The example code is stored in `examples/main_multivariate_examples.py`.
 First, the `multivariate_examples` class is loaded:
 
 ```python
-from simulator.multivariate import multivariate_examples
+from insidapy.multivariate import multivariate_examples
 ```
 
 Then, the data object is instantiated with the chosen settings. Here, The Rosenbrock function is simulated. The user can pass chosen coefficients. If that is not done, the default coefficients are taken. After that, 10% noise is added.
@@ -221,7 +224,7 @@ Two examples are stored in `examples/main_custom_ode_with_arguments_passing.py` 
 
 First, the `custom_ode` class is loaded:
 ```python
-from simulator.ode import custom_ode
+from insidapy.ode import custom_ode
 ```
 
 Then, the user can define where the separate file with the ODE system is located:
@@ -344,4 +347,4 @@ References
 
 Contribute
 ==========
-If you have other interesting examples that you would like to have implemented, raise an issue with a reference to the example (i.e., a DOI to a paper with the system). Another option is to implement the example yourself and raise a pull request. The same applies to bugs or other issues. 
+If you have other interesting examples that you would like to have implemented, raise an issue with a reference to the example (i.e., a DOI to a paper with the system). There is a template for such an issue which you can use. Another option is to implement the example yourself and raise a pull request. The same applies to bugs or other issues. 

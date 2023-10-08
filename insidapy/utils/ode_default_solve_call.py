@@ -18,23 +18,24 @@ def solve_ode(self, y0, tspan):
     """
 
     # ..........................................
-    if self.example == 'fermentation1':
-        y = odeint(func=ODE_Batch_Fermentation_ThreeSpecs, y0=y0, t=tspan)
+    if self.example == 'batch1':
+        y = odeint(func=batch1, y0=y0, t=tspan)
     # ..........................................
-    elif self.example == 'fermentation2':
-        y = odeint(func=ODE_Batch_Fermentation_FourSpecs, y0=y0, t=tspan)
+    elif self.example == 'batch2':
+        y = odeint(func=batch2, y0=y0, t=tspan)
+    # ..........................................
+    elif self.example == 'batch3':
+        y = odeint(func=batch3, y0=y0, t=tspan)
+    # ..........................................
+    elif self.example == 'batch4':
+        y = odeint(func=batch4, y0=y0, t=tspan)
+    # ..........................................
+    elif self.example == 'batch5':
+        y = odeint(func=batch5, y0=y0, t=tspan)
+        
     # ..........................................
     elif self.example == 'fedbatch1':
         y = odeint(func=fedbatch1, y0=y0, t=tspan)
-    # ..........................................
-    elif self.example == 'michaelismenten1':
-        y = odeint(func=ODE_Batch_Michaelis_Menten_FourSpecs, y0=y0, t=tspan)
-    # ..........................................
-    elif self.example == 'chem1':
-        y = odeint(func=ODE_Batch_Chemical_Reaction_1, y0=y0, t=tspan)
-    # ..........................................
-    elif self.example == 'chem2':
-        y = odeint(func=ODE_Batch_Chemical_Reaction_2, y0=y0, t=tspan)
         
         
     return y

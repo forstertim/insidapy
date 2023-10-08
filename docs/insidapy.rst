@@ -1,29 +1,29 @@
-simulator package
+insidapy package
 =================
 
 Submodules
 ----------
 
-simulator.multivariate module
+insidapy.multivariate module
 -----------------------------
 
-.. automodule:: simulator.multivariate
+.. automodule:: insidapy.multivariate
    :members:
    :undoc-members:
    :show-inheritance:
 
-simulator.ode module
+insidapy.ode module
 --------------------
 
-.. automodule:: simulator.ode
+.. automodule:: insidapy.ode
    :members:
    :undoc-members:
    :show-inheritance:
 
-simulator.univariate module
+insidapy.univariate module
 ---------------------------
 
-.. automodule:: simulator.univariate
+.. automodule:: insidapy.univariate
    :members:
    :undoc-members:
    :show-inheritance:
@@ -31,7 +31,7 @@ simulator.univariate module
 Module contents
 ---------------
 
-.. automodule:: simulator
+.. automodule:: insidapy
    :members:
    :undoc-members:
    :show-inheritance:

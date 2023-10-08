@@ -25,7 +25,7 @@ class batch():
         The examples that are implemented are listed in utils.ode_default_library_description
 
     Args:
-        example (str, optional): String of the example to be loaded. Default to 'fermentation1' (batch fermentation with 3 species).
+        example (str, optional): String of the example to be loaded. Default to 'batch1' (batch fermentation with 3 species).
         nbatches (int, optional): 
         npoints_per_batch (int, optional): Number of x-data points (abscissa). Defalt to 20.
         noise_mode (str, optional): Type of noise that should be added. Default to 'percentage'.
@@ -49,7 +49,7 @@ class batch():
     """
     
     # ----------------------------------------
-    def __init__(self, example:str='fermentation1', 
+    def __init__(self, example:str='batch1', 
                  nbatches:int=3,
                  npoints_per_batch:int=20, 
                  noise_mode:str='percentage', 
