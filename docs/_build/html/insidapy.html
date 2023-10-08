@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>insidapy package &mdash; insidapy  documentation</title>
@@ -11,10 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,9 +46,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">simulator</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">insidapy package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.multivariate">insidapy.multivariate module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.ode">insidapy.ode module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.univariate">insidapy.univariate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.multivariate">insidapy.multivariate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.multivariate.multivariate_examples"><code class="docutils literal notranslate"><span class="pre">multivariate_examples</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.ode">insidapy.ode module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.ode.batch"><code class="docutils literal notranslate"><span class="pre">batch</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.ode.custom_ode"><code class="docutils literal notranslate"><span class="pre">custom_ode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.ode.fedbatch"><code class="docutils literal notranslate"><span class="pre">fedbatch</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-insidapy.univariate">insidapy.univariate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.univariate.univariate_examples"><code class="docutils literal notranslate"><span class="pre">univariate_examples</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-insidapy">Module contents</a></li>
 </ul>
 </li>
@@ -81,19 +93,19 @@
            <div itemprop="articleBody">
              
   <section id="insidapy-package">
-<h1>insidapy package<a class="headerlink" href="#insidapy-package" title="Permalink to this headline"></a></h1>
+<h1>insidapy package<a class="headerlink" href="#insidapy-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-insidapy.multivariate">
-<span id="insidapy-multivariate-module"></span><h2>insidapy.multivariate module<a class="headerlink" href="#module-insidapy.multivariate" title="Permalink to this headline"></a></h2>
+<span id="insidapy-multivariate-module"></span><h2>insidapy.multivariate module<a class="headerlink" href="#module-insidapy.multivariate" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.multivariate.</span></span><span class="sig-name descname"><span class="pre">multivariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rosenbrock'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.multivariate.</span></span><span class="sig-name descname"><span class="pre">multivariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rosenbrock'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to initialize example data consisting of a ground truth (noiseless) and noisy observations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘rosenbrock’.</p></li>
 <li><p><strong>npoints</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of grid points per dimension. Defalt to 20.</p></li>
@@ -105,11 +117,11 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples.addnoise">
-<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.addnoise" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.addnoise" title="Link to this definition"></a></dt>
 <dd><p>Add noise to the ground truth data. No inputs required. Stores some attributes:</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">Z_noisy (array)</dt>
+<dt class="field-odd">Z_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(X,Y) as a grid of shape [n,n].</p>
 </dd>
 </dl>
@@ -119,10 +131,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples.contour_plot_2_variables">
-<span class="sig-name descname"><span class="pre">contour_plot_2_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlevels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.contour_plot_2_variables" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">contour_plot_2_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nlevels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.contour_plot_2_variables" title="Link to this definition"></a></dt>
 <dd><p>Contour plot of the example.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nlevels</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of level curves (integer) or a list of values                 at which the levels curves should be shown. Default to 15 levels.</p></li>
 <li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
@@ -136,11 +148,11 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples.export_to_excel">
-<span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.export_to_excel" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.export_to_excel" title="Link to this definition"></a></dt>
 <dd><p>Exports the datasets stored in the dictionary to an excel file. The filename is ‘{example}_data.xlsx’
 and ‘{example}_data_noisy.xlsx’</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>destination</strong> (<em>str</em><em>, </em><em>optional</em>) – Destination folder in which the excel files should be saved. Default to ‘.data’.</p>
 </dd>
 </dl>
@@ -148,23 +160,23 @@ and ‘{example}_data_noisy.xlsx’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples.rosenbrock">
-<span class="sig-name descname"><span class="pre">rosenbrock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.rosenbrock" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rosenbrock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.rosenbrock" title="Link to this definition"></a></dt>
 <dd><p>Rosenbrock function. No inputs required. Stores several attributes:</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">x (array)</dt>
+<dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Independent variables as a vector of shape [n,].</p>
 </dd>
-<dt class="field-even">z (function)</dt>
+<dt class="field-even">z (function)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dependent variable y(x) as a lambda function.</p>
 </dd>
-<dt class="field-odd">X, Y (array)</dt>
+<dt class="field-odd">X, Y (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Independent variables as a grid of shape [n,n].</p>
 </dd>
-<dt class="field-even">Z (array)</dt>
+<dt class="field-even">Z (array)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dependent variable y(X,Y) as a grid of shape [n,n].</p>
 </dd>
-<dt class="field-odd">Z_noiy (array)</dt>
+<dt class="field-odd">Z_noiy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(X,Y) as a grid of shape [n,n].</p>
 </dd>
 </dl>
@@ -174,10 +186,10 @@ and ‘{example}_data_noisy.xlsx’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.multivariate.multivariate_examples.save_figure">
-<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.save_figure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.multivariate.multivariate_examples.save_figure" title="Link to this definition"></a></dt>
 <dd><p>Saves a figure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
 <li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
@@ -192,14 +204,14 @@ and ‘{example}_data_noisy.xlsx’</p>
 
 </section>
 <section id="module-insidapy.ode">
-<span id="insidapy-ode-module"></span><h2>insidapy.ode module<a class="headerlink" href="#module-insidapy.ode" title="Permalink to this headline"></a></h2>
+<span id="insidapy-ode-module"></span><h2>insidapy.ode module<a class="headerlink" href="#module-insidapy.ode" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.ode.batch">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'batch1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'batch1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The batch class is used to simulate reactor in batch operation mode.         The examples that are implemented are listed in utils.ode_default_library_description</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘batch1’ (batch fermentation with 3 species).</p></li>
 <li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
@@ -216,13 +228,13 @@ and ‘{example}_data_noisy.xlsx’</p>
 </dl>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">x (array)</dt>
+<dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth abscissa data.</p>
 </dd>
-<dt class="field-even">y (function)</dt>
+<dt class="field-even">y (function)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ground truth function data y(x).</p>
 </dd>
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(x).</p>
 </dd>
 </dl>
@@ -230,16 +242,16 @@ and ‘{example}_data_noisy.xlsx’</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.addnoise_per_species">
-<span class="sig-name descname"><span class="pre">addnoise_per_species</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.addnoise_per_species" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">addnoise_per_species</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.addnoise_per_species" title="Link to this definition"></a></dt>
 <dd><p>Uses some ground truth data and adds some noise to it. Stores the resulting vector as a new attribute.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>y</strong> – Ground truth data. Shape as [npoints_per_batch, nspecies].</p>
 </dd>
 </dl>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations.</p>
 </dd>
 </dl>
@@ -249,12 +261,12 @@ and ‘{example}_data_noisy.xlsx’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.export_dict_data_to_excel">
-<span class="sig-name descname"><span class="pre">export_dict_data_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.export_dict_data_to_excel" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">export_dict_data_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.export_dict_data_to_excel" title="Link to this definition"></a></dt>
 <dd><p>Exports the datasets stored in the dictionary to an excel file. The filename of the data is
 ‘{self.example_type}_{self.example}_{which_dataset}_batchdata.xlsx’
 and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>destination</strong> – Destination folder in which the excel files should be saved. Default to ‘.data’.</p></li>
 <li><p><strong>which_dataset</strong> – Which dataset should be exported (‘all’, ‘training’, or ‘testing’). Defaults to ‘all’.</p></li>
@@ -265,11 +277,11 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.load_initial_conditions">
-<span class="sig-name descname"><span class="pre">load_initial_conditions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.load_initial_conditions" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">load_initial_conditions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.load_initial_conditions" title="Link to this definition"></a></dt>
 <dd><p>Load initial conditions for the ODEs.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y0 (array)</dt>
+<dt class="field-odd">y0 (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Initial conditions.</p>
 </dd>
 </dl>
@@ -279,10 +291,10 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.plot_experiments">
-<span class="sig-name descname"><span class="pre">plot_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.plot_experiments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plot_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.plot_experiments" title="Link to this definition"></a></dt>
 <dd><p>Plot experiments that were simulated.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
 <li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
@@ -296,10 +308,10 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.plot_train_test_experiments">
-<span class="sig-name descname"><span class="pre">plot_train_test_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.plot_train_test_experiments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plot_train_test_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.plot_train_test_experiments" title="Link to this definition"></a></dt>
 <dd><p>Plot experiments that were simulated. The training and testing runs are colored differently.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
 <li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
@@ -313,20 +325,20 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.print_info">
-<span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.print_info" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.print_info" title="Link to this definition"></a></dt>
 <dd><p>Prints the information about the example that was loaded.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.run_experiments">
-<span class="sig-name descname"><span class="pre">run_experiments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.run_experiments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run_experiments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.run_experiments" title="Link to this definition"></a></dt>
 <dd><p>Run the experiments. No inputs required. Stores some attributes:</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y (dict)</dt>
+<dt class="field-odd">y (dict)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Dictionary with ground truth data for each batch.</p>
 </dd>
-<dt class="field-even">runtime_odes (int)</dt>
+<dt class="field-even">runtime_odes (int)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cumulative time to solve the ODEs of all batches.</p>
 </dd>
 </dl>
@@ -336,10 +348,10 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.save_figure">
-<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.save_figure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.save_figure" title="Link to this definition"></a></dt>
 <dd><p>Saves a figure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
 <li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
@@ -352,15 +364,15 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.show_implemented_examples">
-<span class="sig-name descname"><span class="pre">show_implemented_examples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.show_implemented_examples" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">show_implemented_examples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.show_implemented_examples" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.solve_ODE_model">
-<span class="sig-name descname"><span class="pre">solve_ODE_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.solve_ODE_model" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">solve_ODE_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.solve_ODE_model" title="Link to this definition"></a></dt>
 <dd><p>Solve the ODE model for the given sample and time span.             Returns the derivatives (dydt) as an array of shape [n,] and the runtime of the ODE solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y0</strong> – Initial conditions.</p></li>
 <li><p><strong>tspan</strong> – Time span.</p></li>
@@ -371,10 +383,10 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.ode.batch.train_test_split">
-<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.train_test_split" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.batch.train_test_split" title="Link to this definition"></a></dt>
 <dd><p>Splits the data into training and testing data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p>
 </dd>
 </dl>
@@ -384,14 +396,14 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.ode.custom_ode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">custom_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_path_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_ode_function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_species_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.custom_ode" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#insidapy.ode.batch" title="insidapy.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">insidapy.ode.batch</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">custom_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_path_custom_ode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_ode_function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_species_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.custom_ode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#insidapy.ode.batch" title="insidapy.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">batch</span></code></a></p>
 <p>The custom_ode class is used to simulate the time evolution of a system defined in a separate ODE file.
 The intention is to model a batch system.
 The user should create a file with the ODEs and provide the path to this file.
 The file should contain a function which takes the state vector y and time t as inputs and returns the derivatives dydt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename_custom_ode</strong> (<em>str</em><em>, </em><em>required</em>) – The file name to the file containing the system of ODEs.</p></li>
 <li><p><strong>relative_path_custom_ode</strong> (<em>str</em><em>, </em><em>required</em>) – The relative path to the file containing the system of ODEs.</p></li>
@@ -414,13 +426,13 @@ The file should contain a function which takes the state vector y and time t as 
 </dl>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">x (array)</dt>
+<dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth abscissa data.</p>
 </dd>
-<dt class="field-even">y (function)</dt>
+<dt class="field-even">y (function)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ground truth function data y(x).</p>
 </dd>
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(x).</p>
 </dd>
 </dl>
@@ -430,12 +442,12 @@ The file should contain a function which takes the state vector y and time t as 
 
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.ode.fedbatch">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">fedbatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fedbatch1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.fedbatch" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#insidapy.ode.batch" title="insidapy.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">insidapy.ode.batch</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.ode.</span></span><span class="sig-name descname"><span class="pre">fedbatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fedbatch1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints_per_batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_initial_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_condition_generation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LHS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.ode.fedbatch" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#insidapy.ode.batch" title="insidapy.ode.batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">batch</span></code></a></p>
 <p>The fedbatch class is used to simulate reactor in fedbatch operation mode.     The class uses the batch class as basis.
 The examples that are implemented are listed in utils.ode_default_library_description.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘fedbatch1’ (fed batch fermentation with 3 species).</p></li>
 <li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
@@ -452,13 +464,13 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 </dl>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">x (array)</dt>
+<dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth abscissa data.</p>
 </dd>
-<dt class="field-even">y (function)</dt>
+<dt class="field-even">y (function)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ground truth function data y(x).</p>
 </dd>
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(x).</p>
 </dd>
 </dl>
@@ -468,14 +480,14 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 </section>
 <section id="module-insidapy.univariate">
-<span id="insidapy-univariate-module"></span><h2>insidapy.univariate module<a class="headerlink" href="#module-insidapy.univariate" title="Permalink to this headline"></a></h2>
+<span id="insidapy-univariate-module"></span><h2>insidapy.univariate module<a class="headerlink" href="#module-insidapy.univariate" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.univariate.</span></span><span class="sig-name descname"><span class="pre">univariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'logistic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.univariate.</span></span><span class="sig-name descname"><span class="pre">univariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'logistic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to initialize example data consisting of a ground truth (noiseless) and noisy observations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> – String of the example to be loaded. Default to ‘logistic’.</p></li>
 <li><p><strong>npoints</strong> – Number of x-data points (abscissa). Defalt to 20.</p></li>
@@ -487,13 +499,13 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 </dl>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">x (array)</dt>
+<dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth abscissa data.</p>
 </dd>
-<dt class="field-even">y (array)</dt>
+<dt class="field-even">y (array)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ground truth function data y(x).</p>
 </dd>
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(x).</p>
 </dd>
 </dl>
@@ -501,11 +513,11 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples.addnoise">
-<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.addnoise" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">addnoise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.addnoise" title="Link to this definition"></a></dt>
 <dd><p>Add noise to the ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y_noisy (array)</dt>
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy data of the ground truth data data y(x).</p>
 </dd>
 </dl>
@@ -515,11 +527,11 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples.logistic">
-<span class="sig-name descname"><span class="pre">logistic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.logistic" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">logistic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.logistic" title="Link to this definition"></a></dt>
 <dd><p>Logistic function as ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y (array)</dt>
+<dt class="field-odd">y (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth function data y(x).</p>
 </dd>
 </dl>
@@ -529,10 +541,10 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.plot" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.plot" title="Link to this definition"></a></dt>
 <dd><p>Plot the example data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
 <li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
@@ -546,10 +558,10 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples.save_figure">
-<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.save_figure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.save_figure" title="Link to this definition"></a></dt>
 <dd><p>Saves a figure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
 <li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
@@ -562,11 +574,11 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.univariate.univariate_examples.sin">
-<span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.sin" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.univariate.univariate_examples.sin" title="Link to this definition"></a></dt>
 <dd><p>Sinusoidal ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y (array)</dt>
+<dt class="field-odd">y (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth function data y(x).</p>
 </dd>
 </dl>
@@ -578,7 +590,7 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 
 </section>
 <section id="module-insidapy">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-insidapy" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-insidapy" title="Link to this heading"></a></h2>
 </section>
 </section>
 
