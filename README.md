@@ -9,6 +9,7 @@ This package is used to simplify the generation of example data for different ca
   * [Rosenbrock function](#rosenbrock-function)
   * [Custom ODE system](#custom-ode)
 - [References](#references) 📚
+- [Contribute](#contribute)
 
 Installation
 ============
@@ -339,3 +340,8 @@ References
 > **Turton R., Shaeiwtz J.A., Bhattacharyya D., Whiting W.B.**, Analysis, synthesis and design of chemical processes, 5th Edition, **2018**, Prentice Hall. ISBN 0-13-512966-4.
 
 > **Wong S.W.K., Yang S., and Kou S.C.**, Estimating and Assessing Differential Equation Models with Time-Course Data. **2023**. *J Phys Chem B. 2023*. [URL](https://pubs.acs.org/doi/10.1021/acs.jpcb.2c08932)
+
+
+Contribute
+==========
+If you have other interesting examples that you would like to have implemented, raise an issue with a reference to the example (i.e., a DOI to a paper with the system). Another option is to implement the example yourself and raise a pull request. The same applies to bugs or other issues. 
