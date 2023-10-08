@@ -1,7 +1,7 @@
 __pycache__/
 
-simulator/__pycache__
-simulator.egg-info
+insidapy/__pycache__
+insidapy.egg-info
 
 examples/__pycache__
 examples/.vscode

@@ -1,5 +1,5 @@
-simulator
-=========
+InSiDaPy
+========
 
 .. toctree::
    :maxdepth: 4

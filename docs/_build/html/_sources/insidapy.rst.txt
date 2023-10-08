@@ -1,11 +1,11 @@
 insidapy package
-=================
+================
 
 Submodules
 ----------
 
 insidapy.multivariate module
------------------------------
+----------------------------
 
 .. automodule:: insidapy.multivariate
    :members:
@@ -13,7 +13,7 @@ insidapy.multivariate module
    :show-inheritance:
 
 insidapy.ode module
---------------------
+-------------------
 
 .. automodule:: insidapy.ode
    :members:
@@ -21,7 +21,7 @@ insidapy.ode module
    :show-inheritance:
 
 insidapy.univariate module
----------------------------
+--------------------------
 
 .. automodule:: insidapy.univariate
    :members:
