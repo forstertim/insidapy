@@ -1,9 +1,9 @@
 Sphinx==7.2.6
 sphinx-rtd-theme==1.3.0
-numpy==1.22.3
-scikit-learn==1.0.2
-scipy==1.8.0
-pandas==1.4.2
-pyDOE==0.3.8
-matplotlib==3.5.1
-prettytable==3.7.0
+numpy
+scikit-learn
+scipy
+pandas
+pyDOE
+matplotlib
+prettytable
