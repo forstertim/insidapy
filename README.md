@@ -142,6 +142,12 @@ Then, the batch experiments are run:
 data.run_experiments()
 ```
 
+Most modeling approaches require a training dataset and a separate testing dataset. To generate separate datasets, the user can apply a splitting in an sklearn-manner. There is no default value set. In case the user calls the function, a `test_splitratio` in the range [0,1) needs to be chosen. The value represents the fraction of the total number of batches generated used for the test set. The data is then splitted and stored in the data object as `data.training` and `data.testing`. 
+
+```python
+data.train_test_split(test_splitratio=0.2)
+```
+
 One can subsequently plot the batches in different ways. The resulting figures are shown as Figure 1 and 2 below. The option of saving the plot is included. The figure extensions and directory can be chosen.
 ```python
 # Plot batches
@@ -158,19 +164,6 @@ data.plot_train_test_experiments(   save=True,
                                     save_figure_directory=r'.\figures', 
                                     save_figure_exensions=['png'])
 ```
-Most modeling approaches require a training dataset and a separate testing dataset. To generate separate datasets, the user can apply a splitting in an sklearn-manner. There is no default value set. In case the user calls the function, a `test_splitratio` in the range [0,1) needs to be chosen. The value represents the fraction of the total number of batches generated used for the test set. The data is then splitted and stored in the data object as `data.training` and `data.testing`. 
-
-```python
-data.train_test_split(test_splitratio=0.2)
-```
-
-After the simulation, one can export the data as XLSX files. By choosing `which_dataset` to be `training` (only executable if `train_test_split` was applied), `testing` (only executable if `train_test_split` was applied), or `all` (always executable), the corresponding data is exported to the indicated location:
-
-```python
-data.export_dict_data_to_excel(destination=r'.\data', which_dataset='all') 
-data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training')  
-data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing') 
-```
 
 ![Fig 1. Example several runs in batch operation mode (batch1 example).](examples/figures/batch1_simulated_batches.png)
 
@@ -180,6 +173,13 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')
 
 *Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.*
 
+After the simulation, one can export the data as XLSX files. By choosing `which_dataset` to be `training` (only executable if `train_test_split` was applied), `testing` (only executable if `train_test_split` was applied), or `all` (always executable), the corresponding data is exported to the indicated location:
+
+```python
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='all')      # Exports all the data
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training') # Exports the training data (blue circles in Fig 2)
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')  # Exports the training data (red diamonds in Fig 2)
+```
 
 ## Rosenbrock function
 The example code is stored in `examples/main_multivariate_examples.py`.
