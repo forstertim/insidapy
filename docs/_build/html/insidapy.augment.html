@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>insidapy.augment package &mdash; InSiDa-Py  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="insidapy.simulate package" href="insidapy.simulate.html" />
+    <link rel="prev" title="insidapy package" href="insidapy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            InSiDa-Py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">InSiDaPy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="insidapy.html">insidapy package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="insidapy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">insidapy.augment package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="insidapy.simulate.html">insidapy.simulate package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="insidapy.testdata.html">insidapy.testdata package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="insidapy.html#module-insidapy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">InSiDa-Py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">InSiDaPy</a></li>
+          <li class="breadcrumb-item"><a href="insidapy.html">insidapy package</a></li>
+      <li class="breadcrumb-item active">insidapy.augment package</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/forstertim/insidapy/blob/master/docs/insidapy.augment.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="insidapy-augment-package">
+<h1>insidapy.augment package<a class="headerlink" href="#insidapy-augment-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-insidapy.augment.mimic">
+<span id="insidapy-augment-mimic-module"></span><h2>insidapy.augment.mimic module<a class="headerlink" href="#module-insidapy.augment.mimic" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.augment.mimic.</span></span><span class="sig-name descname"><span class="pre">fit_and_augment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class takes observed data and a suggested ODE model as input. It then uses an indicated method to
+estimate the parameters of the given model. Last, it uses the identified model to create new data points.
+This procedure can be used to augment the small sample data set that might be available from measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>array</em><em>, </em><em>required</em>) – Observed data of shape [n,m] where n is the number of time points and m is the number of species.</p></li>
+<li><p><strong>t</strong> (<em>array</em><em>, </em><em>required</em>) – Time points of shape [n,].</p></li>
+<li><p><strong>nparams</strong> (<em>int</em><em>, </em><em>required</em>) – Number of parameters to estimate in the ODE model.</p></li>
+<li><p><strong>model</strong> (<em>callable</em><em>, </em><em>required</em>) – Callable function that represents the ODE model. Should be in the form of f(t,y,params).</p></li>
+<li><p><strong>parameter_bounds</strong> (<em>array</em><em>, </em><em>required</em>) – Bounds for the parameters of shape [nparams,2].</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (array)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Observed data.</p>
+</dd>
+<dt class="field-even">t (array)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time points.</p>
+</dd>
+<dt class="field-odd">nparams (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of parameters to estimate.</p>
+</dd>
+<dt class="field-even">model (callable)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Callable function that represents the ODE model.</p>
+</dd>
+<dt class="field-odd">parameter_bounds (array)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Bounds for the parameters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.apply_estimated_parameters">
+<span class="sig-name descname"><span class="pre">apply_estimated_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.apply_estimated_parameters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Nelder-Mead'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RMSE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_random_search_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.fit" title="Link to this definition"></a></dt>
+<dd><p>Fits the model to the observed data. A variety of existing optimizer methods can be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – Optimization method for the parameter estimation.
+Default is currently set to the scipy method ‘Nelder-Mead’.</p></li>
+<li><p><strong>objective</strong> (<em>str</em><em>, </em><em>optional</em>) – Residual definition. Defaults to ‘RMSE’ (root mean squared error).</p></li>
+<li><p><strong>num_random_search_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of random search steps to find a good starting point for the optimization. Defaults to 5.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y0 (array)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Initial condition for the ODE solver. The first data point is assumed to be the initial condition.</p>
+</dd>
+<dt class="field-even">fittingresult (object)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result of the optimization routine (for the scipy implementations, see scipy.optimize.minimize)</p>
+</dd>
+<dt class="field-odd">xopt (array)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Estimated parameters.</p>
+</dd>
+<dt class="field-even">fopt (float)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Objective function value at the optimum.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.fit_predict">
+<span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Nelder-Mead'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RMSE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_random_search_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.fit_predict" title="Link to this definition"></a></dt>
+<dd><p>Convenience function to fit and predict in one step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – Optimization method for the parameter estimation.
+Default is currently set to the scipy method ‘Nelder-Mead’.</p></li>
+<li><p><strong>objective</strong> (<em>str</em><em>, </em><em>optional</em>) – Residual definition. Defaults to ‘RMSE’ (root mean squared error).</p></li>
+<li><p><strong>num_random_search_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of random search steps to find a good starting point for the optimization. Defaults to 5.</p></li>
+<li><p><strong>plotting</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the fit is plotted. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.objective_rmse">
+<span class="sig-name descname"><span class="pre">objective_rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.objective_rmse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.plot_fit">
+<span class="sig-name descname"><span class="pre">plot_fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.plot_fit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.predict" title="Link to this definition"></a></dt>
+<dd><p>Uses the estimated parameters to simulate the state profiles (solve the provided ODE model).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plotting</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the fit is plotted. Defaults to False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.random_search">
+<span class="sig-name descname"><span class="pre">random_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_rs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_rs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.random_search" title="Link to this definition"></a></dt>
+<dd><p>This function is a naive optimization routine that randomly samples the
+allowed space and returns the best value. This is used to find a good starting point for the optimization later on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<em>function</em><em>, </em><em>required</em>) – callable function to optimize.</p></li>
+<li><p><strong>n_p</strong> (<em>int</em><em>, </em><em>required</em>) – number of points to sample.</p></li>
+<li><p><strong>bounds_rs</strong> (<em>np.array</em><em>, </em><em>required</em>) – bounds of the search space.</p></li>
+<li><p><strong>iter_rs</strong> (<em>int</em><em>, </em><em>required</em>) – number of iterations.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.rmse_">
+<span class="sig-name descname"><span class="pre">rmse_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.rmse_" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.solve_ode">
+<span class="sig-name descname"><span class="pre">solve_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.solve_ode" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-insidapy.augment">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-insidapy.augment" title="Link to this heading"></a></h2>
+<p>Nothing here yet, but we need this empty __init__ file</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="insidapy.html" class="btn btn-neutral float-left" title="insidapy package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="insidapy.simulate.html" class="btn btn-neutral float-right" title="insidapy.simulate package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tim Forster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
