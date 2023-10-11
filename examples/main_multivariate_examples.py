@@ -2,7 +2,7 @@
 The multivariate_examples function generates multivariate data. 
 '''
 
-from insidapy.multivariate import multivariate_examples
+from insidapy.simulate.multivariate import multivariate_examples
   
 #%% Univariate examples
 data = multivariate_examples(   example='rosenbrock',

@@ -2,7 +2,7 @@
 The univariate_examples function generates univariate data. 
 '''
 
-from insidapy.univariate import univariate_examples
+from insidapy.simulate.univariate import univariate_examples
         
 #%% Univariate examples
 univariatedata = univariate_examples(example='sin', 

@@ -4,26 +4,42 @@ insidapy package
 Submodules
 ----------
 
-insidapy.multivariate module
+insidapy.simulate.multivariate module
+-------------------------------------
+
+.. automodule:: insidapy.simulate.multivariate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+insidapy.simulate.ode module
 ----------------------------
 
-.. automodule:: insidapy.multivariate
+.. automodule:: insidapy.simulate.ode
    :members:
    :undoc-members:
    :show-inheritance:
 
-insidapy.ode module
--------------------
+insidapy.simulate.univariate module
+-----------------------------------
 
-.. automodule:: insidapy.ode
+.. automodule:: insidapy.simulate.univariate
    :members:
    :undoc-members:
    :show-inheritance:
 
-insidapy.univariate module
---------------------------
+insidapy.augment.mimic module
+-----------------------------
 
-.. automodule:: insidapy.univariate
+.. automodule:: insidapy.augment.mimic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+insidapy.testdata module
+------------------------
+
+.. automodule:: insidapy.testdata
    :members:
    :undoc-members:
    :show-inheritance:

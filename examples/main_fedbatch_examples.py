@@ -4,7 +4,7 @@ It is used to simulate fedbatch reactors with defined kinetics.
 
 To see the available default examples that are implemented, load the class and run the show_implemented_examples() method.
 '''
-from insidapy.ode import fedbatch
+from insidapy.simulate.ode import fedbatch
 
 #%% ODE examples
 data = fedbatch(example='fedbatch1',                                        # Choose example. Defaults to "fedbatch1".

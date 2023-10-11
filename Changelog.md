@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.2.0
+* Added the functionality to hand over a custom ODE file and some noisy data. The `fit_and_augment` class in `insidapy.augment.mimic` will the fit the noisy data the model can then be used to generate new data.
+
 ## Version 0.1.0
 * Made ready for public release.
 * Changed the name from "simulator" to "insidapy" (***in***-***si***lico ***da***ta (generation) in ***Py***thon) to prevent possible confusion with other simulators if installed in the same environment.

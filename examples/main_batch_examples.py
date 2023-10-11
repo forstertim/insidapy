@@ -4,7 +4,7 @@ It is used to simulate batch reactors with defined kinetics.
 
 To see the available default examples that are implemented, load the class and run the show_implemented_examples() method.
 '''
-from insidapy.ode import batch
+from insidapy.simulate.ode import batch
 
 #%% ODE examples
 data = batch(   example='batch1',                                       # Choose example. Defaults to "batch1".
