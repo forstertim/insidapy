@@ -1,6 +1,6 @@
 import numpy as np
 
-def customode(y, t):
+def customode(t, y):
         """Custom ODE system. A batch reactor is modeled with two species. The following system
         is implemented: A <-[k1],[k2]-> B -[k3]-> C
 

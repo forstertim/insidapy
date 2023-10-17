@@ -1,8 +1,12 @@
+import os
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.optimize import minimize
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+import pandas as pd
+import pyDOE
+import random
 
 
 ##########################################
@@ -37,7 +41,10 @@ class fit_and_augment():
                  t:np.ndarray,
                  nparams:int,
                  model:callable,
-                 parameter_bounds:np.ndarray):
+                 parameter_bounds:np.ndarray,
+                 example_name:str='augment_fit_case_study',
+                 name_of_time_vector:str='time',
+                 time_unit:str='h'):
         """Initialize function.
         """
 
@@ -47,6 +54,10 @@ class fit_and_augment():
         self.nparams = nparams
         self.model = model
         self.parameter_bounds = parameter_bounds
+        self.species = [f's{i}' for i in range(self.y.shape[1])]
+        self.name_of_time_vector = name_of_time_vector
+        self.time_unit = time_unit
+        self.example_name = example_name
 
         # Set flags to check that the user executed the required functions
         self.flag_fit_done = False
@@ -75,15 +86,11 @@ class fit_and_augment():
         scipy_methods = ['Nelder-Mead','Powell','CG','BFGS','Newton-CG','L-BFGS-B','TNC', 
                         'COBYLA','SLSQP','trust-constr','dogleg','trust-ncg','trust-exact','trust-krylov']
         
-        # Use the first data point as initial condition and allocate the time span
-        self.y0 = self.y[0,:]
-        tspan = self.t
-
         # Define objective function
         if objective == 'RMSE':
             def objfunc(decisionvars):
                 # Solve ODE with parameters
-                y_est = self.solve_ode(fun=self.model, tspan=tspan, params=decisionvars)
+                y_est = self.solve_ode(fun=self.model, y0=self.y[0,:], tspan=self.t, params=decisionvars)
                 # Get residuals
                 residuals = self.rmse_(y_est, self.y)
                 return residuals
@@ -99,9 +106,15 @@ class fit_and_augment():
 
         # Set the flag to indicate that the fitting was done
         self.flag_fit_done = True
+        print('[+] Performt parameter estimation. Stored values under "self.xopt".')
 
     # ----------------------------------------
-    def predict(self, plotting:bool=False):
+    def predict(self,
+                show:bool=True,
+                save:bool=False, 
+                figname:str='figure',
+                save_figure_directory:str='./figures', 
+                save_figure_exensions:list=['svg','png']):
         """Uses the estimated parameters to simulate the state profiles (solve the provided ODE model).
 
         Args:
@@ -113,10 +126,10 @@ class fit_and_augment():
 
         # Apply the estimated parameters to the model
         self.apply_estimated_parameters()
+        print('[+] Performed prediction with identified parameters. Stored under "self.y_fit".')
 
-        # Plot the fit if required
-        if plotting:
-            self.plot_fit()
+        # Plot the fit
+        self.plot_fit(show, save, figname, save_figure_directory, save_figure_exensions)
 
     # ----------------------------------------
     def fit_predict(self, method:str='Nelder-Mead', objective:str='RMSE', num_random_search_steps:int=5, plotting:bool=False):
@@ -135,16 +148,6 @@ class fit_and_augment():
 
         # Predict the state profiles
         self.predict(plotting=plotting)
-
-    # ----------------------------------------
-    def objective_rmse(self, mdl, params=None):
-        
-        # Solve ODE with parameters
-        y_est = self.solve_ode(fun=mdl, y0=y0, tspan=tspan, params=params)
-        
-        # Get residuals
-        residuals = self.rmse_(y_est, y)
-        return residuals
     
     # ----------------------------------------
     def random_search(self, mdl=None, n_params=None, bounds_rs=None, iter_rs=None):
@@ -179,22 +182,59 @@ class fit_and_augment():
         return f_b,x_b
 
     # ----------------------------------------
-    def solve_ode(self, fun, tspan, params):
+    def solve_ode(self, fun, y0, tspan, params):
+        """Solve the ODE with the given parameters.
+
+        Args:
+            fun (callable): Callable function that represents the ODE model.
+            y0 (array): Initial condition for the ODE solver. The first data point is assumed to be the initial condition.
+            tspan (array): Time points.
+            params (array): Parameters.
+        """
         # Solve ODE with the params
-        sol = solve_ivp(fun=fun,y0=self.y0,t_span=[tspan[0],tspan[-1]],t_eval=tspan, args=(params,))
+        sol = solve_ivp(fun=fun, y0=y0, t_span=[tspan[0],tspan[-1]], t_eval=tspan, args=(params,))
         y_est = sol.y.T
         return y_est
 
     # ----------------------------------------
     def rmse_(self, y_est, y_obs):
+        """Returns the root mean squared error (RMSE) of two vectors.
+
+        Args:
+            y_est (array): Estimated values (predictions)
+            y_obs (array): Observed values
+
+        Returns:
+            float: RMSE of the vectors indicated.
+        """
         return np.sqrt(mean_squared_error(y_obs, y_est))
 
     # ----------------------------------------
-    def apply_estimated_parameters(self):
-        self.y_fit = self.solve_ode(fun=self.model, tspan=self.t, params=self.xopt)
+    def apply_estimated_parameters(self, y0=None, tspan=None, params=None):
+        """Uses the estimated parameters to simulate the state profiles (solve the provided ODE model).
+
+        Args:
+            y0 (array, optional): Initial conditions of the ODE. Defaults to None. If None, the first data point is assumed to be the initial condition.
+            tspan (array, optional): Time points for the ODE integration. Defaults to None. If None, the time points of the observed measurements are used.
+            params (array, optional): Parameters for the ODE. Defaults to None. If None, the identified parameters from the fitting are used.
+        """
+        if y0 is None:
+            y0 = self.y[0,:]
+        if tspan is None:
+            tspan = self.t
+        if params is None:
+            params = self.xopt
+        self.y_fit = self.solve_ode(fun=self.model, y0=y0, tspan=tspan, params=params)
 
     # ----------------------------------------
-    def plot_fit(self):
+    def plot_fit(   self, 
+                    show:bool=True,
+                    save:bool=False, 
+                    figname:str='figure',
+                    save_figure_directory:str='./figures', 
+                    save_figure_exensions:list=['svg','png']):
+        """Plot the fit of the model to the observed data. 
+        """
         plt.figure()
         for i in range(self.y.shape[1]):
             lablobs = 'observed' if i == 0 else '_Hidden'   # shows only last entry in legend
@@ -209,7 +249,279 @@ class fit_and_augment():
         leg = ax.get_legend()
         for L in leg.legendHandles:
             L.set_color('black')
+        plt.tight_layout()        
+        
+        # Save figure if required
+        self.save_figure(save, figname, save_figure_directory, save_figure_exensions)
+
+        # Show
+        if show:
+            plt.show()
+
+    # ----------------------------------------
+    def mimic_experiments(self, LB, UB, 
+                          nbatches:int=5, 
+                          noise_mode:str='percentage', 
+                          noise_percentage:float=2.5):
+        '''Run the experiments with the identified parameters. No inputs required. Stores some attributes:
+
+        Args:
+            LB (array, required): Lower bounds of the initial conditions.
+            UB (array, required): Upper bounds of the initial conditions.
+            nbatches (int, optional): Number of samples to generate. Defaults to 5.
+            noise_mode (str, optional): Mode of noise addition. Defaults to 'percentage'.
+            noise_percentage (float, optional): Percentage of noise to add. Defaults to 2.5.
+
+        Stores: 
+            :y (dict): Dictionary with ground truth data for each batch.
+            :y_noisy (dict): Dictionary with noisy data for each batch.
+        '''
+
+        # Store information
+        self.LB = LB
+        self.UB = UB
+        self.nbatches = nbatches
+        self.noise_mode = noise_mode
+        self.noise_percentage = noise_percentage
+
+        # Create dictionary with results
+        self.y = {}
+        self.y_noisy = {}
+
+        # Record time to solve all ODEs
+        self.runtime_odes = 0
+
+        # Generate initial conditions
+        samples = pyDOE.lhs(len(LB), self.nbatches, criterion = "maximin")
+        self.initial_conditions = LB + (UB - LB)*samples
+
+        # Define time vector
+        tspan = self.t
+
+        # Solve ODE
+        for sample in range(self.nbatches):
+            # Set initial conditions in object
+            y0 = self.initial_conditions[sample,:]
+            # Solve ODE for noise-free data
+            ysample = self.solve_ode(fun=self.model, y0=y0, tspan=tspan, params=self.xopt)
+            # Generate noisy data
+            ysample_noisy = self.addnoise_per_species(ysample)
+            # Put noise free data into dataframe
+            self.y[sample] = pd.DataFrame(np.hstack((tspan.reshape(-1,1), ysample)), columns=['time']+self.species)
+            # Put noisy data into dataframe
+            self.y_noisy[sample] = pd.DataFrame(np.hstack((tspan.reshape(-1,1), ysample_noisy)), columns=['time']+self.species)
+        
+        # Print message to user
+        print(f'[+] Mimiced {self.nbatches} experiments based on the identified parameters.')
+         
+    # ----------------------------------------   
+    def addnoise_per_species(self, y):
+        '''Uses some ground truth data and adds some noise to it. Stores the resulting vector as a new attribute. 
+
+        Args: 
+            y : Ground truth data. Shape as [npoints_per_batch, nspecies].   
+
+        Stores:
+            :y_noisy (array): Noisy observations.
+        '''
+        y_noisy = np.zeros((y.shape[0], 0))
+        for spec_id in range(len(self.species)):
+            if self.noise_mode == 'percentage':
+                rmse = mean_squared_error(y[:, spec_id], np.zeros(y[:, spec_id].shape), squared=False)
+                y_noisy_spec = y[:, spec_id] + np.random.normal(0, rmse / 100.0 * self.noise_percentage, y[:, spec_id].shape)
+                y_noisy = np.hstack((y_noisy, y_noisy_spec.reshape(-1,1)))
+            else:
+                raise ValueError('[-] No other method of noise addition defined here.')
+
+        return y_noisy
+
+    # ----------------------------------------
+    def plot_experiments(self, 
+                         show:bool=True,
+                         save:bool=False, 
+                         figname:str='figure',
+                         save_figure_directory:str='./figures', 
+                         save_figure_exensions:list=['svg','png']):
+        '''Plot experiments that were simulated.
+
+        Args:
+            show (bool, optional): Boolean indicating whether the figure should be shown. Default to True.
+            figname (str, optiona): Name of the figure. Default to 'figure'.
+            save (bool, optional): Boolean indicating whether the figure should be saved. Default to False.
+            save_figure_directory (str, optional): Directory in which the figure should be saved. Default to './figures'.
+            save_figure_exensions (list, optional): List of file extensions in which the figure should be saved. Default to ['svg','png'].
+        '''
+
+        # Create figure
+        fig, ax = plt.subplots(ncols=len(self.species),nrows=1, figsize=(10,5))
+
+        # In case there is only one species, ax is not a list but a single axis
+        if len(ax)==1:
+            ax = [ax]
+
+        # Define name of time vector
+        timename = self.name_of_time_vector
+
+        # Plot ground truth
+        for batch in range(self.nbatches):
+            for spec_id, spec in enumerate(self.species): 
+                ax[spec_id].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
+                ax[spec_id].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
+                ax[spec_id].set_ylabel(f'{spec}')
+                ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+
+        # Layout
         plt.tight_layout()
+        
+        # Save figure if required
+        self.save_figure(save, figname, save_figure_directory, save_figure_exensions)
+
+        # Show
+        if show:
+            plt.show()
+    
+    # ----------------------------------------
+    def save_figure(self, 
+                    save:bool=False, 
+                    figure_name:str='figure', 
+                    savedirectory:str='./figures', 
+                    save_figure_exensions:list=['svg','png']):
+        """Saves a figure.
+
+        Args:
+            save (bool): Boolean indicating whether the figure should be saved. Defaults to False
+            figure_name (str): Name of the figure. Defaults to 'figure'.
+            savedirectory (str): Directory in which the figure should be saved. Defaults to './figures'.
+            save_figure_exensions (list): List of file extensions in which the figure \
+                should be saved. Defaults to ['svg','png'].
+        """
+    
+        if save:
+            print(f'[+] Saving figure:')
+            if isinstance(save_figure_exensions, list):
+                figure_extension_list = save_figure_exensions
+            else:
+                raise ValueError('[-] The indicated file extension for figures needs to be a list!')
+            for figure_extension in figure_extension_list:
+                savepath = os.path.join(savedirectory, figure_name+'.'+figure_extension)
+                plt.savefig(savepath)
+                print(f'\t->{figure_extension}: {savepath}')
+        else:
+            print(f'[+] Figures not saved.')
+    
+    # ----------------------------------------
+    def export_dict_data_to_excel(self, destination:str='./data', which_dataset:str='all'):
+        '''Exports the datasets stored in the dictionary to an excel file. The filename of the data is 
+        '{self.example_name}_{which_dataset}.xlsx'
+        and '{self.example_name}_{which_dataset}_noisy.xlsx'. 
+        
+        Args:
+            destination : Destination folder in which the excel files should be saved. Default to '.\data'.
+            which_dataset : Which dataset should be exported ('all', 'training', or 'testing'). Defaults to 'all'. 
+        '''
+
+        # Data to export
+        if which_dataset == 'all':
+            data_to_export = [self.y, self.y_noisy]
+        elif which_dataset == 'training':
+            if 'traindata' not in dir(self): 
+                raise ValueError('[-] To export the train data, execute train_test_split() first!')
+            if self.traindata == {}:
+                print('[!] WARNING: Train data is empty! Adjust train_test_split ratio!')
+            data_to_export = [self.traindata, self.traindata_noisy]
+        elif which_dataset == 'testing':    
+            if 'testdata' not in dir(self): 
+                raise ValueError('[-] To export the test data, execute train_test_split() first!')
+            if self.testdata == {}:
+                print('[!] WARNING: Test data is empty! Adjust train_test_split ratio!')
+            data_to_export = [self.testdata, self.testdata_noisy]
+
+        # Define filenames
+        filename = f'{destination}\{self.example_name}_{which_dataset}'
+        filename_noisy= filename + '_noisy'
+        
+        # Iteratre through all batches
+        for ds, DS in enumerate(data_to_export):
+            for batch in DS:
+
+                # Get batchdata
+                ybatch = DS[batch]
+
+                # Save noise free to sheet
+                if ds == 0:
+                    if batch == 0:
+                        with pd.ExcelWriter(filename + '.xlsx') as writer:  
+                            ybatch.to_excel(writer, sheet_name=f'{batch}') 
+                    else:
+                        with pd.ExcelWriter(filename + '.xlsx', mode = 'a', engine='openpyxl', if_sheet_exists = 'overlay') as writer:  
+                            ybatch.to_excel(writer, sheet_name=f'{batch}')
+                if ds == 1:
+                    # Save noisy to sheet
+                    if batch == 0:
+                        with pd.ExcelWriter(filename_noisy + '.xlsx') as writer:  
+                            ybatch.to_excel(writer, sheet_name=f'{batch}') 
+                    else:
+                        with pd.ExcelWriter(filename_noisy + '.xlsx', mode = 'a', engine='openpyxl', if_sheet_exists = 'overlay') as writer:  
+                            ybatch.to_excel(writer, sheet_name=f'{batch}')
+
+        # Print message that it worked
+        print('[+] Exported batch data to excel.')
+        print('\t-> Dataset: ' + which_dataset.upper() + ' (options: training, testing, all)')
+        print('\t-> Noise free data to: ' + filename + '.xlsx')
+        print('\t-> Noisy data to: ' + filename_noisy + '.xlsx')
+
+    # ----------------------------------------
+    def train_test_split(self, test_splitratio=None): 
+        """Splits the data into training and testing data.
+
+        Args:
+            test_splitratio (float, optional): Ratio [0,1) of the data which is used as test set. \
+                Defaults to None (explicitly ask user due to assert).
+        """
+
+        # Check that num_train_batches is not None and not larger than number of batches
+        assert test_splitratio is not None, '[-] Please specify the ratio [0, 1) used for testing.'
+        assert test_splitratio < 1, '[-] The ratio needs to be lower than 1.'
+        assert test_splitratio >= 0, '[-] The ratio needs to be larger or equal to 0.'
+
+        # Translate to how many training batches are  needed
+        num_train_batches = int(self.nbatches * (1 - test_splitratio))
+
+        # Warn user in case number of test batches is 0 like this
+        if num_train_batches == self.nbatches:
+            print('[!] Warning: The number of training batches is equal to number of total batches. Using at least one batch for testing now!')
+            num_train_batches = self.nbatches - 1
+        elif num_train_batches == 0:
+            print('[!] Warning: The number of training batches is 0. All batches are used for testing. Using at least one batch for training now!')
+            num_train_batches = 1
+
+        # Choose randomly N number of batches for testing
+        batches_list = list(self.y.keys())
+        self.batchnumbers_test = random.choices(batches_list, k=self.nbatches - num_train_batches)
+        self.batchnumbers_test = sorted(self.batchnumbers_test)
+        self.batchnumbers_train = [b for b in batches_list if b not in self.batchnumbers_test] 
+
+        # Create empty dictionaries
+        self.rawdata = self.y
+        self.rawdata_noisy = self.y_noisy
+        self.traindata = {}
+        self.testdata = {}
+        self.traindata_noisy = {}
+        self.testdata_noisy = {}
+
+        # Assign data accordingly
+        trainindex, testindex = 0, 0
+        for batch in batches_list:
+            if batch in self.batchnumbers_train:
+                self.traindata[trainindex] = self.y[batch]
+                self.traindata_noisy[trainindex] = self.y_noisy[batch]
+                trainindex += 1
+            else:
+                self.testdata[testindex] = self.y[batch]
+                self.testdata_noisy[testindex] = self.y_noisy[batch]
+                testindex += 1
+
+
 
 
 

@@ -3,7 +3,7 @@ import os
 import numpy as np
 import time
 from sklearn.metrics import mean_squared_error
-from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
 import pandas as pd
 import pyDOE as lh
 import matplotlib.pyplot as plt
@@ -270,9 +270,9 @@ class batch():
                                  The automatic identification of the function name is under development.')
             # In case we have user-defined arguments for the ODE file
             if self.ode_arguments is not None:
-                y = odeint(func=odefunc, y0=y0, t=tspan, args=(self.ode_arguments,))
+                y = solve_ivp(func=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan, args=(self.ode_arguments,))
             else:
-                y = odeint(func=odefunc, y0=y0, t=tspan)
+                y = solve_ivp(func=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan)
         else:
             y = solve_ode(self, y0, tspan)
                 

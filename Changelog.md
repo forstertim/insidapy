@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.1
+* In the `mimic` class, the same plotting, train_test_splitting and exporting functionalities were added as for the `batch` class.
+* Replaced all the `odeint` functions by the `solve_ivp` functions.
+
 ## Version 0.2.0
 * Added the functionality to hand over a custom ODE file and some noisy data. The `fit_and_augment` class in `insidapy.augment.mimic` will the fit the noisy data the model can then be used to generate new data.
 

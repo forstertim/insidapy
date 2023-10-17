@@ -7,9 +7,10 @@ This package is used to simplify the generation of example data for different ca
 - [Installation](#installation) 💻
 - [Included tools](#included-tools) 🧰
 - [Examples](#examples) ⚗️
-  * [Bioreactor in batch operation mode](#bioreactor-in-batch-operation-mode)
-  * [Rosenbrock function](#rosenbrock-function)
-  * [Custom ODE system](#custom-ode)
+  * [Simulate bioreactor in batch operation mode](#bioreactor-in-batch-operation-mode)
+  * [Simulate Rosenbrock function](#rosenbrock-function)
+  * [Simulate Custom ODE system](#custom-ode)
+  * [Mimic observed batch data](#mimic-batch-data)
 - [References](#references) 📚
 - [Contribute](#contribute)
 
@@ -255,7 +256,7 @@ The separate ODE file could look for example like this:
 ```python
 import numpy as np
 
-def customode(y, t, coefs):
+def customode(t, y, coefs):
         """Custom ODE system. A batch reactor is modeled with two species. The following system
         is implemented: A <-[k1],[k2]-> B -[k3]-> C
 
@@ -290,7 +291,7 @@ def customode(y, t, coefs):
         return dydt.reshape(-1,)
 ```
 
-Similar to the `batch`-class example above, the instance is created (in case no additional arguments should be passed to the separate ODE function, just ommit the parameter `ode_arguments` and create the separate function file only by `def ODE(y,t)`):
+Similar to the `batch`-class example above, the instance is created (in case no additional arguments should be passed to the separate ODE function, just ommit the parameter `ode_arguments` and create the separate function file only by `def ODE(t,y)`):
 ```python
 data = custom_batch_ode(filename_custom_ode=CUSTOM_ODE_FILENAME,                        #Filename of the file containing the ODE system.
                         relative_path_custom_ode=CUSTOM_ODE_RELATIVE_PATH,              #Relative path to the file containing the ODE system.
@@ -327,6 +328,52 @@ data.plot_experiments(  show=True,
 ![Fig 4. Example of the simulation of a custom ODE file.](examples/figures/custom_odes_with_args.png)
 
 *Fig 4. Example of the simulation of a custom ODE file.*
+
+
+## Mimic batch data
+The example code is stored in `examples/main_fit_and_augment.py`.
+
+If an experiment is already available (in form of noisy state profiles), the user can use the `fit_and_augment` class to fit the model parameters and generate "look-alike-profiles" from the observed profile. The class represents a wrapper of a parameter estimation routine and a subsequent ODE integrator for generating new experiments.
+
+Let us consider a batch run that was performed in the lab, where three species were observed over some time. Example data can be loaded via `insidapy.testdata.generate_test_data()`, where some example rate constants (which we want to estimate later on) are loaded as well:
+```python
+from insidapy.testdata import generate_test_data
+y_noise, tspan, rateconstants = generate_test_data(plotting=True)
+```
+
+Besides these data points, the modeler has an idea about the structure of the ODE system. The system is provided as a callable function `ODEMODEL` (same structure as [shown above](#custom-ode) `f(t,y,params)`, but the `params` being an array!). For the parameter estimation, some `PARAMBOUNDS` (array of `nx2`, with `n` being the number of parameters to be estimated) are required. Then, the data can be fed to the `fit_and_augment` class and the parameters can be estimated:
+
+```python
+from insidapy.augment.mimic import fit_and_augment
+obj = fit_and_augment(y=y_noise,
+                      t=tspan,
+                      nparams=len(rateconstants),
+                      parameter_bounds=PARAMBOUNDS,
+                      model=ODEMODEL)
+obj.fit(method='Nelder-Mead', objective='RMSE', num_random_search_steps=RS_STEPS)
+obj.predict(show=True,
+            save=True, 
+            figname='parameter_estimation_example',
+            save_figure_directory='./figures', 
+            save_figure_exensions=['png'])
+```
+
+![Fig 5. Example of the parameter estimation of some observed data](examples/figures/parameter_estimation_example.png)
+
+*Fig 5. Example of the parameter estimation of some observed data.*
+
+After the parameter estimation, the user can provide some upper and lower bounds for the initial conditions. These are used to run experiments with the identified parameters: 
+```python
+lower_bounds = y_noise[0,:]*0.5     # example to generate bounds for the IC
+upper_bounds = y_noise[0,:]*1.5     
+obj.mimic_experiments(  LB=lower_bounds, 
+                        UB=upper_bounds, 
+                        nbatches=3,
+                        noise_mode = 'percentage',
+                        noise_percentage = 2.5)
+```
+
+After running this method, the same plotting and excel-export functionalities as shown in the [bioreactor case study](#bioreactor-in-batch-operation-mode) above can be used.
 
 
 References

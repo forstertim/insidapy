@@ -94,7 +94,7 @@
 <span id="insidapy-augment-mimic-module"></span><h2>insidapy.augment.mimic module<a class="headerlink" href="#module-insidapy.augment.mimic" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.augment.mimic.</span></span><span class="sig-name descname"><span class="pre">fit_and_augment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.augment.mimic.</span></span><span class="sig-name descname"><span class="pre">fit_and_augment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">example_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'augment_fit_case_study'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_time_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class takes observed data and a suggested ODE model as input. It then uses an indicated method to
 estimate the parameters of the given model. Last, it uses the identified model to create new data points.
@@ -131,9 +131,54 @@ This procedure can be used to augment the small sample data set that might be av
 </dd>
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.addnoise_per_species">
+<span class="sig-name descname"><span class="pre">addnoise_per_species</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.addnoise_per_species" title="Link to this definition"></a></dt>
+<dd><p>Uses some ground truth data and adds some noise to it. Stores the resulting vector as a new attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>y</strong> – Ground truth data. Shape as [npoints_per_batch, nspecies].</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Noisy observations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.apply_estimated_parameters">
-<span class="sig-name descname"><span class="pre">apply_estimated_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.apply_estimated_parameters" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">apply_estimated_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.apply_estimated_parameters" title="Link to this definition"></a></dt>
+<dd><p>Uses the estimated parameters to simulate the state profiles (solve the provided ODE model).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y0</strong> (<em>array</em><em>, </em><em>optional</em>) – Initial conditions of the ODE. Defaults to None. If None, the first data point is assumed to be the initial condition.</p></li>
+<li><p><strong>tspan</strong> (<em>array</em><em>, </em><em>optional</em>) – Time points for the ODE integration. Defaults to None. If None, the time points of the observed measurements are used.</p></li>
+<li><p><strong>params</strong> (<em>array</em><em>, </em><em>optional</em>) – Parameters for the ODE. Defaults to None. If None, the identified parameters from the fitting are used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.export_dict_data_to_excel">
+<span class="sig-name descname"><span class="pre">export_dict_data_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.export_dict_data_to_excel" title="Link to this definition"></a></dt>
+<dd><p>Exports the datasets stored in the dictionary to an excel file. The filename of the data is
+‘{self.example_name}_{which_dataset}.xlsx’
+and ‘{self.example_name}_{which_dataset}_noisy.xlsx’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Destination folder in which the excel files should be saved. Default to ‘.data’.</p></li>
+<li><p><strong>which_dataset</strong> – Which dataset should be exported (‘all’, ‘training’, or ‘testing’). Defaults to ‘all’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.fit">
@@ -186,18 +231,59 @@ Default is currently set to the scipy method ‘Nelder-Mead’.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.objective_rmse">
-<span class="sig-name descname"><span class="pre">objective_rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mdl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.objective_rmse" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.mimic_experiments">
+<span class="sig-name descname"><span class="pre">mimic_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbatches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.mimic_experiments" title="Link to this definition"></a></dt>
+<dd><p>Run the experiments with the identified parameters. No inputs required. Stores some attributes:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>LB</strong> (<em>array</em><em>, </em><em>required</em>) – Lower bounds of the initial conditions.</p></li>
+<li><p><strong>UB</strong> (<em>array</em><em>, </em><em>required</em>) – Upper bounds of the initial conditions.</p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of samples to generate. Defaults to 5.</p></li>
+<li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Mode of noise addition. Defaults to ‘percentage’.</p></li>
+<li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – Percentage of noise to add. Defaults to 2.5.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (dict)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with ground truth data for each batch.</p>
+</dd>
+<dt class="field-even">y_noisy (dict)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with noisy data for each batch.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.plot_experiments">
+<span class="sig-name descname"><span class="pre">plot_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.plot_experiments" title="Link to this definition"></a></dt>
+<dd><p>Plot experiments that were simulated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be shown. Default to True.</p></li>
+<li><p><strong>figname</strong> (<em>str</em><em>, </em><em>optiona</em>) – Name of the figure. Default to ‘figure’.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean indicating whether the figure should be saved. Default to False.</p></li>
+<li><p><strong>save_figure_directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory in which the figure should be saved. Default to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em><em>, </em><em>optional</em>) – List of file extensions in which the figure should be saved. Default to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.plot_fit">
-<span class="sig-name descname"><span class="pre">plot_fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.plot_fit" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">plot_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.plot_fit" title="Link to this definition"></a></dt>
+<dd><p>Plot the fit of the model to the observed data.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.predict" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.predict" title="Link to this definition"></a></dt>
 <dd><p>Uses the estimated parameters to simulate the state profiles (solve the provided ODE model).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -226,12 +312,65 @@ allowed space and returns the best value. This is used to find a good starting p
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.rmse_">
 <span class="sig-name descname"><span class="pre">rmse_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.rmse_" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the root mean squared error (RMSE) of two vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_est</strong> (<em>array</em>) – Estimated values (predictions)</p></li>
+<li><p><strong>y_obs</strong> (<em>array</em>) – Observed values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>RMSE of the vectors indicated.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.save_figure" title="Link to this definition"></a></dt>
+<dd><p>Saves a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
+<li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
+<li><p><strong>savedirectory</strong> (<em>str</em>) – Directory in which the figure should be saved. Defaults to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em>) – List of file extensions in which the figure                 should be saved. Defaults to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.solve_ode">
-<span class="sig-name descname"><span class="pre">solve_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.solve_ode" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">solve_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.solve_ode" title="Link to this definition"></a></dt>
+<dd><p>Solve the ODE with the given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fun</strong> (<em>callable</em>) – Callable function that represents the ODE model.</p></li>
+<li><p><strong>y0</strong> (<em>array</em>) – Initial condition for the ODE solver. The first data point is assumed to be the initial condition.</p></li>
+<li><p><strong>tspan</strong> (<em>array</em>) – Time points.</p></li>
+<li><p><strong>params</strong> (<em>array</em>) – Parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.augment.mimic.fit_and_augment.train_test_split">
+<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.augment.mimic.fit_and_augment.train_test_split" title="Link to this definition"></a></dt>
+<dd><p>Splits the data into training and testing data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

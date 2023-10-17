@@ -35,7 +35,30 @@ obj.fit(method='Nelder-Mead', objective='RMSE', num_random_search_steps=RS_STEPS
 
 # Predict and plot the state profiles (apply the identified estimated parameters)
 # -> The fit and prediction can also be done in one step with the fit_predict() function
-obj.predict(plotting=True)
+obj.predict(    show=True,
+                save=True, 
+                figname='parameter_estimation_example',
+                save_figure_directory='./figures', 
+                save_figure_exensions=['png'])
 
-# Show the plots 
-plt.show()
+# Use the fit to run new experiments
+lower_bounds = y_noise[0,:]*0.5
+upper_bounds = y_noise[0,:]*1.5
+obj.mimic_experiments(  LB=lower_bounds, 
+                        UB=upper_bounds, 
+                        nbatches=3,
+                        noise_mode = 'percentage',
+                        noise_percentage = 2.5)
+                        
+# Plot the experiments mimiced from the fitted one
+obj.plot_experiments(   show=True, 
+                        save=False, 
+                        figname='figure',
+                        save_figure_directory='./figures', 
+                        save_figure_exensions=['png'])
+                        
+# Split the new experiments into training and testing data
+obj.train_test_split(test_splitratio=0.1)
+
+# Export the data to excel
+obj.export_dict_data_to_excel(destination='./data', which_dataset='all')

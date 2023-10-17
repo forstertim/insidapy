@@ -2,7 +2,6 @@ import os
 import numpy as np
 import time
 from sklearn.metrics import mean_squared_error
-from scipy.integrate import odeint
 import pandas as pd
 import pyDOE as lh
 import matplotlib.pyplot as plt
