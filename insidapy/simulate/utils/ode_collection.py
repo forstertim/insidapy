@@ -9,7 +9,7 @@ import numpy as np
 
 
 ##########################################################################################
-def batch1(y, t):
+def batch1(t, y):
     '''ODE model for batch fermentation. Literature: Turton, Shaeiwtz, Bhattacharyya, Whiting \
         "Analysis, synthesis and design of chemical processes", Prentice Hall. 2018.
         ISBN 0-13-512966-4
@@ -67,7 +67,7 @@ def batch1(y, t):
 
 
 ##########################################################################################
-def batch2(y, t):
+def batch2(t, y):
     
     '''ODE model for batch fermentation. Literature: Ehecatl Antonio Del Rio‐Chanona, Xiaoyan Cong, Eric Bradford, Dongda Zhang, Keju Jing.
     Review of advanced physical and data‐driven models fordynamic bioprocess simulation: Case study of algae–bacteriaconsortium wastewater treatment,
@@ -135,7 +135,7 @@ def batch2(y, t):
 
 
 ##########################################################################################
-def batch3(y, t):
+def batch3(t, y):
     
     '''ODE model for The Michaelis-Menten Kinetics. 
     The Michaelis-Menten model, which originated from the pioneering work of Michaelis and Menten in invertase experiments, 
@@ -179,7 +179,7 @@ def batch3(y, t):
 
 
 ##########################################################################################
-def batch4(y, t):
+def batch4(t, y):
     
     '''ODE model for the following series of reactions: A -[k1]-> B -[k2]-> C
 
@@ -219,7 +219,7 @@ def batch4(y, t):
 
 
 ##########################################################################################
-def batch5(y, t):    
+def batch5(t, y):    
     '''ODE model for the Van de Vusse Reaction Case I: 
     A -[k1]-> B -[k2]-> C
     2A -[k3]-> D
@@ -263,7 +263,90 @@ def batch5(y, t):
 
 
 ##########################################################################################
-def fedbatch1(y, t):
+def batch6(t, y):    
+    '''ODE model for ...: 
+    ...
+
+    Data from here: Stephen Craven, Nishikant Shirsat, Jessica Whelan, and Brian Glennon,
+    Process Model Comparison and Transferability Across Bioreactor Scales andModes of Operation for a Mammalian Cell Bioprocess,
+    AIChE Journal, 2012.
+    DOI: 10.1002/btpr.1664
+
+
+    Q       glutamine concentration (mM)
+    q       specific inhibitor production rate (1/h)
+    r       intrinsic growth rate constant (1/h)
+    SG      glucose concentration in the feed (mM)
+    SQ      glutamine concentration in the feed (Mm)
+    tm      time at which XVmaxoccurs (h)
+    V       volume (L)
+    XT      total cell density (cells/L)
+    XD      dead cell density (cells/L)
+    XV      viable cell density (cells/L)
+    XV0     initial viable cell density (cells/L)
+    XVmax   maximum viable cell density (cells/L)
+    YAQ     yield of ammonia from glutamine (-)
+    YLG     yield of lactate from glucose (-)
+    YXG     yield of cells from glucose (cells/mmol)
+    YXQ     yield of cells from glutamine (cells/mmol)
+
+
+    Args:
+        y (array): Concentration of species of shape [n,].
+        t (scalar): time.
+
+    Returns:
+        array: dydt - Derivative of the species of shape [n,].
+    '''
+
+    # Variables  
+    XT = y[0]   # cells/L
+    XV = y[1]   # cells/L
+    XD = y[2]   # cells/L
+    G = y[3]    # mM
+    Q = y[4]    # mM
+    L = y[5]    # mM
+    A = y[6]    # mM
+
+    # Parameters (3L batch -> Table 1 of paper)
+    mumax = 0.035   # 1/h               (experimentally determined)     maximum growth rate
+    kdmax = 0.01    # 1/h               (experimentally determined)     intrinsic death rate
+    KLYSIS = 4e-2   # 1/h               (fitted parameter from paper)   cell lysis rate
+    mG = 8e-13      # mmol/(cell h)     (fitted parameter from paper)   maintenance coefficient for glucose 
+    mQ = 3e-12      # mmol/(cell h)     (fitted parameter from paper)   maintenance coefficient for glutamine
+    kdQ = 0.001     # 1/h               (fitted parameter from paper)   first-order degradation coefficient of glutamine under reactor conditions
+    YXG = 9.23e7    # cells/mmol        (experimentally determined)     yield coefficient of biomass on glucose
+    YXQ = 8.8e8     # cells/mmol        (experimentally determined)     yield coefficient of biomass on glutamine
+    YLG = 1.6       # [-]               (experimentally determined)     yield coefficient of lactate on glucose
+    YAQ = 0.6       # [-]               (experimentally determined)     yield coefficient of ammonia on glutamine
+    KG = 1.0        # mM                (fitted parameter from paper)
+    KQ = 0.22       # mM                (fitted parameter from paper)
+    KL = 150        # mM                (fitted parameter from paper)
+    KA = 40         # mM                (fitted parameter from paper)
+    kmu = 0.01      # 1/h               (fitted parameter from paper)
+
+    # Rate expressions
+    mu = mumax*(G/(KG+G))*(Q/(KQ+Q))*(KL/(KL+L))*(KA/(KA+A))    # 1/h
+    kd = kdmax*(kmu/(mu+kmu))                                   # 1/h
+
+    # Mass balances
+    dXTdt = mu*XV - KLYSIS*XD                                   # cells/(L h)
+    dXVdt = (mu - kd)*XV                                        # cells/(L h)
+    dXDdt = kd*XV - KLYSIS*XD                                   # cells/(L h)
+    dGdt = (-(mu/YXG) - mG)*XV                                  # mM/h
+    dQdt = (-(mu/YXQ) - mQ)*XV - kdQ*Q                          # mM/h
+    dLdt = -YLG*(-(mu/YXG) - mG)*XV                             # mM/h
+    dAdt = -YAQ*(-(mu/YXQ) - mQ)*XV + kdQ*Q                     # mM/h
+
+    # Vectorization
+    dydt = np.array((dXTdt, dXVdt, dXDdt, dGdt, dQdt, dLdt, dAdt))
+
+    # Return
+    return dydt.reshape(-1,)
+
+
+##########################################################################################
+def fedbatch1(t, y):
     '''ODE model for a biorector in fedbatch operation mode. 
     Bacteria growth, substrate consumption and product formation. 
     Mimics the production of a target protein.'

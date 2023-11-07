@@ -107,7 +107,7 @@ def load_default_settings(self, no_example):
         self.example_info = 'Van de Vusse reaction. 4 Species. \nA -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.'
         self.example_reference = 'DOI 10.1007/978-1-4757-3040-1'
         self.species = ['A', 'B', 'C', 'D']
-        self.species_units = ['mol/L', 'mol/L', 'mol/L', 'mol/L'] # Example unitless in book
+        self.species_units = ['mol/L', 'mol/L', 'mol/L', 'mol/L']
         self.time_unit = 's'
         # Bounds
         if self.overwrite_bounds_initial_conditions is None:
@@ -117,6 +117,28 @@ def load_default_settings(self, no_example):
         # Time info
         if self.overwrite_bounds_time_span is None:
             self.tspan = [0,4]
+            text_to_print_time = 'default'
+
+    # ..........................................
+    elif self.example == 'batch6':
+        """ Batch fermentation with 7 species: Biomass (total, viable, death cells), glucose, glutamine, lactate, and ammonia. 
+        Mimics CHO cell growth in reactor.
+        """
+        # System info
+        no_example = False
+        self.example_info = 'Bio fermentation. Mimics CHO growth in batch reactor. 7 Species \n(Biomass (total, viable, death cells), glucose, glutamine, lactate, and ammonia).'
+        self.example_reference = 'DOI 10.1002/btpr.1664'
+        self.species = ['XT', 'XV', 'XD', 'G', 'Q', 'L', 'A']
+        self.species_units = ['cells/L', 'cells/L', 'cells/L', 'mM', 'mM', 'mM', 'mM']
+        self.time_unit = 'h'
+        # Bounds
+        if self.overwrite_bounds_initial_conditions is None:
+            self.LB = np.array([0.01e9, 0.01e9, 1e-3,   20, 3, 0,  0])
+            self.UB = np.array([2e9, 2e9, 2e9,          40, 6, 10, 2])
+            text_to_print_bounds = 'default'
+        # Time info
+        if self.overwrite_bounds_time_span is None:
+            self.tspan = [0,180]
             text_to_print_time = 'default'
 
     # ..........................................

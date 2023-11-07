@@ -53,7 +53,9 @@ The simulator includes several options to generate data in `insidapy.simulate`:
         * *`batch1`* (default): Batch fermentation process with three species based on the work of [Turton et al. (2018)](#references) and used in [Forster et al. (2023b)](#references). 
         * *`batch2`*: Batch fermentation process with four species based on the work of [Del Rio‐Chanona et al. (2019)](#references). 
         * *`batch3`*: Michaelis-Menten kinetics and four species. Example was adapted from [Wong et al. (2023)](#references)
-        * *`batchX`*: Several examples (currently X={4,5}) for chemical reactions or reaction networks. Reference information is displayed upon loading the class and printing the information by using the `print_info()` function. Most examples were taken from [Floudas et al. (1999)](#references)
+        * *`batch4`*: Chemical reaction or reaction network. Several available, check details with `print_info()`. Most examples were taken from [Floudas et al. (1999)](#references)
+        * *`batch5`*: Chemical reaction or reaction network. Several available, check details with `print_info()`.
+        * *`batch6`*: Batch fermentation process with seven species based on the work of [Craven et al. (2012)](#references).
     
     * **`fedbatch`**:
         * *`fedbatch1`*: Example was taken from [Seborg et al. (2016)](#references)
@@ -92,8 +94,10 @@ Output:
 |                      | consumption. Mimics a waste water treatment process.                             |
 |        batch3        | Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. |
 |                      | E + S <-[k1],[ki1]-> ES ->[k2] E + P                                             |
-|        batch4        | Series of reactions. 3 Species. A -[k1]-> B -[k2]-> C.                           |
-|        batch5        | Van de Vusse reaction. 4 Species. A -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.       |
+|        batch4        | Series of reactions. 3 species. A -[k1]-> B -[k2]-> C.                           |
+|        batch5        | Van de Vusse reaction. 4 species. A -[k1]-> B -[k2]-> C and 2 A -[k3]-> D.       |
+|        batch6        | Batch fermentation with 7 species: Biomass (total, viable, death cells),         |
+|                      | glucose, glutamine, lactate, and ammonia. Mimics CHO cell growth in reactor.     |
 +----------------------+----------------------------------------------------------------------------------+
 ```
 
@@ -378,6 +382,7 @@ After running this method, the same plotting and excel-export functionalities as
 
 References
 ==========
+> **Craven S., Shirsat N., Whelan J., Glennon G.**, Process Model Comparison and Transferability Across Bioreactor Scales andModes of Operation for a Mammalian Cell Bioprocess. **2012**. *Biotechnology Progress*. [URL](https://aiche.onlinelibrary.wiley.com/doi/full/10.1002/btpr.1664)
 
 > **Del Rio-Chanona E.A., Cong X., Bradford E., Zhang D., Jing K.**, Review of advanced physical and data-driven models for dynamic bioprocess simulation: Case study of algae–bacteria consortium wastewater treatment. **2019**. *Biotechnology and Bioengineering*. [URL](https://onlinelibrary.wiley.com/doi/abs/10.1002/bit.26881)
 

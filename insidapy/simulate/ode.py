@@ -270,9 +270,9 @@ class batch():
                                  The automatic identification of the function name is under development.')
             # In case we have user-defined arguments for the ODE file
             if self.ode_arguments is not None:
-                y = solve_ivp(func=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan, args=(self.ode_arguments,))
+                y = solve_ivp(fun=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan, args=(self.ode_arguments,))
             else:
-                y = solve_ivp(func=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan)
+                y = solve_ivp(fun=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan)
         else:
             y = solve_ode(self, y0, tspan)
                 
@@ -302,8 +302,23 @@ class batch():
             save_figure_exensions (list, optional): List of file extensions in which the figure should be saved. Default to ['svg','png'].
         '''
 
+        # Maximum number of subplots per row
+        MAX_SUBPLOTS_PER_ROW = 4
+        
+        # If more than MAX_SUBPLOTS_PER_ROW*2 species, give warning to that code adjustment is needed and expand MAX_SUBPLOTS_PER_ROW
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW*2:
+            more_subplots_needed = len(self.species) - MAX_SUBPLOTS_PER_ROW*2
+            print('[-] The number of species is larger than {:.0f}. Allowing more subplots now (per row), but codes might need adjustment to make nicer plots (i.e., more rows).'.format(MAX_SUBPLOTS_PER_ROW*2))
+            MAX_SUBPLOTS_PER_ROW = len(self.species) + more_subplots_needed/2
+
         # Create figure
-        fig, ax = plt.subplots(ncols=len(self.species),nrows=1, figsize=(10,5))
+        if len(self.species) >= MAX_SUBPLOTS_PER_ROW:
+            NROWS = 2
+            NCOLS = int(np.ceil(len(self.species)/2))
+        else:
+            NROWS = 1
+            NCOLS = len(self.species)
+        fig, ax = plt.subplots(ncols=NCOLS, nrows=NROWS, figsize=(10,5))
 
         # In case there is only one species, ax is not a list but a single axis
         if len(ax)==1:
@@ -312,13 +327,36 @@ class batch():
         # Define name of time vector
         timename = self.name_of_time_vector
 
-        # Plot ground truth
-        for batch in range(self.nbatches):
-            for spec_id, spec in enumerate(self.species): 
-                ax[spec_id].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
-                ax[spec_id].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
-                ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
-                ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        # Plot ground data
+        if NROWS == 1:
+            for batch in range(self.nbatches):
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
+                    ax[spec_id].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in range(self.nbatches):
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= int(len(self.species)/2):
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
+                    ax[row,col].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+
+            # 'Turn off' unused subplots
+            for row in range(NROWS):
+                for col in range(NCOLS):
+                    if [row,col] not in used_subplot_list:
+                        fig.delaxes(ax[row,col])
 
         # Layout
         plt.tight_layout()
@@ -351,32 +389,93 @@ class batch():
         # If traindata is there, the split was executed
         if 'traindata' not in dir(self): 
             raise ValueError('[-] To export the train data, execute train_test_split() first!')
+
+        # Maximum number of subplots per row
+        MAX_SUBPLOTS_PER_ROW = 4
         
+        # If more than MAX_SUBPLOTS_PER_ROW*2 species, give warning to that code adjustment is needed and expand MAX_SUBPLOTS_PER_ROW
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW*2:
+            more_subplots_needed = len(self.species) - MAX_SUBPLOTS_PER_ROW*2
+            print('[-] The number of species is larger than {:.0f}. Allowing more subplots now (per row), but codes might need adjustment to make nicer plots (i.e., more rows).'.format(MAX_SUBPLOTS_PER_ROW*2))
+            MAX_SUBPLOTS_PER_ROW = len(self.species) + more_subplots_needed/2
+
         # Create figure
-        fig, ax = plt.subplots(ncols=len(self.species),nrows=1, figsize=(10,5))
+        if len(self.species) >= MAX_SUBPLOTS_PER_ROW:
+            NROWS = 2
+            NCOLS = int(np.ceil(len(self.species)/2))
+        else:
+            NROWS = 1
+            NCOLS = len(self.species)
+        fig, ax = plt.subplots(ncols=NCOLS, nrows=NROWS, figsize=(10,5))
 
         # Define name of time vector
         timename = self.name_of_time_vector
 
         # Plot training batches
-        for batch in self.traindata:
-            for spec_id, spec in enumerate(self.species): 
-                ax[spec_id].plot(self.traindata[batch][timename], self.traindata[batch][spec], color='black', marker='', linestyle='--')
-                labltrain = 'train' if spec_id == len(self.species)-1 and batch == list(self.traindata.keys())[-1] else '__no_label__'
-                ax[spec_id].plot(self.traindata_noisy[batch][timename], self.traindata_noisy[batch][spec], color='blue', alpha=0.7, marker='o', linestyle='', label=labltrain)
-                ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
-                ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        if NROWS == 1:
+            for batch in self.traindata:
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.traindata[batch][timename], self.traindata[batch][spec], color='black', marker='', linestyle='--')
+                    labltrain = 'train' if spec_id == len(self.species)-1 and batch == list(self.traindata.keys())[-1] else '__no_label__'
+                    ax[spec_id].plot(self.traindata_noisy[batch][timename], self.traindata_noisy[batch][spec], color='blue', alpha=0.7, marker='o', linestyle='', label=labltrain)
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in self.traindata:
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= int(len(self.species)/2):
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.traindata[batch][timename], self.traindata[batch][spec], color='black', marker='', linestyle='--')
+                    labltrain = 'train' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[row,col].plot(self.traindata_noisy[batch][timename], self.traindata_noisy[batch][spec], color='blue', alpha=0.7, marker='o', linestyle='', label=labltrain)
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+            
 
         # Plot testing batches
-        for batch in self.testdata:
-            for spec_id, spec in enumerate(self.species): 
-                ax[spec_id].plot(self.testdata[batch][timename], self.testdata[batch][spec], color='black', marker='', linestyle='--')
-                labltest = 'test' if spec_id == len(self.species)-1 and batch == list(self.testdata.keys())[-1] else '__no_label__'
-                ax[spec_id].plot(self.testdata[batch][timename], self.testdata_noisy[batch][spec], color='red', alpha=0.7, marker='d', linestyle='', label=labltest)
-                ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
-                ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        if NROWS == 1:
+            for batch in self.testdata:
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.testdata[batch][timename], self.testdata[batch][spec], color='black', marker='', linestyle='--')
+                    labltest = 'test' if spec_id == len(self.species)-1 and batch == list(self.testdata.keys())[-1] else '__no_label__'
+                    ax[spec_id].plot(self.testdata[batch][timename], self.testdata_noisy[batch][spec], color='red', alpha=0.7, marker='d', linestyle='', label=labltest)
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in self.testdata:
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= int(len(self.species)/2):
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.testdata[batch][timename], self.testdata[batch][spec], color='black', marker='', linestyle='--')
+                    labltest = 'test' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[row,col].plot(self.testdata[batch][timename], self.testdata_noisy[batch][spec], color='red', alpha=0.7, marker='d', linestyle='', label=labltest)
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+            # 'Turn off' unused subplots
+            for row in range(NROWS):
+                for col in range(NCOLS):
+                    if [row,col] not in used_subplot_list:
+                        fig.delaxes(ax[row,col])
 
-        ax[-1].legend(frameon=False, loc='best')
+        # Add legend
+        if NROWS == 1:
+            ax[0].legend(frameon=False, loc='best')
+        else:
+            ax[0,0].legend(frameon=False, loc='best')
 
         # Layout
         plt.tight_layout()

@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.2
+* Added `batch6` example.
+* Replaced residual `odeint` functions by the `solve_ivp` functions in the built-in `batch` examples.
+
 ## Version 0.2.1
 * In the `mimic` class, the same plotting, train_test_splitting and exporting functionalities were added as for the `batch` class.
 * Replaced all the `odeint` functions by the `solve_ivp` functions.
