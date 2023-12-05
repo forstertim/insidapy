@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+authors:
+- family-names: "Forster"
+  given-names: "Tim"
+title: "In-Silico Data Generation in Python (InSiDa-Py)"
+version: 0.2.2
+date-released: 2023-10-07
+url: "https://github.com/forstertim/insidapy"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Forster"
+    given-names: "Tim"
+  - family-names: "Vázquez"
+    given-names: "Daniel"
+  - family-names: "Cruz-Bournazou"
+    given-names: "Mariano Nicolas"
+  - family-names: "Butté"
+    given-names: "Alessandro"
+  - family-names: "Guillén-Gosálbez"
+    given-names: "Gonzalo"
+  doi: "10.1016/j.compchemeng.2022.108108"
+  journal: "Computers & Chemical Engineering"
+  month: 2
+  start: 1 # First page number
+  end: 12 # Last page number
+  title: "Modeling of bioprocesses via MINLP-based symbolic regression of S-system formalisms"
+  issue: 108108
+  volume: 170
+  year: 2022
