@@ -20,7 +20,9 @@ author = 'Tim Forster'
 extensions = [  "sphinx.ext.todo", 
                 "sphinx.ext.autodoc", 
                 "sphinx.ext.napoleon",
-                "sphinx_rtd_theme"]
+                "sphinx_rtd_theme",
+                "m2r2",
+                "nbsphinx"]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
