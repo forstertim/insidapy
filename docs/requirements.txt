@@ -7,6 +7,3 @@ pandas
 pyDOE
 matplotlib
 prettytable
-m2r2
-nbsphinx
-pandoc
