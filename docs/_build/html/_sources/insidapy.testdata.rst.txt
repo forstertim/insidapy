@@ -11,11 +11,3 @@ insidapy.testdata.datagen module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: insidapy.testdata
-   :members:
-   :undoc-members:
-   :show-inheritance:

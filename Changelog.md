@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.3
+* Added missing `__init__` file for utility functions in ODE module.
+* Changed documentation for RtD.
+
 ## Version 0.2.2
 * Added `batch6` example.
 * Replaced residual `odeint` functions by the `solve_ivp` functions in the built-in `batch` examples.

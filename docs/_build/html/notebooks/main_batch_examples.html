@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batch data generation &mdash; InSiDa-Py  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="insidapy.augment package" href="../insidapy.augment.html" />
+    <link rel="prev" title="Welcome to InSiDa-Py’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            InSiDa-Py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Batch data generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Function Descriptions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.augment.html">insidapy.augment package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.simulate.html">insidapy.simulate package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.testdata.html">insidapy.testdata package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">InSiDa-Py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Batch data generation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/forstertim/insidapy/blob/master/docs/notebooks/main_batch_examples.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Batch-data-generation">
+<h1>Batch data generation<a class="headerlink" href="#Batch-data-generation" title="Link to this heading"></a></h1>
+<p>Within the simulator, one class is defined as the ‘batch’ and it can be used to simulate batch reactors with defined kinetics.</p>
+<p>First, the package is loaded and available default examples are displayed using <code class="docutils literal notranslate"><span class="pre">show_implemented_examples</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">insidapy.simulate.ode</span> <span class="kn">import</span> <span class="n">batch</span>
+<span class="n">batch</span><span class="p">()</span><span class="o">.</span><span class="n">show_implemented_examples</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] The following examples are implemented in this BATCH class:
++----------------------+----------------------------------------------------------------------------------+
+|  Example ID string   | Description                                                                      |
++----------------------+----------------------------------------------------------------------------------+
+|        batch1        | Batch fermentation with 3 species. Bacteria growth, substrate consumption and    |
+|                      | product formation. Mimics the production of a target protein.                    |
+|        batch2        | Batch fermentation with 4 species. Bacteria growth, nitrate/carbon/phosphate     |
+|                      | consumption. Mimics a waste water treatment process.                             |
+|        batch3        | Enzyme substrate interaction described by the Michaelis-Menten model. 4 species. |
+|                      | E + S &lt;-[k1],[ki1]-&gt; ES -&gt;[k2] E + P                                             |
+|        batch4        | Series of reactions. 3 species. A -[k1]-&gt; B -[k2]-&gt; C.                           |
+|        batch5        | Van de Vusse reaction. 4 species. A -[k1]-&gt; B -[k2]-&gt; C and 2 A -[k3]-&gt; D.       |
+|        batch6        | Batch fermentation with 7 species: Biomass (total, viable, death cells),         |
+|                      | glucose, glutamine, lactate, and ammonia. Mimics CHO cell growth in reactor.     |
++----------------------+----------------------------------------------------------------------------------+
+
+
+</pre></div></div>
+</div>
+<p>Next, one can decide to use one of the implemented examples or define a new one. In this case, the example of a batch fermentation with 3 species is used (<code class="docutils literal notranslate"><span class="pre">'batch1'</span></code>). Each example would be fully defined with default values. However, we can overwrite these values by using the corresponding inputs. If we overwrite the default values, we are reminded to check that the given values are in correct order.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">batch</span><span class="p">(</span>   <span class="n">example</span><span class="o">=</span><span class="s1">&#39;batch1&#39;</span><span class="p">,</span>                                       <span class="c1"># Choose example. Defaults to &quot;batch1&quot;.</span>
+                <span class="n">nbatches</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                             <span class="c1"># Number of batches. Defaults to 3.</span>
+                <span class="n">npoints_per_batch</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>                                   <span class="c1"># Number of points per batch and per species. Defaults to 20.</span>
+                <span class="n">noise_mode</span><span class="o">=</span><span class="s1">&#39;percentage&#39;</span><span class="p">,</span>                                <span class="c1"># Noise mode. Defaults to &quot;percentage&quot;.</span>
+                <span class="n">noise_percentage</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>                                   <span class="c1"># Noise percentage (in case mode is &quot;percentage&quot;)</span>
+                <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>                                         <span class="c1"># Random seed for reproducibility. Defaults to 0.</span>
+                <span class="n">bounds_initial_conditions</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="c1"># Bounds for initial conditions. Defaults to &quot;None&quot;.</span>
+                <span class="n">time_span</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span>                                      <span class="c1"># Time span for integration. Defaults to &quot;None&quot;.</span>
+                <span class="n">initial_condition_generation_method</span><span class="o">=</span><span class="s1">&#39;LHS&#39;</span><span class="p">,</span>              <span class="c1"># Method for generating initial conditions. Defaults to &quot;LHS&quot;.</span>
+                <span class="n">name_of_time_vector</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>                             <span class="c1"># Name of time vector. Defaults to &quot;time&quot;.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[!] IMPORTANT: It seems that you changed the default bounds of the species. Make sure the order of the indicated bounds is the following: [&#39;biomass&#39;, &#39;substrate&#39;, &#39;product&#39;]
+</pre></div></div>
+</div>
+<p>We can now print some information about the example.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Loaded the example BATCH1 with the following properties:
++--------------------------------+------------------------------------------------------------------------+
+| Property                       | Description                                                            |
++--------------------------------+------------------------------------------------------------------------+
+| Example string                 | batch1                                                                 |
+| Example description            | Batch fermentation with 3 species. Bacteria growth, substrate          |
+|                                | consumption and product formation. Mimics the production of a target   |
+|                                | protein.                                                               |
+| Short reference information    | ISBN 0-13-512966-4                                                     |
+| Number of species              | 3                                                                      |
+| Species names                  | [&#39;biomass&#39;, &#39;substrate&#39;, &#39;product&#39;]                                    |
+| Species units                  | [&#39;g/L&#39;, &#39;g/L&#39;, &#39;g/L&#39;]                                                  |
+| Number of batches              | 4                                                                      |
+| Number of samples              | 20                                                                     |
+| Time span                      | [0, 80]                                                                |
+| Time unit                      | h                                                                      |
+| Noise mode                     | percentage                                                             |
+| Noise percentage               | 2.5%                                                                   |
+| Lower bounds for experiments   | [0.1, 50.0, 0.0]                                                       |
+| Upper bounds for experiments   | [0.4, 90.0, 0.0]                                                       |
++--------------------------------+------------------------------------------------------------------------+
+</pre></div></div>
+</div>
+<p>This might be useful to use the example in a publication (use the short reference information given to reference where the example came from) or to check if the example is defined as intended.</p>
+<p>After that, we can run the experiments to create some in-silico data using the <code class="docutils literal notranslate"><span class="pre">run_experiments</span></code> method. We can then for example check the data of the first experiment.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">run_experiments</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">y_noisy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Experiments done.
+         time   biomass  substrate    product
+0    0.000000  0.293605  74.590795   0.206105
+1    4.210526  0.536196  70.435110   0.454651
+2    8.421053  0.702510  67.775036   1.183637
+3   12.631579  0.984626  62.987565   2.090510
+4   16.842105  1.738104  56.134606   2.924311
+5   21.052632  2.341293  45.998247   4.961808
+6   25.263158  2.957166  33.236955   6.620350
+7   29.473684  3.714818  23.788098   8.079977
+8   33.684211  4.402452  14.508656  10.084330
+9   37.894737  5.024942   8.342018  11.176244
+10  42.105263  5.156039   4.546862  11.856605
+11  46.315789  5.435440   1.155106  11.992057
+12  50.526316  5.326169   0.892634  12.531815
+13  54.736842  5.483682   1.030570  12.186523
+14  58.947368  5.573526   0.916593  12.320001
+15  63.157895  5.442097  -0.746664  12.698986
+16  67.368421  5.464389  -0.645453  12.564271
+17  71.578947  5.395504   0.245894  12.504891
+18  75.789474  5.656341  -0.324711  12.871045
+19  80.000000  5.489564  -0.257618  12.394323
+</pre></div></div>
+</div>
+<p>Most modeling approaches require a training dataset and a separate testing dataset. To generate separate datasets, the user can apply a splitting in an sklearn-manner. There is no default value set. In case the user calls the function, a <code class="docutils literal notranslate"><span class="pre">test_splitratio</span></code> in the range [0,1) needs to be chosen. The value represents the fraction of the total number of batches generated used for the test set. The data is then splitted and stored in the data object as <code class="docutils literal notranslate"><span class="pre">data.training</span></code> and <code class="docutils literal notranslate"><span class="pre">data.testing</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">test_splitratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now plot the experiments. The fist way to do so is to plot all the runs using the <code class="docutils literal notranslate"><span class="pre">plot_experiments</span></code> method. The method lets us save the figure using a path (<code class="docutils literal notranslate"><span class="pre">save_figure_directory</span></code>), a name (<code class="docutils literal notranslate"><span class="pre">figname</span></code>) and an some extensions (<code class="docutils literal notranslate"><span class="pre">save_figure_exensions</span></code>) as a list. By using <code class="docutils literal notranslate"><span class="pre">show=False</span></code>, the plot will not be displayed in a running code.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_experiments</span><span class="p">(</span>  <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">show</span><span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                        <span class="n">figname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">example</span><span class="si">}</span><span class="s1">_simulated_batches&#39;</span><span class="p">,</span>
+                        <span class="n">save_figure_directory</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\figures&#39;</span><span class="p">,</span>
+                        <span class="n">save_figure_exensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;png&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Saving figure:
+        -&gt;png: .\figures\batch1_simulated_batches.png
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_main_batch_examples_11_1.png" src="../_images/notebooks_main_batch_examples_11_1.png" />
+</div>
+</div>
+<p>We can also visualize the training and testing runs individually using the <code class="docutils literal notranslate"><span class="pre">plot_train_test_experiments</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_train_test_experiments</span><span class="p">(</span>   <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">figname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">example</span><span class="si">}</span><span class="s1">_simulated_batches_train_test&#39;</span><span class="p">,</span>
+                                    <span class="n">save_figure_directory</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\figures&#39;</span><span class="p">,</span>
+                                    <span class="n">save_figure_exensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;png&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Saving figure:
+        -&gt;png: .\figures\batch1_simulated_batches_train_test.png
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_main_batch_examples_13_2.png" src="../_images/notebooks_main_batch_examples_13_2.png" />
+</div>
+</div>
+<p>After the simulation, one can export the data as XLSX files. By choosing <code class="docutils literal notranslate"><span class="pre">which_dataset</span></code> to be <code class="docutils literal notranslate"><span class="pre">training</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), <code class="docutils literal notranslate"><span class="pre">testing</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), or <code class="docutils literal notranslate"><span class="pre">all</span></code> (always executable), the corresponding data is exported to the indicated location:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>      <span class="c1"># Exports all the data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;training&#39;</span><span class="p">)</span> <span class="c1"># Exports the training data (blue circles in Fig 2)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;testing&#39;</span><span class="p">)</span>  <span class="c1"># Exports the training data (red diamonds in Fig 2)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Exported batch data to excel.
+        -&gt; Dataset: ALL (options: training, testing, all)
+        -&gt; Noise free data to: .\data\batch_batch1_all_batchdata.xlsx
+        -&gt; Noisy data to: .\data\batch_batch1_all_batchdata_noisy.xlsx
+[+] Exported batch data to excel.
+        -&gt; Dataset: TRAINING (options: training, testing, all)
+        -&gt; Noise free data to: .\data\batch_batch1_training_batchdata.xlsx
+        -&gt; Noisy data to: .\data\batch_batch1_training_batchdata_noisy.xlsx
+[+] Exported batch data to excel.
+        -&gt; Dataset: TESTING (options: training, testing, all)
+        -&gt; Noise free data to: .\data\batch_batch1_testing_batchdata.xlsx
+        -&gt; Noisy data to: .\data\batch_batch1_testing_batchdata_noisy.xlsx
+</pre></div></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to InSiDa-Py’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../insidapy.augment.html" class="btn btn-neutral float-right" title="insidapy.augment package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tim Forster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

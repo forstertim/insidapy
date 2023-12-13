@@ -27,11 +27,3 @@ insidapy.simulate.univariate module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: insidapy.simulate
-   :members:
-   :undoc-members:
-   :show-inheritance:

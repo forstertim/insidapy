@@ -11,11 +11,3 @@ insidapy.augment.mimic module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: insidapy.augment
-   :members:
-   :undoc-members:
-   :show-inheritance:

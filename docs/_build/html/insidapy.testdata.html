@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>insidapy.testdata package &mdash; InSiDa-Py  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,6 +18,7 @@
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,17 +44,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">InSiDaPy</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="insidapy.html">insidapy package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="insidapy.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="insidapy.augment.html">insidapy.augment package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="insidapy.simulate.html">insidapy.simulate package</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">insidapy.testdata package</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_batch_examples.html">Batch data generation</a></li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="insidapy.html#module-insidapy">Module contents</a></li>
+<p class="caption" role="heading"><span class="caption-text">Function Descriptions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="insidapy.augment.html">insidapy.augment package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insidapy.simulate.html">insidapy.simulate package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">insidapy.testdata package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-insidapy.testdata.datagen">insidapy.testdata.datagen module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#insidapy.testdata.datagen.generate_test_data"><code class="docutils literal notranslate"><span class="pre">generate_test_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insidapy.testdata.datagen.test_ode_function"><code class="docutils literal notranslate"><span class="pre">test_ode_function()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -72,8 +77,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">InSiDaPy</a></li>
-          <li class="breadcrumb-item"><a href="insidapy.html">insidapy package</a></li>
       <li class="breadcrumb-item active">insidapy.testdata package</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/forstertim/insidapy/blob/master/docs/insidapy.testdata.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -118,9 +121,6 @@ is implemented: A &lt;-[k1],[k2]-&gt; B -[k3]-&gt; C</p>
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-insidapy.testdata">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-insidapy.testdata" title="Link to this heading"></a></h2>
 </section>
 </section>
 

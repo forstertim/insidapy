@@ -7,16 +7,14 @@ Welcome to InSiDa-Py's documentation!
 =====================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Example Notebooks
 
-   modules
+   notebooks/main_batch_examples
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Function Descriptions
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   insidapy.augment
+   insidapy.simulate
+   insidapy.testdata
