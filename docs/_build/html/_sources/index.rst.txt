@@ -10,6 +10,9 @@ Welcome to InSiDa-Py's documentation!
    :caption: Example Notebooks
 
    notebooks/main_batch_examples
+   notebooks/main_fedbatch_examples
+   notebooks/main_univariate_examples
+   notebooks/main_multivariate_examples
 
 .. toctree::
    :maxdepth: 1
