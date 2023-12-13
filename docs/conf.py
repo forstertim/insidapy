@@ -21,7 +21,6 @@ extensions = [  "sphinx.ext.todo",
                 "sphinx.ext.autodoc", 
                 "sphinx.ext.napoleon",
                 "sphinx_rtd_theme",
-                "myst_parser", 
                 "nbsphinx"]
 
 templates_path = ['_templates']
