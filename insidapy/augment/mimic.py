@@ -26,7 +26,12 @@ class fit_and_augment():
         nparams (int, required): Number of parameters to estimate in the ODE model.
         model (callable, required): Callable function that represents the ODE model. Should be in the form of f(t,y,params).
         parameter_bounds (array, required): Bounds for the parameters of shape [nparams,2]. 
-
+        example (str, optional): Name of the example. Default given by 'augment_fit_case_study'.
+        name_of_time_vector (str, optional): Name of the time vector. Default is 'time'.
+        time_unit (str, optional): Unit of the time. Defaults to 'hours'.
+        species_units (list, optional): Units of the different species as a list. If nothing is given, 
+            'n.a.' is used for each species.
+        
     Stores:
         :y (array): Observed data.
         :t (array): Time points.
@@ -42,9 +47,10 @@ class fit_and_augment():
                  nparams:int,
                  model:callable,
                  parameter_bounds:np.ndarray,
-                 example_name:str='augment_fit_case_study',
+                 example:str='augment_fit_case_study',
                  name_of_time_vector:str='time',
-                 time_unit:str='h'):
+                 time_unit:str='h',
+                 species_units:list=None):
         """Initialize function.
         """
 
@@ -57,7 +63,13 @@ class fit_and_augment():
         self.species = [f's{i}' for i in range(self.y.shape[1])]
         self.name_of_time_vector = name_of_time_vector
         self.time_unit = time_unit
-        self.example_name = example_name
+        self.example = example
+
+        # Create species units
+        if species_units is None:
+            self.species_units = ['n.a.' for _ in range(y.shape[1])]
+        else:
+            self.species_units = species_units
 
         # Set flags to check that the user executed the required functions
         self.flag_fit_done = False
@@ -352,8 +364,23 @@ class fit_and_augment():
             save_figure_exensions (list, optional): List of file extensions in which the figure should be saved. Default to ['svg','png'].
         '''
 
+        # Maximum number of subplots per row
+        MAX_SUBPLOTS_PER_ROW = 4
+        
+        # If more than MAX_SUBPLOTS_PER_ROW*2 species, give warning to that code adjustment is needed and expand MAX_SUBPLOTS_PER_ROW
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW*2:
+            more_subplots_needed = len(self.species) - MAX_SUBPLOTS_PER_ROW*2
+            print('[-] The number of species is larger than {:.0f}. Allowing more subplots now (per row), but codes might need adjustment to make nicer plots (i.e., more rows).'.format(MAX_SUBPLOTS_PER_ROW*2))
+            MAX_SUBPLOTS_PER_ROW = len(self.species) + more_subplots_needed/2
+
         # Create figure
-        fig, ax = plt.subplots(ncols=len(self.species),nrows=1, figsize=(10,5))
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW:
+            NROWS = 2
+            NCOLS = int(np.ceil(len(self.species)/2))
+        else:
+            NROWS = 1
+            NCOLS = len(self.species)
+        fig, ax = plt.subplots(ncols=NCOLS, nrows=NROWS, figsize=(10,5))
 
         # In case there is only one species, ax is not a list but a single axis
         if len(ax)==1:
@@ -362,13 +389,36 @@ class fit_and_augment():
         # Define name of time vector
         timename = self.name_of_time_vector
 
-        # Plot ground truth
-        for batch in range(self.nbatches):
-            for spec_id, spec in enumerate(self.species): 
-                ax[spec_id].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
-                ax[spec_id].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
-                ax[spec_id].set_ylabel(f'{spec}')
-                ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        # Plot ground data
+        if NROWS == 1:
+            for batch in range(self.nbatches):
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
+                    ax[spec_id].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in range(self.nbatches):
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= MAX_SUBPLOTS_PER_ROW:
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.y[batch][timename], self.y[batch][spec], color='black', marker='', linestyle='--')
+                    ax[row,col].plot(self.y_noisy[batch][timename], self.y_noisy[batch][spec], marker='o', linestyle='')
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+
+            # 'Turn off' unused subplots
+            for row in range(NROWS):
+                for col in range(NCOLS):
+                    if [row,col] not in used_subplot_list:
+                        fig.delaxes(ax[row,col])
 
         # Layout
         plt.tight_layout()
@@ -380,6 +430,125 @@ class fit_and_augment():
         if show:
             plt.show()
     
+    # ----------------------------------------
+    def plot_train_test_experiments(self, 
+                                    show:bool=True,
+                                    save:bool=False, 
+                                    figname:str='figure',
+                                    save_figure_directory:str='./figures', 
+                                    save_figure_exensions:list=['svg','png']):
+        '''Plot experiments that were simulated. The training and testing runs are colored differently.
+
+        Args:
+            show (bool, optional): Boolean indicating whether the figure should be shown. Default to True.
+            figname (str, optiona): Name of the figure. Default to 'figure'.
+            save (bool, optional): Boolean indicating whether the figure should be saved. Default to False.
+            save_figure_directory (str, optional): Directory in which the figure should be saved. Default to './figures'.
+            save_figure_exensions (list, optional): List of file extensions in which the figure should be saved. Default to ['svg','png'].
+        '''
+
+        # Check that the train-test-split was executed first
+        # If traindata is there, the split was executed
+        if 'traindata' not in dir(self): 
+            raise ValueError('[-] To export the train data, execute train_test_split() first!')
+
+        # Maximum number of subplots per row
+        MAX_SUBPLOTS_PER_ROW = 4
+        
+        # If more than MAX_SUBPLOTS_PER_ROW*2 species, give warning to that code adjustment is needed and expand MAX_SUBPLOTS_PER_ROW
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW*2:
+            more_subplots_needed = len(self.species) - MAX_SUBPLOTS_PER_ROW*2
+            print('[-] The number of species is larger than {:.0f}. Allowing more subplots now (per row), but codes might need adjustment to make nicer plots (i.e., more rows).'.format(MAX_SUBPLOTS_PER_ROW*2))
+            MAX_SUBPLOTS_PER_ROW = len(self.species) + more_subplots_needed/2
+
+        # Create figure
+        if len(self.species) > MAX_SUBPLOTS_PER_ROW:
+            NROWS = 2
+            NCOLS = int(np.ceil(len(self.species)/2))
+        else:
+            NROWS = 1
+            NCOLS = len(self.species)
+        fig, ax = plt.subplots(ncols=NCOLS, nrows=NROWS, figsize=(10,5))
+
+        # Define name of time vector
+        timename = self.name_of_time_vector
+
+        # Plot training batches
+        if NROWS == 1:
+            for batch in self.traindata:
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.traindata[batch][timename], self.traindata[batch][spec], color='black', marker='', linestyle='--')
+                    labltrain = 'train' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[spec_id].plot(self.traindata_noisy[batch][timename], self.traindata_noisy[batch][spec], color='blue', alpha=0.7, marker='o', linestyle='', label=labltrain)
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in self.traindata:
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= MAX_SUBPLOTS_PER_ROW:
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.traindata[batch][timename], self.traindata[batch][spec], color='black', marker='', linestyle='--')
+                    labltrain = 'train' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[row,col].plot(self.traindata_noisy[batch][timename], self.traindata_noisy[batch][spec], color='blue', alpha=0.7, marker='o', linestyle='', label=labltrain)
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+            
+
+        # Plot testing batches
+        if NROWS == 1:
+            for batch in self.testdata:
+                for spec_id, spec in enumerate(self.species): 
+                    ax[spec_id].plot(self.testdata[batch][timename], self.testdata[batch][spec], color='black', marker='', linestyle='--')
+                    labltest = 'test' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[spec_id].plot(self.testdata[batch][timename], self.testdata_noisy[batch][spec], color='red', alpha=0.7, marker='d', linestyle='', label=labltest)
+                    ax[spec_id].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[spec_id].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+        else:
+            for batch in self.testdata:
+                used_subplot_list = []
+                for spec_id, spec in enumerate(self.species): 
+                    if spec_id <= MAX_SUBPLOTS_PER_ROW:
+                        row = 0
+                        col = spec_id
+                    else:
+                        row = 1
+                        col = spec_id - int(len(self.species)/2) - 1
+                    ax[row,col].plot(self.testdata[batch][timename], self.testdata[batch][spec], color='black', marker='', linestyle='--')
+                    labltest = 'test' if spec_id == 0 and batch == 0 else '__no_label__'
+                    ax[row,col].plot(self.testdata[batch][timename], self.testdata_noisy[batch][spec], color='red', alpha=0.7, marker='d', linestyle='', label=labltest)
+                    ax[row,col].set_ylabel(f'{spec} / {self.species_units[spec_id]}')
+                    ax[row,col].set_xlabel(f'{self.name_of_time_vector} / {self.time_unit}')
+                    # Record used subplots
+                    used_subplot_list.append([row,col])
+            # 'Turn off' unused subplots
+            for row in range(NROWS):
+                for col in range(NCOLS):
+                    if [row,col] not in used_subplot_list:
+                        fig.delaxes(ax[row,col])
+
+        # Add legend
+        if NROWS == 1:
+            ax[0].legend(frameon=False, loc='best')
+        else:
+            ax[0,0].legend(frameon=False, loc='best')
+
+        # Layout
+        plt.tight_layout()
+        
+        # Save figure if required
+        self.save_figure(save, figname, save_figure_directory, save_figure_exensions)
+
+        # Show
+        if show:
+            plt.show()
+
     # ----------------------------------------
     def save_figure(self, 
                     save:bool=False, 
@@ -437,7 +606,7 @@ class fit_and_augment():
             data_to_export = [self.testdata, self.testdata_noisy]
 
         # Define filenames
-        filename = f'{destination}\{self.example_name}_{which_dataset}'
+        filename = f'{destination}\{self.example}_{which_dataset}'
         filename_noisy= filename + '_noisy'
         
         # Iteratre through all batches

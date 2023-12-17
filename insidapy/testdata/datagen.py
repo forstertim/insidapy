@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -39,7 +40,8 @@ def test_ode_function(t_, y_, p_):
     return dydt.reshape(-1,)
     
 # ##########################################
-def generate_test_data(plotting:bool=False):
+def generate_test_data(plotting:bool=False, 
+                       save:bool=False):
 
     # Generate example data
     tspan = np.linspace(0, 3, 20)
@@ -57,4 +59,34 @@ def generate_test_data(plotting:bool=False):
         plt.xlabel('Time')
         plt.ylabel('Sampled concentration data')
         plt.legend(['A', 'B', 'C'])
+        save_figure(save, figure_name='observed_state_profiles', 
+                    save_figure_exensions=['png'])
     return y_noise, tspan, rateconstants
+
+# ##########################################
+def save_figure(save:bool=False, 
+                figure_name:str='figure', 
+                savedirectory:str='./figures', 
+                save_figure_exensions:list=['svg','png']):
+    """Saves a figure.
+
+    Args:
+        save (bool): Boolean indicating whether the figure should be saved. Defaults to False
+        figure_name (str): Name of the figure. Defaults to 'figure'.
+        savedirectory (str): Directory in which the figure should be saved. Defaults to './figures'.
+        save_figure_exensions (list): List of file extensions in which the figure \
+            should be saved. Defaults to ['svg','png'].
+    """
+
+    if save:
+        print(f'[+] Saving figure:')
+        if isinstance(save_figure_exensions, list):
+            figure_extension_list = save_figure_exensions
+        else:
+            raise ValueError('[-] The indicated file extension for figures needs to be a list!')
+        for figure_extension in figure_extension_list:
+            savepath = os.path.join(savedirectory, figure_name+'.'+figure_extension)
+            plt.savefig(savepath)
+            print(f'\t->{figure_extension}: {savepath}')
+    else:
+        print(f'[+] Figures not saved.')

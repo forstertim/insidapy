@@ -48,6 +48,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_batch_examples.html">Batch data generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_fedbatch_examples.html">Fed-Batch data generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_custom_ode_with_arguments.html">Custom ODE (with additional input arguments) Data Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_custom_ode_without_arguments.html">Custom ODE (without additional input arguments) Data Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_univariate_examples.html">Univariate Data Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_multivariate_examples.html">Multivariate Data Generation</a></li>
 </ul>
@@ -59,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-insidapy.testdata.datagen">insidapy.testdata.datagen module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#insidapy.testdata.datagen.generate_test_data"><code class="docutils literal notranslate"><span class="pre">generate_test_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insidapy.testdata.datagen.save_figure"><code class="docutils literal notranslate"><span class="pre">save_figure()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#insidapy.testdata.datagen.test_ode_function"><code class="docutils literal notranslate"><span class="pre">test_ode_function()</span></code></a></li>
 </ul>
 </li>
@@ -99,8 +102,24 @@
 <span id="insidapy-testdata-datagen-module"></span><h2>insidapy.testdata.datagen module<a class="headerlink" href="#module-insidapy.testdata.datagen" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="insidapy.testdata.datagen.generate_test_data">
-<span class="sig-prename descclassname"><span class="pre">insidapy.testdata.datagen.</span></span><span class="sig-name descname"><span class="pre">generate_test_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.testdata.datagen.generate_test_data" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">insidapy.testdata.datagen.</span></span><span class="sig-name descname"><span class="pre">generate_test_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.testdata.datagen.generate_test_data" title="Link to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="insidapy.testdata.datagen.save_figure">
+<span class="sig-prename descclassname"><span class="pre">insidapy.testdata.datagen.</span></span><span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'figure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savedirectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./figures'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure_exensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['svg',</span> <span class="pre">'png']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.testdata.datagen.save_figure" title="Link to this definition"></a></dt>
+<dd><p>Saves a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save</strong> (<em>bool</em>) – Boolean indicating whether the figure should be saved. Defaults to False</p></li>
+<li><p><strong>figure_name</strong> (<em>str</em>) – Name of the figure. Defaults to ‘figure’.</p></li>
+<li><p><strong>savedirectory</strong> (<em>str</em>) – Directory in which the figure should be saved. Defaults to ‘./figures’.</p></li>
+<li><p><strong>save_figure_exensions</strong> (<em>list</em>) – List of file extensions in which the figure             should be saved. Defaults to [‘svg’,’png’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="insidapy.testdata.datagen.test_ode_function">

@@ -214,55 +214,27 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training')
 data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')  
 ```
 
-![Fig 4. Example of the simulation of a custom ODE file.](examples/figures/custom_odes_with_args.png)
+![Fig 4. Example of the simulation of a custom ODE file.](docs/notebooks/figures/custom_odes_with_args.png)
 
 *Fig 4. Example of the simulation of a custom ODE file.*
 
 
 ## Mimic batch data
-The example code is stored in `examples/main_fit_and_augment.py`.
+The example code is stored in `docs/notebooks/main_mimic_observed_batch_data.ipynb` (check out the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_mimic_observed_batch_data.html) for more details).
 
-If an experiment is already available (in form of noisy state profiles), the user can use the `fit_and_augment` class to fit the model parameters and generate "look-alike-profiles" from the observed profile. The class represents a wrapper of a parameter estimation routine and a subsequent ODE integrator for generating new experiments.
+A short summary is given below. Assuming some state profiles are observed, we want to use the behaviour to create "look-alike-profiles". Below, we call this process "mimicing the data". Let's say we observed the following profile (dashed lines are the ground-truth behaviour, where the dots are the observed noisy samples):
 
-Let us consider a batch run that was performed in the lab, where three species were observed over some time. Example data can be loaded via `insidapy.testdata.generate_test_data()`, where some example rate constants (which we want to estimate later on) are loaded as well:
-```python
-from insidapy.testdata import generate_test_data
-y_noise, tspan, rateconstants = generate_test_data(plotting=True)
-```
+![Fig 5. Observed noisy state profiles](docs/notebooks/figures/observed_state_profiles.png)
 
-Besides these data points, the modeler has an idea about the structure of the ODE system. The system is provided as a callable function `ODEMODEL` (same structure as [shown above](#custom-ode) `f(t,y,params)`, but the `params` being an array!). For the parameter estimation, some `PARAMBOUNDS` (array of `nx2`, with `n` being the number of parameters to be estimated) are required. Then, the data can be fed to the `fit_and_augment` class and the parameters can be estimated:
+*Fig 5. Example of some observed data.*
 
-```python
-from insidapy.augment.mimic import fit_and_augment
-obj = fit_and_augment(y=y_noise,
-                      t=tspan,
-                      nparams=len(rateconstants),
-                      parameter_bounds=PARAMBOUNDS,
-                      model=ODEMODEL)
-obj.fit(method='Nelder-Mead', objective='RMSE', num_random_search_steps=RS_STEPS)
-obj.predict(show=True,
-            save=True, 
-            figname='parameter_estimation_example',
-            save_figure_directory='./figures', 
-            save_figure_exensions=['png'])
-```
+The identified parameters are used to create new runs that show a similar behaviour as the observed system. Using some bounds for the creation of initial conditions, the following batch data can be generated:
 
-![Fig 5. Example of the parameter estimation of some observed data](examples/figures/parameter_estimation_example.png)
+![Fig 6. Generated state profiles using the identified parameters](docs/notebooks/figures/mimiced_experiments_custom_ode.png)
 
-*Fig 5. Example of the parameter estimation of some observed data.*
+*Fig 6. Example of some observed data.*
 
-After the parameter estimation, the user can provide some upper and lower bounds for the initial conditions. These are used to run experiments with the identified parameters: 
-```python
-lower_bounds = y_noise[0,:]*0.5     # example to generate bounds for the IC
-upper_bounds = y_noise[0,:]*1.5     
-obj.mimic_experiments(  LB=lower_bounds, 
-                        UB=upper_bounds, 
-                        nbatches=3,
-                        noise_mode = 'percentage',
-                        noise_percentage = 2.5)
-```
-
-After running this method, the same plotting and excel-export functionalities as shown in the [bioreactor case study](#bioreactor-in-batch-operation-mode) above can be used.
+After running this approach, the same excel-export functionalities as shown in the [bioreactor case study](#bioreactor-in-batch-operation-mode) above can be used.
 
 
 References
