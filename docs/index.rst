@@ -11,6 +11,8 @@ Welcome to InSiDa-Py's documentation!
 
    notebooks/main_batch_examples
    notebooks/main_fedbatch_examples
+   notebooks/main_custom_ode_with_arguments.ipynb
+   notebooks/main_custom_ode_without_arguments.ipynb
    notebooks/main_univariate_examples
    notebooks/main_multivariate_examples
 

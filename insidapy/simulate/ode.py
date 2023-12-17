@@ -273,6 +273,8 @@ class batch():
                 y = solve_ivp(fun=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan, args=(self.ode_arguments,))
             else:
                 y = solve_ivp(fun=odefunc, y0=y0, t_span=[tspan[0], tspan[-1]], t_eval=tspan)
+            # Get only y-results
+            y = y.y.T
         else:
             y = solve_ode(self, y0, tspan)
                 
@@ -544,7 +546,10 @@ class batch():
             data_to_export = [self.testdata, self.testdata_noisy]
 
         # Define filenames
-        filename = f'{destination}\{self.example_type}_{self.example}_{which_dataset}_batchdata'
+        if self.example_type == 'custom':
+            filename = f'{destination}\{self.example_type}_{which_dataset}_batchdata'
+        else:
+            filename = f'{destination}\{self.example_type}_{self.example}_{which_dataset}_batchdata'
         filename_noisy= filename + '_noisy'
         
         # Iteratre through all batches
@@ -762,6 +767,11 @@ class custom_ode(batch):
                  name_of_time_vector:str='time'):
         """Initialize function.
         """
+        
+        # Define user inputs in addition to inputs of batch-class
+        self.species = species
+        self.name_of_time_unit = name_of_time_unit
+        self.name_of_species_units = ['g/L' for _ in range(self.num_species)] if name_of_species_units is None else name_of_species_units
 
         # Since it is also a batch reaction, load the init function of the parent class
         super().__init__(   example='custom', 
@@ -783,8 +793,3 @@ class custom_ode(batch):
 
         # Get user-defined arguments for the ODE function
         self.ode_arguments = ode_arguments
-
-        # Define user inputs in addition to inputs of batch-class
-        self.species = species
-        self.name_of_time_unit = name_of_time_unit
-        self.name_of_species_units = ['g/L' for _ in range(self.num_species)] if name_of_species_units is None else name_of_species_units

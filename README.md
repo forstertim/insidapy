@@ -73,7 +73,6 @@ Examples
 ## Bioreactor in batch operation mode
 The example notebook is stored in `docs/notebooks/main_batch_fermentation_example`. A quick code summary is given here (for more details, check the notebook or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_batch_examples.html)). 
 
-First, the `batch` class is loaded:
 ```python
 from insidapy.simulate.ode import batch
 
@@ -148,39 +147,11 @@ data.export_to_excel(destination=r'.\data')
 
 
 ## Custom ODE
-Two examples are stored in `examples/main_custom_ode_with_arguments_passing.py` and `examples/main_custom_ode_without_arguments_passing.py`.
+Two examples are stored in `docs/notebooks`. One of the custom examples includes the additional passing of input arguments to a given ODE file (check out `docs/notebooks/main_custom_ode_with_arguments_passing.ipynb` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_with_arguments_passing.html)). The other one shows an example without such additional input arguments for the ODE file (check out `docs/notebooks/main_custom_ode_without_arguments_passing.py` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_without_arguments_passing.html)).
 
-First, the `custom_ode` class is loaded:
-```python
-from insidapy.simulate.ode import custom_ode
-```
-
-Then, the user can define where the separate file with the ODE system is located:
-```python
-# Define where the ODE file is located and how the ODE function is called
-CUSTOM_ODE_RELATIVE_PATH = '.'
-CUSTOM_ODE_FILENAME = 'customodefile_with_args'
-CUSTOM_ODE_FUNC_NAME = 'customode'
-```
-
-Additionally, the user can either add additional parameters that should be passed to the function file by using the `ode_arguments` input or not. The following example shows the case where additional parameters are passed to the ODE file. The example is stored in `examples/main_custom_ode_with_arguments_passing.py` and the separate ODE file is located in `examples/customodefile_with_args`:
-
-```python
-# Give information about the ODE system
-CUSTOM_ODE_SPECIES = ['A', 'B', 'C']
-CUSTOM_ODE_TSPAN = [0, 3]
-CUSTOM_ODE_BOUNDS_INITIAL_CONDITIONS = [[2, 0, 0], [3, 1, 0]]
-CUSTOM_ODE_ARGUMENTS = {'k1': 2, 'k2': 1, 'k3': 3}
-
-# Define the units of the ODE system
-CUSTOM_ODE_NAME_OF_TIME_UNIT = 'hours'
-CUSTOM_ODE_NAME_OF_SPECIES_UNITS = ['g/L', 'g/L', 'g/L']
-```
-
-The separate ODE file could look for example like this:
+A quick summary is given here. The available separate ODE file could look for example like this:
 ```python
 import numpy as np
-
 def customode(t, y, coefs):
         """Custom ODE system. A batch reactor is modeled with two species. The following system
         is implemented: A <-[k1],[k2]-> B -[k3]-> C
@@ -193,30 +164,25 @@ def customode(t, y, coefs):
         Returns:
             array: dydt - Derivative of the species of shape [n,].
         """
-    
         # Variables  
         A = y[0]
         B = y[1]
         C = y[2]
-
         # Parameters
         k1 = coefs['k1']
         k2 = coefs['k2']
         k3 = coefs['k3']    
-
         # Rate expressions
         dAdt = k2*B - k1*A
         dBdt = k1*A - k2*B - k3*B
         dCdt = k3*B
-
         # Vectorization
         dydt = np.array((dAdt, dBdt, dCdt))
-
         # Return
         return dydt.reshape(-1,)
 ```
 
-Similar to the `batch`-class example above, the instance is created (in case no additional arguments should be passed to the separate ODE function, just ommit the parameter `ode_arguments` and create the separate function file only by `def ODE(t,y)`):
+Similar to the `batch`-class example above, the instance is created and experiments can be run. The data can be plotted and exported:
 ```python
 data = custom_batch_ode(filename_custom_ode=CUSTOM_ODE_FILENAME,                        #Filename of the file containing the ODE system.
                         relative_path_custom_ode=CUSTOM_ODE_RELATIVE_PATH,              #Relative path to the file containing the ODE system.
@@ -234,20 +200,18 @@ data = custom_batch_ode(filename_custom_ode=CUSTOM_ODE_FILENAME,                
                         random_seed=0,                                                  #Random seed for reproducibility. Defaults to 0.
                         initial_condition_generation_method='LHS',                      #Method for generating initial conditions. Defaults to "LHS".
                         name_of_time_vector='time')                                     #Name of time vector. Defaults to "time".
-```
 
-And the experiments are run:
-```python
 data.run_experiments()
-```
-
-Similarly, plotting can be done and the data could be splitted (train/test) and exported as XLSX files.
-```python	
+	
 data.plot_experiments(  show=True,
                         save=True, 
                         figname='custom_odes_with_args', 
                         save_figure_directory=r'.\figures', 
                         save_figure_exensions=['png'])
+
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='all')
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training') 
+data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')  
 ```
 
 ![Fig 4. Example of the simulation of a custom ODE file.](examples/figures/custom_odes_with_args.png)

@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.4
+* Corrected the way the concentration profiles are returned after using a custom ODE file.
+* Created two new example notebooks for the custom ODE case (with and without additional arguments given for the ODE file).
+
 ## Version 0.2.3
 * Added missing `__init__` file for utility functions in ODE module.
 * Changed documentation for RtD.

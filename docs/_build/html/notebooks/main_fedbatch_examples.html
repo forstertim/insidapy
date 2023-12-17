@@ -91,7 +91,7 @@
 <p>Within the simulator, one class is defined as the ‘fedbatch’ (relies on the ‘batch’ class) and it can be used to simulate fed-batch reactors with defined kinetics.</p>
 <p>First, the package is loaded and available default examples are displayed using <code class="docutils literal notranslate"><span class="pre">show_implemented_examples</span></code> method.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">insidapy.simulate.ode</span> <span class="kn">import</span> <span class="n">fedbatch</span>
@@ -118,7 +118,7 @@
 </div>
 <p>Next, one can decide to use one of the implemented examples or define a new one. In this case, the example of a bioreaction in fedbatch operation mode with 3 species is used (<code class="docutils literal notranslate"><span class="pre">'fedbatch1'</span></code>). Each example would be fully defined with default values. However, we can overwrite these values by using the corresponding inputs. If we overwrite the default values, we are reminded to check that the given values are in correct order.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fedbatch</span><span class="p">(</span><span class="n">example</span><span class="o">=</span><span class="s1">&#39;fedbatch1&#39;</span><span class="p">,</span>                                            <span class="c1"># Choose example. Defaults to &quot;fedbatch1&quot;.</span>
@@ -144,7 +144,7 @@
 </div>
 <p>We can now print some information about the example.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
@@ -182,10 +182,11 @@
 <p>This might be useful to use the example in a publication (use the short reference information given to reference where the example came from) or to check if the example is defined as intended.</p>
 <p>After that, we can run the experiments to create some in-silico data using the <code class="docutils literal notranslate"><span class="pre">run_experiments</span></code> method. We can then for example check the data of the first experiment.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">run_experiments</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">y_noisy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -195,11 +196,32 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [+] Experiments done.
+         time   biomass    product  substrate    volume
+0    0.000000  0.170610  62.310537   0.195585  3.870119
+1    4.210526  0.229802  59.563976   0.564204  4.196437
+2    8.421053  0.273714  56.704083   0.799884  4.333703
+3   12.631579  0.439917  55.419851   0.943265  4.607631
+4   16.842105  0.648348  51.809027   0.885063  4.797903
+5   21.052632  0.940617  50.583312   0.680357  5.102327
+6   25.263158  1.193427  46.709251   0.446642  5.333964
+7   29.473684  1.501493  46.311131   0.261561  5.281053
+8   33.684211  1.545675  46.119174   0.183287  5.852505
+9   37.894737  1.740762  41.893160   0.158977  5.713684
+10  42.105263  1.869093  41.030178   0.134442  6.038717
+11  46.315789  1.907932  38.812825   0.128943  6.506188
+12  50.526316  1.990550  38.634757   0.102781  6.468446
+13  54.736842  2.162627  36.016796   0.082139  6.957505
+14  58.947368  2.271315  36.663173   0.059360  6.917161
+15  63.157895  2.314698  36.818400   0.105836  7.327268
+16  67.368421  2.406487  32.865182   0.073221  7.497049
+17  71.578947  2.508249  33.826766   0.075424  7.515382
+18  75.789474  2.528988  30.561737   0.064671  7.815977
+19  80.000000  2.610140  31.081639   0.081498  8.283423
 </pre></div></div>
 </div>
 <p>Most modeling approaches require a training dataset and a separate testing dataset. To generate separate datasets, the user can apply a splitting in an sklearn-manner. There is no default value set. In case the user calls the function, a <code class="docutils literal notranslate"><span class="pre">test_splitratio</span></code> in the range [0,1) needs to be chosen. The value represents the fraction of the total number of batches generated used for the test set. The data is then splitted and stored in the data object as <code class="docutils literal notranslate"><span class="pre">data.training</span></code> and <code class="docutils literal notranslate"><span class="pre">data.testing</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">test_splitratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -208,7 +230,7 @@
 </div>
 <p>We can now plot the experiments. The fist way to do so is to plot all the runs using the <code class="docutils literal notranslate"><span class="pre">plot_experiments</span></code> method. The method lets us save the figure using a path (<code class="docutils literal notranslate"><span class="pre">save_figure_directory</span></code>), a name (<code class="docutils literal notranslate"><span class="pre">figname</span></code>) and an some extensions (<code class="docutils literal notranslate"><span class="pre">save_figure_exensions</span></code>) as a list. By using <code class="docutils literal notranslate"><span class="pre">show=False</span></code>, the plot will not be displayed in a running code.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_experiments</span><span class="p">(</span>  <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -237,7 +259,7 @@
 </div>
 <p>We can also visualize the training and testing runs individually using the <code class="docutils literal notranslate"><span class="pre">plot_train_test_experiments</span></code> method.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_train_test_experiments</span><span class="p">(</span>   <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -266,7 +288,7 @@
 </div>
 <p>After the simulation, one can export the data as XLSX files. By choosing <code class="docutils literal notranslate"><span class="pre">which_dataset</span></code> to be <code class="docutils literal notranslate"><span class="pre">training</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), <code class="docutils literal notranslate"><span class="pre">testing</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), or <code class="docutils literal notranslate"><span class="pre">all</span></code> (always executable), the corresponding data is exported to the indicated location:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>      <span class="c1"># Exports all the data</span>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom ODE (with additional input arguments) Data Generation &mdash; InSiDa-Py  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            InSiDa-Py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Example Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main_batch_examples.html">Batch data generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_fedbatch_examples.html">Fed-Batch data generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_univariate_examples.html">Univariate Data Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_multivariate_examples.html">Multivariate Data Generation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Function Descriptions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.augment.html">insidapy.augment package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.simulate.html">insidapy.simulate package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insidapy.testdata.html">insidapy.testdata package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">InSiDa-Py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Custom ODE (with additional input arguments) Data Generation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/forstertim/insidapy/blob/master/docs/notebooks/main_custom_ode_with_arguments.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Custom-ODE-(with-additional-input-arguments)-Data-Generation">
+<h1>Custom ODE (with additional input arguments) Data Generation<a class="headerlink" href="#Custom-ODE-(with-additional-input-arguments)-Data-Generation" title="Link to this heading"></a></h1>
+<p>The insidapy package can also be used together with custom ODE files to quickly generate different datasets. The following example shows how to use the <code class="docutils literal notranslate"><span class="pre">custom_ode</span></code> class to generate data from such an ODE file.</p>
+<p>This particular notebook explains how to use the codes in case the separete ODE file has additional input arguments (i.e., it is a function of the form func(t,x,args)). In case there are NO additional arguments, check out the notebook <code class="docutils literal notranslate"><span class="pre">main_custom_ode_without_arguments.ipynb</span></code>.</p>
+<p>First, the <code class="docutils literal notranslate"><span class="pre">custom_ode</span></code> class is loaded:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">insidapy.simulate.ode</span> <span class="kn">import</span> <span class="n">custom_ode</span>
+</pre></div>
+</div>
+</div>
+<p>Then, the user can define where the separate file with the ODE system is located. The relative path and the filename of the separate function file need to be given as a string. Additionally, the name of the function in the given function file needs to be indicated:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CUSTOM_ODE_RELATIVE_PATH</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+<span class="n">CUSTOM_ODE_FILENAME</span> <span class="o">=</span> <span class="s1">&#39;customodefile_with_args&#39;</span>
+<span class="n">CUSTOM_ODE_FUNC_NAME</span> <span class="o">=</span> <span class="s1">&#39;customode&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally, the user can either add additional parameters that should be passed to the function file by using the <code class="docutils literal notranslate"><span class="pre">ode_arguments</span></code> input or not. The following example shows the case where additional parameters are passed to the ODE file. The separate ODE file is located in <code class="docutils literal notranslate"><span class="pre">docs/notebooks/customodefile_with_args</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Give information about the ODE system</span>
+<span class="n">CUSTOM_ODE_SPECIES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="n">CUSTOM_ODE_TSPAN</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">CUSTOM_ODE_BOUNDS_INITIAL_CONDITIONS</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">CUSTOM_ODE_ARGUMENTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;k1&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;k2&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;k3&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="c1"># Define the units of the ODE system</span>
+<span class="n">CUSTOM_ODE_NAME_OF_TIME_UNIT</span> <span class="o">=</span> <span class="s1">&#39;hours&#39;</span>
+<span class="n">CUSTOM_ODE_NAME_OF_SPECIES_UNITS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;g/L&#39;</span><span class="p">,</span> <span class="s1">&#39;g/L&#39;</span><span class="p">,</span> <span class="s1">&#39;g/L&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The separate ODE file could look for example like this (given in markdown format, for the file, check it at <code class="docutils literal notranslate"><span class="pre">docs/notebooks/customodefile_with_args.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">customode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">coefs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom ODE system. A batch reactor is modeled with two species. The following system</span>
+<span class="sd">    is implemented: A &lt;-[k1],[k2]-&gt; B -[k3]-&gt; C</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y (array): Concentration of species of shape [n,].</span>
+<span class="sd">        t (scalar): time.</span>
+<span class="sd">        coefs (dict): Dictionary of coefficients or other information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        array: dydt - Derivative of the species of shape [n,].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Variables</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Parameters</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">&#39;k1&#39;</span><span class="p">]</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">&#39;k2&#39;</span><span class="p">]</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">&#39;k3&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Rate expressions</span>
+    <span class="n">dAdt</span> <span class="o">=</span> <span class="n">k2</span><span class="o">*</span><span class="n">B</span> <span class="o">-</span> <span class="n">k1</span><span class="o">*</span><span class="n">A</span>
+    <span class="n">dBdt</span> <span class="o">=</span> <span class="n">k1</span><span class="o">*</span><span class="n">A</span> <span class="o">-</span> <span class="n">k2</span><span class="o">*</span><span class="n">B</span> <span class="o">-</span> <span class="n">k3</span><span class="o">*</span><span class="n">B</span>
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">k3</span><span class="o">*</span><span class="n">B</span>
+
+    <span class="c1"># Vectorization</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">dAdt</span><span class="p">,</span> <span class="n">dBdt</span><span class="p">,</span> <span class="n">dCdt</span><span class="p">))</span>
+
+    <span class="c1"># Return</span>
+    <span class="k">return</span> <span class="n">dydt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">batch</span></code>-class example above, the instance is created (in case no additional arguments should be passed to the separate ODE function, just ommit the parameter <code class="docutils literal notranslate"><span class="pre">ode_arguments</span></code> and create the separate function file only by <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">ODE(t,y)</span></code>):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">custom_ode</span><span class="p">(</span>  <span class="n">filename_custom_ode</span><span class="o">=</span><span class="n">CUSTOM_ODE_FILENAME</span><span class="p">,</span>                        <span class="c1"># REQUIRED: Filename of the file containing the ODE system.</span>
+                    <span class="n">relative_path_custom_ode</span><span class="o">=</span><span class="n">CUSTOM_ODE_RELATIVE_PATH</span><span class="p">,</span>              <span class="c1"># REQUIRED: Relative path to the file containing the ODE system.</span>
+                    <span class="n">custom_ode_function_name</span><span class="o">=</span><span class="n">CUSTOM_ODE_FUNC_NAME</span><span class="p">,</span>                  <span class="c1"># REQUIRED: Name of the ODE function in the file.</span>
+                    <span class="n">species</span><span class="o">=</span><span class="n">CUSTOM_ODE_SPECIES</span><span class="p">,</span>                                     <span class="c1"># REQUIRED: List of species.</span>
+                    <span class="n">bounds_initial_conditions</span><span class="o">=</span><span class="n">CUSTOM_ODE_BOUNDS_INITIAL_CONDITIONS</span><span class="p">,</span> <span class="c1"># REQUIRED: Bounds for initial conditions.</span>
+                    <span class="n">time_span</span><span class="o">=</span><span class="n">CUSTOM_ODE_TSPAN</span><span class="p">,</span>                                     <span class="c1"># REQUIRED: Time span for integration.</span>
+                    <span class="n">ode_arguments</span><span class="o">=</span><span class="n">CUSTOM_ODE_ARGUMENTS</span><span class="p">,</span>                             <span class="c1"># OPTIONAL: Arguments of the ODE system. Defaults to &quot;None&quot;.</span>
+                    <span class="n">name_of_time_unit</span><span class="o">=</span><span class="n">CUSTOM_ODE_NAME_OF_TIME_UNIT</span><span class="p">,</span>                 <span class="c1"># OPTIONAL: Name of time unit. Defaults to &quot;h&quot;.</span>
+                    <span class="n">name_of_species_units</span><span class="o">=</span><span class="n">CUSTOM_ODE_NAME_OF_SPECIES_UNITS</span><span class="p">,</span>         <span class="c1"># OPTIONAL: Name of species unit. Defaults to &quot;g/L&quot;.</span>
+                    <span class="n">nbatches</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                     <span class="c1"># OPTIONAL: Number of batches. Defaults to 1.</span>
+                    <span class="n">npoints_per_batch</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>                                           <span class="c1"># OPTIONAL: Number of points per batch and per species. Defaults to 50.</span>
+                    <span class="n">noise_mode</span><span class="o">=</span><span class="s1">&#39;percentage&#39;</span><span class="p">,</span>                                        <span class="c1"># OPTIONAL: Noise mode. Defaults to &quot;percentage&quot;.</span>
+                    <span class="n">noise_percentage</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>                                           <span class="c1"># OPTIONAL: Noise percentage (in case mode is &quot;percentage&quot;). Defaults to 5%.</span>
+                    <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                                  <span class="c1"># OPTIONAL: Random seed for reproducibility. Defaults to 0.</span>
+                    <span class="n">initial_condition_generation_method</span><span class="o">=</span><span class="s1">&#39;LHS&#39;</span><span class="p">,</span>                      <span class="c1"># OPTIONAL: Method for generating initial conditions. Defaults to &quot;LHS&quot;.</span>
+                    <span class="n">name_of_time_vector</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>                                     <span class="c1"># OPTIONAL: Name of time vector. Defaults to &quot;time&quot;.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[!] IMPORTANT: It seems that you changed the default bounds of the species. Make sure the order of the indicated bounds is the following: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]
+</pre></div></div>
+</div>
+<p>After this preparation work, we can run the experiments to create some in-silico data using the <code class="docutils literal notranslate"><span class="pre">run_experiments</span></code> method. We can then for example check the data of the first experiment.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">run_experiments</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Experiments done.
+</pre></div></div>
+</div>
+<p>As in the <code class="docutils literal notranslate"><span class="pre">batch</span></code> class, the generated data can be plotted:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_experiments</span><span class="p">(</span>  <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">figname</span><span class="o">=</span><span class="s1">&#39;custom_odes_with_args&#39;</span><span class="p">,</span>
+                        <span class="n">save_figure_directory</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\figures&#39;</span><span class="p">,</span>
+                        <span class="n">save_figure_exensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;png&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Saving figure:
+        -&gt;png: .\figures\custom_odes_with_args.png
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_main_custom_ode_with_arguments_12_1.png" src="../_images/notebooks_main_custom_ode_with_arguments_12_1.png" />
+</div>
+</div>
+<p>Most modeling approaches require a training dataset and a separate testing dataset. To generate separate datasets, the user can apply a splitting in an sklearn-manner. There is no default value set. In case the user calls the function, a <code class="docutils literal notranslate"><span class="pre">test_splitratio</span></code> in the range [0,1) needs to be chosen. The value represents the fraction of the total number of batches generated used for the test set. The data is then splitted and stored in the data object as <code class="docutils literal notranslate"><span class="pre">data.training</span></code> and <code class="docutils literal notranslate"><span class="pre">data.testing</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">test_splitratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now also plot the experiments while showing the training and testing runs individually. The method lets us save the figure using a path (<code class="docutils literal notranslate"><span class="pre">save_figure_directory</span></code>), a name (<code class="docutils literal notranslate"><span class="pre">figname</span></code>) and an some extensions (<code class="docutils literal notranslate"><span class="pre">save_figure_exensions</span></code>) as a list. By using <code class="docutils literal notranslate"><span class="pre">show=False</span></code>, the plot will not be displayed in a running code.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot_train_test_experiments</span><span class="p">(</span>   <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">figname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">example</span><span class="si">}</span><span class="s1">_custom_ode_train_test&#39;</span><span class="p">,</span>
+                                    <span class="n">save_figure_directory</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\figures&#39;</span><span class="p">,</span>
+                                    <span class="n">save_figure_exensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;png&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Saving figure:
+        -&gt;png: .\figures\custom_custom_ode_train_test.png
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_main_custom_ode_with_arguments_16_1.png" src="../_images/notebooks_main_custom_ode_with_arguments_16_1.png" />
+</div>
+</div>
+<p>After the simulation, one can export the data as XLSX files. By choosing <code class="docutils literal notranslate"><span class="pre">which_dataset</span></code> to be <code class="docutils literal notranslate"><span class="pre">training</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), <code class="docutils literal notranslate"><span class="pre">testing</span></code> (only executable if <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> was applied), or <code class="docutils literal notranslate"><span class="pre">all</span></code> (always executable), the corresponding data is exported to the indicated location:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>      <span class="c1"># Exports all the data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;training&#39;</span><span class="p">)</span> <span class="c1"># Exports the training data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">export_dict_data_to_excel</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span> <span class="n">which_dataset</span><span class="o">=</span><span class="s1">&#39;testing&#39;</span><span class="p">)</span>  <span class="c1"># Exports the training data</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[+] Exported batch data to excel.
+        -&gt; Dataset: ALL (options: training, testing, all)
+        -&gt; Noise free data to: .\data\custom_all_batchdata.xlsx
+        -&gt; Noisy data to: .\data\custom_all_batchdata_noisy.xlsx
+[+] Exported batch data to excel.
+        -&gt; Dataset: TRAINING (options: training, testing, all)
+        -&gt; Noise free data to: .\data\custom_training_batchdata.xlsx
+        -&gt; Noisy data to: .\data\custom_training_batchdata_noisy.xlsx
+[+] Exported batch data to excel.
+        -&gt; Dataset: TESTING (options: training, testing, all)
+        -&gt; Noise free data to: .\data\custom_testing_batchdata.xlsx
+        -&gt; Noisy data to: .\data\custom_testing_batchdata_noisy.xlsx
+</pre></div></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tim Forster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
