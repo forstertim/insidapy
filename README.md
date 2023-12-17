@@ -147,7 +147,7 @@ data.export_to_excel(destination=r'.\data')
 
 
 ## Custom ODE
-Two examples are stored in `docs/notebooks`. One of the custom examples includes the additional passing of input arguments to a given ODE file (check out `docs/notebooks/main_custom_ode_with_arguments_passing.ipynb` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_with_arguments_passing.html)). The other one shows an example without such additional input arguments for the ODE file (check out `docs/notebooks/main_custom_ode_without_arguments_passing.py` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_without_arguments_passing.html)).
+Two examples are stored in `docs/notebooks`. One of the custom examples includes the additional passing of input arguments to a given ODE file (check out `docs/notebooks/main_custom_ode_with_arguments_passing.ipynb` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_with_arguments.html)). The other one shows an example without such additional input arguments for the ODE file (check out `docs/notebooks/main_custom_ode_without_arguments_passing.py` or the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_custom_ode_without_arguments.html)).
 
 A quick summary is given here. The available separate ODE file could look for example like this:
 ```python
