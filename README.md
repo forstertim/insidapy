@@ -220,9 +220,7 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')
 
 
 ## Mimic batch data
-The example code is stored in `docs/notebooks/main_mimic_observed_batch_data.ipynb` (check out the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_mimic_observed_batch_data.html) for more details).
-
-A short summary is given below. Assuming some state profiles are observed, we want to use the behaviour to create "look-alike-profiles". Below, we call this process "mimicing the data". Let's say we observed the following profile (dashed lines are the ground-truth behaviour, where the dots are the observed noisy samples):
+The example code is stored in `docs/notebooks/main_mimic_observed_batch_data.ipynb` (check out the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_mimic_observed_batch_data.html) for more details). Here, a short summary is given to explain the idea behind mimicing batch data. Assuming some state profiles are observed, we want to use the behaviour to create "look-alike-profiles". Below, we call this process "mimicing the data". Let's say we observed the following profile (dashed lines are the ground-truth behaviour, where the dots are the observed noisy samples):
 
 ![Fig 5. Observed noisy state profiles](docs/notebooks/figures/observed_state_profiles.png)
 
