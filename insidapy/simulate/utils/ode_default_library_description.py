@@ -33,7 +33,6 @@ def ode_default_library_description(type_of_example, print_to_console:bool=True)
         examples['fedbatch1'] = 'Bioreaction in fedbatch operation mode. Constant input flow. 3 species and 1 volume. Bacteria growth, substrate consumption and product formation. Mimics the production of a target protein.'
         
     # Create table with examples
-    print(f'[+] The following examples are implemented in this {type_of_example.upper()} class:')
     x = PrettyTable()
     x.field_names = ["Example ID string", "Description"]
     x.align['Property'] = "l"
@@ -47,6 +46,7 @@ def ode_default_library_description(type_of_example, print_to_console:bool=True)
         
     # Display table
     if print_to_console:
+        print(f'[+] The following examples are implemented in this {type_of_example.upper()} class:')
         print(x)
         print('\n')
 
