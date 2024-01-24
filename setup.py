@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(  name = 'insidapy',
         
-        version = '0.2.4',
+        version = '0.2.5',
         
         description = 'Module for in-silico data generation in python.',
         

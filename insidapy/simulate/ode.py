@@ -77,10 +77,21 @@ class batch():
 
         # Initial conditions and species information
         self.load_initial_conditions()
+        
+        # Check which examples are implemented, but don't print them to the console
+        self.implemented_examples = self.show_implemented_examples(print_to_console=False)
 
     # ----------------------------------------
-    def show_implemented_examples(self):
-        ode_default_library_description(self.example_type)
+    def show_implemented_examples(self, print_to_console:bool=True):
+        """Show all implemented examples. 
+
+        Args:
+            print_to_console (bool, optional): If the implemented examples should be printed to the console or not. Defaults to true.
+
+        Stores:
+            :implemented_examples (dict): List of all implemented examples.
+        """
+        ode_default_library_description(self.example_type, print_to_console)
 
     # ----------------------------------------
     def run_experiments(self):

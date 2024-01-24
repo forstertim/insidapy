@@ -5,11 +5,15 @@ Default example information for ODE module.
 import numpy as np
 from prettytable import PrettyTable
 
-def ode_default_library_description(type_of_example):
+def ode_default_library_description(type_of_example, print_to_console:bool=True):
     """Collection of all examples that are implemented in the ODE module.
 
     Args:
         type_of_example (str, required): Type of example (batch, fedbatch, custom, ...).
+        print_to_console (bool, optional): If the implemented examples should be printed to the console or not. Defaults to true.
+        
+    Returns:
+        examples (dict): Dictionary with example information.
     """
 
     # Initialize empty dictionary
@@ -42,5 +46,8 @@ def ode_default_library_description(type_of_example):
         x.add_row([f'{example_id_str}', f'{examples[example_id_str]}'])
         
     # Display table
-    print(x)
-    print('\n')
+    if print_to_console:
+        print(x)
+        print('\n')
+
+    return examples

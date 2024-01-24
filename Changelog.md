@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.2.5
+* Added a check which examples are implemented to the `__init__` function of the `batch` class.
+
 ## Version 0.2.4
 * Corrected the way the concentration profiles are returned after using a custom ODE file.
 * Created two new example notebooks for the custom ODE case (with and without additional arguments given for the ODE file).
