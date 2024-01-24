@@ -79,7 +79,7 @@ class batch():
         self.load_initial_conditions()
         
         # Check which examples are implemented, but don't print them to the console
-        self.implemented_examples = self.show_implemented_examples(print_to_console=False)
+        self.show_implemented_examples(print_to_console=False)
 
     # ----------------------------------------
     def show_implemented_examples(self, print_to_console:bool=True):
@@ -91,7 +91,7 @@ class batch():
         Stores:
             :implemented_examples (dict): List of all implemented examples.
         """
-        ode_default_library_description(self.example_type, print_to_console)
+        self.implemented_examples = ode_default_library_description(self.example_type, print_to_console)
 
     # ----------------------------------------
     def run_experiments(self):
