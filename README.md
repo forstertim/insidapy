@@ -43,6 +43,7 @@ The simulator includes several options to generate data in `insidapy.simulate`:
 * **Univariate**: Data for some univariate functions can be generated. By choosing one of the examples in the univariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
     * *`sin`* (default): Sinusoidal function $y=\sin(x)$.
     * *`logistic`*: Logistic function $y=1/(1+\exp(x))$.
+    * *`step`*: Step function that takes additional inputs (location of the step, y-value before and after the step)
 
 * **Multivariate**: Data for some multivariate functions can be generated. By choosing one of the examples in the multivariate class, the method automatically generates the ground truth and noisy data according to the user's input. Currently, the following functions to generate noisy data are implemented:
     * *`rosenbrock`* (default): The Rosenbrock function is simulated. Useful for optimization benchmarking. The function takes the following form: $f(x,y)=(a-x)^{2}+b(y-x^{2})^{2}$. This function was included in this module after using it in the work of [Forster et al. (2023a)](#references).
