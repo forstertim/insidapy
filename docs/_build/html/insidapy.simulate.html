@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>insidapy.simulate package &mdash; InSiDa-Py  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,7 +14,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -49,6 +47,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_batch_examples.html">Batch data generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_fedbatch_examples.html">Fed-Batch data generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_custom_ode_with_arguments.html">Custom ODE (with additional input arguments) Data Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_custom_ode_without_arguments.html">Custom ODE (without additional input arguments) Data Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/main_mimic_observed_batch_data.html">Mimic Observed Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_univariate_examples.html">Univariate Data Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/main_multivariate_examples.html">Multivariate Data Generation</a></li>
 </ul>
@@ -90,10 +91,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-insidapy.simulate.univariate">insidapy.simulate.univariate module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples"><code class="docutils literal notranslate"><span class="pre">univariate_examples</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.addnoise"><code class="docutils literal notranslate"><span class="pre">univariate_examples.addnoise()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.export_to_excel"><code class="docutils literal notranslate"><span class="pre">univariate_examples.export_to_excel()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.logistic"><code class="docutils literal notranslate"><span class="pre">univariate_examples.logistic()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.plot"><code class="docutils literal notranslate"><span class="pre">univariate_examples.plot()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.save_figure"><code class="docutils literal notranslate"><span class="pre">univariate_examples.save_figure()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.sin"><code class="docutils literal notranslate"><span class="pre">univariate_examples.sin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.step"><code class="docutils literal notranslate"><span class="pre">univariate_examples.step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insidapy.simulate.univariate.univariate_examples.train_test_split"><code class="docutils literal notranslate"><span class="pre">univariate_examples.train_test_split()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -249,7 +253,7 @@ and ‘{example}_data_noisy.xlsx’</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘batch1’ (batch fermentation with 3 species).</p></li>
-<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>)</p></li>
 <li><p><strong>npoints_per_batch</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of x-data points (abscissa). Defalt to 20.</p></li>
 <li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
 <li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
@@ -399,8 +403,22 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.simulate.ode.batch.show_implemented_examples">
-<span class="sig-name descname"><span class="pre">show_implemented_examples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.ode.batch.show_implemented_examples" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">show_implemented_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_to_console</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.ode.batch.show_implemented_examples" title="Link to this definition"></a></dt>
+<dd><p>Show all implemented examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>print_to_console</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the implemented examples should be printed to the console or not. Defaults to true.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">implemented_examples (dict)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all implemented examples.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.simulate.ode.batch.solve_ODE_model">
@@ -418,11 +436,14 @@ and ‘{self.example_type}_{self.example}_{which_dataset}_batchdata_noisy.xlsx�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="insidapy.simulate.ode.batch.train_test_split">
-<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.ode.batch.train_test_split" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_testbatches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.ode.batch.train_test_split" title="Link to this definition"></a></dt>
 <dd><p>Splits the data into training and testing data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p></li>
+<li><p><strong>list_testbatches</strong> (<em>list</em><em>, </em><em>optional</em>) – Batch number list of the batches which are used as test set.                 If not indicated, the test batch numbers are chosen randomly.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -485,7 +506,7 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> (<em>str</em><em>, </em><em>optional</em>) – String of the example to be loaded. Default to ‘fedbatch1’ (fed batch fermentation with 3 species).</p></li>
-<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>nbatches</strong> (<em>int</em><em>, </em><em>optional</em>)</p></li>
 <li><p><strong>npoints_per_batch</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of x-data points (abscissa). Defalt to 20.</p></li>
 <li><p><strong>noise_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of noise that should be added. Default to ‘percentage’.</p></li>
 <li><p><strong>noise_percentage</strong> (<em>float</em><em>, </em><em>optional</em>) – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
@@ -518,17 +539,19 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <span id="insidapy-simulate-univariate-module"></span><h2>insidapy.simulate.univariate module<a class="headerlink" href="#module-insidapy.simulate.univariate" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="insidapy.simulate.univariate.univariate_examples">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.simulate.univariate.</span></span><span class="sig-name descname"><span class="pre">univariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'logistic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.univariate.univariate_examples" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insidapy.simulate.univariate.</span></span><span class="sig-name descname"><span class="pre">univariate_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">example</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'logistic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">example_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nruns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'percentage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.univariate.univariate_examples" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to initialize example data consisting of a ground truth (noiseless) and noisy observations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>example</strong> – String of the example to be loaded. Default to ‘logistic’.</p></li>
+<li><p><strong>nruns</strong> – Number of runs to generate different functions.</p></li>
 <li><p><strong>npoints</strong> – Number of x-data points (abscissa). Defalt to 20.</p></li>
 <li><p><strong>tspan</strong> – List of staring and end points of abscissa data. Default to [0,10].</p></li>
 <li><p><strong>noise_mode</strong> – Type of noise that should be added. Default to ‘percentage’.</p></li>
-<li><p><strong>noise_percentage</strong> – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%ç.</p></li>
+<li><p><strong>noise_percentage</strong> – In case ‘percentage’ is chosen as noise_mode, this indicates the percentage of             noise that is added to the ground truth. Default to 5%.</p></li>
+<li><p><strong>seed</strong> – The numpy random seed is not fixed by default, but it can be if the user gives an integer value.</p></li>
 </ul>
 </dd>
 </dl>
@@ -537,10 +560,10 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <dt class="field-odd">x (array)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth abscissa data.</p>
 </dd>
-<dt class="field-even">y (array)<span class="colon">:</span></dt>
+<dt class="field-even">y (dict)<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ground truth function data y(x).</p>
 </dd>
-<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
+<dt class="field-odd">y_noisy (dict)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy observations of y(x).</p>
 </dd>
 </dl>
@@ -552,10 +575,25 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <dd><p>Add noise to the ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y_noisy (array)<span class="colon">:</span></dt>
+<dt class="field-odd">y_noisy (dict)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Noisy data of the ground truth data data y(x).</p>
 </dd>
 </dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.simulate.univariate.univariate_examples.export_to_excel">
+<span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.univariate.univariate_examples.export_to_excel" title="Link to this definition"></a></dt>
+<dd><p>Exports the datasets stored in the dictionary to an excel file. The filename of the data is
+‘univariate_{self.example}_{which_dataset}.xlsx’ and ‘’univariate_{self.example}_{which_dataset}_noisy.xlsx’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Destination folder in which the excel files should be saved. Default to ‘.data’.</p></li>
+<li><p><strong>which_dataset</strong> – Which dataset should be exported (‘all’, ‘training’, or ‘testing’). Defaults to ‘all’.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -566,7 +604,7 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <dd><p>Logistic function as ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y (array)<span class="colon">:</span></dt>
+<dt class="field-odd">y (dict)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth function data y(x).</p>
 </dd>
 </dl>
@@ -613,10 +651,40 @@ The examples that are implemented are listed in utils.ode_default_library_descri
 <dd><p>Sinusoidal ground truth data.</p>
 <dl class="simple">
 <dt>Stores:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">y (array)<span class="colon">:</span></dt>
+<dt class="field-odd">y (dict)<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ground truth function data y(x).</p>
 </dd>
 </dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.simulate.univariate.univariate_examples.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.univariate.univariate_examples.step" title="Link to this definition"></a></dt>
+<dd><p>Step function as ground truth data with the step being located
+at the given position ‘step_pos’. Before the step, the function has
+the value of ‘x_min’ and after the step the value of ‘x_max’.</p>
+<dl class="simple">
+<dt>Stores:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">y (dict)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ground truth function data y(x).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="insidapy.simulate.univariate.univariate_examples.train_test_split">
+<span class="sig-name descname"><span class="pre">train_test_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_splitratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_list_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insidapy.simulate.univariate.univariate_examples.train_test_split" title="Link to this definition"></a></dt>
+<dd><p>Splits the data into training and testing data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_splitratio</strong> (<em>float</em><em>, </em><em>optional</em>) – Ratio [0,1) of the data which is used as test set.                 Defaults to None (explicitly ask user due to assert).</p></li>
+<li><p><strong>number_list_test</strong> (<em>list</em><em>, </em><em>optional</em>) – List of numbers of the runs which are used as test set.                 If not indicated, the test runs are chosen randomly.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

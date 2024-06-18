@@ -5,6 +5,8 @@ insidapy.egg-info
 insidapy/__pycache__
 insidapy/augment/__pycache__
 insidapy/simulate/utils/__pycache__
+insidapy/simulate/__pycache__
+insidapy/simulate/.vscode
 
 examples/__pycache__
 examples/.vscode

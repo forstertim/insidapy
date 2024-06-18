@@ -594,15 +594,18 @@ class batch():
         print('\t-> Noisy data to: ' + filename_noisy + '.xlsx')
 
     # ----------------------------------------
-    def train_test_split(self, test_splitratio=None): 
+    def train_test_split(self, test_splitratio=None, list_testbatches=None): 
         """Splits the data into training and testing data.
 
         Args:
             test_splitratio (float, optional): Ratio [0,1) of the data which is used as test set. \
                 Defaults to None (explicitly ask user due to assert).
+            list_testbatches (list, optional): Batch number list of the batches which are used as test set. \
+                If not indicated, the test batch numbers are chosen randomly.
         """
 
         # Check that num_train_batches is not None and not larger than number of batches
+        assert self.nbatches > 1, '[-] The number of batches needs to be larger than 1 to do a train-test split.'
         assert test_splitratio is not None, '[-] Please specify the ratio [0, 1) used for testing.'
         assert test_splitratio < 1, '[-] The ratio needs to be lower than 1.'
         assert test_splitratio >= 0, '[-] The ratio needs to be larger or equal to 0.'
@@ -620,7 +623,10 @@ class batch():
 
         # Choose randomly N number of batches for testing
         batches_list = list(self.y.keys())
-        self.batchnumbers_test = random.choices(batches_list, k=self.nbatches - num_train_batches)
+        if list_testbatches is None:
+            self.batchnumbers_test = list(np.random.choice(batches_list, size=self.nbatches - num_train_batches, replace=False))
+        else:
+            self.batchnumbers_test = list_testbatches
         self.batchnumbers_test = sorted(self.batchnumbers_test)
         self.batchnumbers_train = [b for b in batches_list if b not in self.batchnumbers_test] 
 
