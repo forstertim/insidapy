@@ -8,6 +8,8 @@ setup(  name = 'insidapy',
         
         author = 'Tim Forster',
         
+        license = 'MIT',
+        
         packages = find_packages(),
         
         # package_data = {'': ['<subfolder>/*.dat']},
