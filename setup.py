@@ -6,10 +6,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(  name = 'insidapy',
         
-        version = '0.2.7',
+        version = '0.2.8',
         
         description = 'Module for in-silico data generation in python.',
-        long_description = long_description, #pathlib.Path("README.md").read_text(),
+        long_description = long_description, 
         long_description_content_type = "text/markdown",
         
         author = 'Tim Forster',
@@ -18,7 +18,9 @@ setup(  name = 'insidapy',
         packages = find_packages(),
         
         project_urls = {
-            "Documentation": "https://insidapy.readthedocs.io/en/latest/?badge=latest"
+            "Homepage": "https://github.com/forstertim/insidapy",
+            "Documentation": "https://insidapy.readthedocs.io/en/latest/?badge=latest",
+            "Issues": "https://github.com/forstertim/insidapy/issues"
         },
                 
         # package_data = {'': ['<subfolder>/*.dat']},
