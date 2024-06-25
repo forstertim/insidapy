@@ -105,11 +105,11 @@ data.plot_train_test_experiments(   save=True,
                                     save_figure_exensions=['png'])
 ```
 
-![Fig 1. Example several runs in batch operation mode (batch1 example).](docs/notebooks/figures/batch1_simulated_batches.png)
+![Fig 1. Example several runs in batch operation mode (batch1 example).](https://github.com/forstertim/insidapy/tree/master/docs/notebooks/figures/batch1_simulated_batches.png)
 
 *Fig 1. Example several runs in batch operation mode (batch1 example).*
 
-![Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.](docs/notebooks/figures/batch1_simulated_batches_train_test.png)
+![Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.](https://github.com/forstertim/insidapy/tree/master/docs/notebooks/figures/batch1_simulated_batches_train_test.png)
 
 *Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.*
 

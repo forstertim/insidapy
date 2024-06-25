@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.2.7
+* Tests to publish the package on PyPI.
+
 ## Version 0.2.6
 * Added a step function to the univariate data generation module of the `univariate` class.
 * Added the functionality to export the univariate data. An example was added to the univariate notebook in the documentation.

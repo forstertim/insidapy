@@ -1,12 +1,15 @@
 from setuptools import setup, find_packages
 import pathlib
 
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(  name = 'insidapy',
         
-        version = '0.2.6',
+        version = '0.2.7',
         
         description = 'Module for in-silico data generation in python.',
-        long_description = pathlib.Path("README.md").read_text(),
+        long_description = long_description, #pathlib.Path("README.md").read_text(),
         long_description_content_type = "text/markdown",
         
         author = 'Tim Forster',
@@ -20,7 +23,7 @@ setup(  name = 'insidapy',
                 
         # package_data = {'': ['<subfolder>/*.dat']},
         # package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
-        
+        include_package_data = True,
         install_requires = [    'numpy',
                                 'scipy',
                                 'openpyxl',

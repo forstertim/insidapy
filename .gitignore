@@ -10,3 +10,5 @@ insidapy/simulate/.vscode
 
 examples/__pycache__
 examples/.vscode
+
+dist
