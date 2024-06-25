@@ -105,11 +105,11 @@ data.plot_train_test_experiments(   save=True,
                                     save_figure_exensions=['png'])
 ```
 
-![Fig 1. Example several runs in batch operation mode (batch1 example).](https://github.com/forstertim/insidapy/tree/master/docs/notebooks/figures/batch1_simulated_batches.png)
+![Fig 1. Example several runs in batch operation mode (batch1 example).](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/batch1_simulated_batches.png?raw=true)
 
 *Fig 1. Example several runs in batch operation mode (batch1 example).*
 
-![Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.](https://github.com/forstertim/insidapy/tree/master/docs/notebooks/figures/batch1_simulated_batches_train_test.png)
+![Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/batch1_simulated_batches_train_test.png?raw=true)
 
 *Fig 2. Example several runs in batch operation mode (batch1 example) with training and testing batches visualized differently.*
 
@@ -142,7 +142,7 @@ data.contour_plot_2_variables(  nlevels=15,
 data.export_to_excel(destination=r'.\data')
 ```
 
-![Fig 3. Example of the Rosenbrock function.](docs/notebooks/figures/rosenbrock.png)
+![Fig 3. Example of the Rosenbrock function.](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/rosenbrock.png?raw=true)
 
 *Fig 3. Example of the Rosenbrock function.*
 
@@ -215,7 +215,7 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='training')
 data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')  
 ```
 
-![Fig 4. Example of the simulation of a custom ODE file.](docs/notebooks/figures/custom_odes_with_args.png)
+![Fig 4. Example of the simulation of a custom ODE file.](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/custom_odes_with_args.png?raw=true)
 
 *Fig 4. Example of the simulation of a custom ODE file.*
 
@@ -223,13 +223,13 @@ data.export_dict_data_to_excel(destination=r'.\data', which_dataset='testing')
 ## Mimic batch data
 The example code is stored in `docs/notebooks/main_mimic_observed_batch_data.ipynb` (check out the [documentation](https://insidapy.readthedocs.io/en/latest/notebooks/main_mimic_observed_batch_data.html) for more details). Here, a short summary is given to explain the idea behind mimicing batch data. Assuming some state profiles are observed, we want to use the behaviour to create "look-alike-profiles". Below, we call this process "mimicing the data". Let's say we observed the following profile (dashed lines are the ground-truth behaviour, where the dots are the observed noisy samples):
 
-![Fig 5. Observed noisy state profiles](docs/notebooks/figures/observed_state_profiles.png)
+![Fig 5. Observed noisy state profiles](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/observed_state_profiles.png?raw=true)
 
 *Fig 5. Example of some observed data.*
 
 The identified parameters are used to create new runs that show a similar behaviour as the observed system. Using some bounds for the creation of initial conditions, the following batch data can be generated:
 
-![Fig 6. Generated state profiles using the identified parameters](docs/notebooks/figures/mimiced_experiments_custom_ode.png)
+![Fig 6. Generated state profiles using the identified parameters](https://github.com/forstertim/insidapy/blob/master/docs/notebooks/figures/mimiced_experiments_custom_ode.png?raw=true)
 
 *Fig 6. Example of some observed data.*
 
