@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.2.7-0.2.8
+## Version 0.2.7-0.2.9
 * Tests to publish the package on PyPI.
 
 ## Version 0.2.6

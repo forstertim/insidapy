@@ -1,6 +1,7 @@
 In-Silico Data Generation in Python (InSiDa-Py)
 ================================================
 [![Documentation Status](https://readthedocs.org/projects/insidapy/badge/?version=latest)](https://insidapy.readthedocs.io/en/latest/?badge=latest)
+[![PyPI](https://img.shields.io/pypi/v/insidapy.svg)](https://pypi.org/project/insidapy)
 
 This package is used to simplify the generation of example data for different case studies. In several applications, for example in the field of surrogate modeling, it is necessary to generate some *in-silico* data which can be used to train a model. The tool simplifies the generation and export of such data. Some cited applications are included, where the user can easily create custom systems as shown below.
 
@@ -17,7 +18,12 @@ This package is used to simplify the generation of example data for different ca
 
 Installation
 ============
-If you are a git user, try to install the package using the following command:
+The easiest way to install is by using PyPI. Open a terminal and run the following command:
+```
+pip install insidapy
+```
+
+Otherwise, and if you are a git user, try to install the package using the following command:
 ```
 pip install git+https://github.com/forstertim/insidapy.git
 ```
