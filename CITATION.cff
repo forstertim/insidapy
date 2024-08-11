@@ -3,8 +3,6 @@ authors:
 - family-names: "Forster"
   given-names: "Tim"
 title: "In-Silico Data Generation in Python (InSiDa-Py)"
-version: 0.2.2
-date-released: 2023-10-07
 url: "https://github.com/forstertim/insidapy"
 preferred-citation:
   type: article
