@@ -242,6 +242,13 @@ The identified parameters are used to create new runs that show a similar behavi
 After running this approach, the same excel-export functionalities as shown in the [bioreactor case study](#bioreactor-in-batch-operation-mode) above can be used.
 
 
+Citation
+========
+If you use this package in your research, please cite the following publication: 
+
+> **Forster et al.**, Machine learning uncovers analytical kinetic models of bioprocesses. **2024**. *Chemical Engineering Science*. [URL](https://www.sciencedirect.com/science/article/pii/S0009250924009060).
+
+
 References
 ==========
 > **Craven S., Shirsat N., Whelan J., Glennon G.**, Process Model Comparison and Transferability Across Bioreactor Scales andModes of Operation for a Mammalian Cell Bioprocess. **2012**. *Biotechnology Progress*. [URL](https://aiche.onlinelibrary.wiley.com/doi/full/10.1002/btpr.1664)
