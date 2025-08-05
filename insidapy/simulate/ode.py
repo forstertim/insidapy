@@ -141,7 +141,7 @@ class batch():
         y_noisy = np.zeros((y.shape[0], 0))
         for spec_id in range(len(self.species)):
             if self.noise_mode == 'percentage':
-                rmse = mean_squared_error(y[:, spec_id], np.zeros(y[:, spec_id].shape), squared=False)
+                rmse = np.sqrt(mean_squared_error(y[:, spec_id], np.zeros(y[:, spec_id].shape)))
                 y_noisy_spec = y[:, spec_id] + np.random.normal(0, rmse / 100.0 * self.noise_percentage, y[:, spec_id].shape)
                 y_noisy = np.hstack((y_noisy, y_noisy_spec.reshape(-1,1)))
             else:
