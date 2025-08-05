@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(  name = 'insidapy',
         
-        version = '0.2.9',
+        version = '0.2.10',
         
         description = 'Module for in-silico data generation in python.',
         long_description = long_description, 
